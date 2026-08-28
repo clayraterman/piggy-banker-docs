@@ -1,0 +1,51 @@
+# Source: https://docs.cfo.ai/dashboards/charts-and-custom-visualizations
+
+A Table Block shows your Model as a grid. When you want a trend line, a scorecard, or another visual a grid cannot express, ask Ari to build a chart or custom visual backed by live Model data.
+
+## 
+
+[​](https://docs.cfo.ai/dashboards/charts-and-custom-visualizations#what-a-chart-or-custom-visual-can-show)
+
+What a chart or custom visual can show
+
+Ask Ari for any of:
+
+- A **chart** — trend lines, bar comparisons, breakdowns over time.
+- A **scorecard** — a headline number with a delta, like current-quarter Revenue against target.
+- A **custom layout or interactive control** — a grid of stats, a small form, or another purpose-built view of your data.
+
+## 
+
+[​](https://docs.cfo.ai/dashboards/charts-and-custom-visualizations#live-data-not-a-snapshot)
+
+Live data, not a snapshot
+
+A custom visual reads from named Model data views using the same Variables and Dimensions you would use to build a Table Block. The chart updates as its underlying Model values change. A visual resolves its data in the Page’s Scenario. Use a Table Block when you need a saved side-by-side Scenario comparison. See [Create and compare Scenarios](https://docs.cfo.ai/scenarios/create-and-compare-scenarios).
+
+## 
+
+[​](https://docs.cfo.ai/dashboards/charts-and-custom-visualizations#update-a-chart-or-custom-visual)
+
+Update a chart or custom visual
+
+Ask Ari to change an existing visual, its source values, or its title. Describe the intended result, such as switching from a line chart to stacked bars or narrowing the chart to one customer segment.
+
+## 
+
+[​](https://docs.cfo.ai/dashboards/charts-and-custom-visualizations#when-to-reach-for-a-table-block-instead)
+
+When to reach for a Table Block instead
+
+Use a Table Block when readers need the underlying numbers in rows and columns, such as a variance report or a detailed departmental view. Use a custom visual when the shape of the story matters more, such as a trend or a single headline measure.
+
+## 
+
+[​](https://docs.cfo.ai/dashboards/charts-and-custom-visualizations#related)
+
+Related
+
+- [Pages and blocks](https://docs.cfo.ai/dashboards/pages-and-blocks)
+- [Build and format a Table Block](https://docs.cfo.ai/dashboards/build-and-format-tables)
+- [Understand table view grammar](https://docs.cfo.ai/dashboards/table-view-grammar)
+
+Ctrl+I

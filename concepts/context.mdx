@@ -1,0 +1,73 @@
+---
+title: 'Business Context: Help Piggy Understand Your Client'
+sidebarTitle: 'Context'
+description: 'Context is a set of durable business facts that Piggy and your agents use as background knowledge to give answers tailored to each specific client.'
+---
+
+Context is the background knowledge layer of every client portal — a curated set of durable facts about the business that Piggy and your agents consult every time they answer a question or run a workflow. When you add Context, Piggy stops giving generic financial answers and starts giving answers grounded in how *this specific client's business* actually operates: their revenue model, their fiscal calendar, their key metrics, and the definitions that matter to their team.
+
+## What Belongs in Context?
+
+Context is designed for stable, foundational facts that stay true across many conversations and agent runs. Unlike a chat message that exists only in one conversation thread, Context persists indefinitely and is available to every interaction inside the client portal.
+
+Good candidates for Context entries include:
+
+- **Business model** — how the company makes money (e.g., B2B SaaS with monthly subscriptions, professional services billed hourly, e-commerce with recurring revenue)
+- **Key revenue drivers** — the primary variables that move the top line (e.g., number of active subscribers, average contract value, units shipped)
+- **Team structure** — departments, headcount breakdown, who owns each budget
+- **Fiscal year** — when the company's fiscal year starts and ends; whether it follows a calendar year or a custom fiscal calendar
+- **Industry** — the sector the business operates in, relevant benchmarks, and competitive context
+- **Important definitions** — how the client defines their most important metrics (e.g., what counts as "churned," how they calculate ARR, what their burn rate formula includes)
+
+<Tip>
+When in doubt, add it. Context entries that feel obvious to you — like the fact that this client runs a calendar fiscal year — are exactly the kind of background knowledge Piggy needs to avoid giving answers calibrated to a different type of business.
+</Tip>
+
+## Why Context Matters
+
+The difference between a generic AI answer and a genuinely useful financial insight comes down to context. Consider what happens when you ask Piggy, *"What's our runway looking like?"*
+
+**Without Context:** Piggy calculates a generic cash-divided-by-burn figure using whatever definition of burn it assumes by default. The answer may not match how this client actually tracks burn — and it can't account for known upcoming cash events.
+
+**With Context:** Piggy knows that this client defines burn rate as cash out minus cash in (excluding investment proceeds), that they're a pre-revenue SaaS startup, that their fiscal year is calendar-based, and that they track runway in whole months. The answer uses the right formula, speaks in the right terms, and reflects the client's actual financial reality.
+
+Your agents benefit equally. An agent running a weekly cash summary uses the business model and metric definitions in Context to frame its output correctly — without you needing to re-explain the client's situation every time you configure a new workflow.
+
+## Adding and Updating Context
+
+You can add, edit, or remove Context entries at any time. There is no limit to the number of entries you can maintain per client portal.
+
+<Steps>
+  <Step title="Open the Context section">
+    Navigate to **Context** in the client portal sidebar. You'll see a list of all existing Context entries for this client.
+  </Step>
+  <Step title="Add a new entry">
+    Click **+ Add Context**. Type the fact you want to record — you can write it in plain sentences, as a label-and-value pair, or as a short definition. Save the entry.
+  </Step>
+  <Step title="Let Piggy suggest Context">
+    Ask Piggy in the chat panel: *"Based on our connected data, what Context entries would you suggest adding?"* Piggy can infer likely business facts from your GL structure, chart of accounts, and connected sources and propose entries for you to approve.
+  </Step>
+  <Step title="Review and update regularly">
+    Context is only valuable when it's accurate. After any major business change — a pivot, a new funding round, a restructuring — review the Context section and update any entries that no longer reflect reality.
+  </Step>
+</Steps>
+
+## Example Context Entries
+
+Here is what a well-populated Context section might look like for a B2B SaaS client:
+
+```text
+Business model: B2B SaaS, monthly and annual subscription plans
+Fiscal year: Calendar year (January 1 – December 31)
+Key metric: ARR (Annual Recurring Revenue)
+Burn rate definition: Total cash out minus total cash in per calendar month, excluding equity investment proceeds
+Revenue recognition: Subscription revenue recognized ratably over the contract period
+Primary cost driver: Headcount — payroll and benefits represent approximately 70% of operating expenses
+Churn definition: A customer is considered churned when they cancel and their contract term ends, not at cancellation date
+Industry: B2B SaaS — HR tech vertical
+Funding stage: Series A, raised in March 2024
+```
+
+<Tip>
+Review your Context entries after every major business change — a pricing model shift, a new product launch, a change in fiscal year, or a significant hiring event. Outdated Context is worse than no Context: it causes Piggy and your agents to confidently give answers based on facts that are no longer true.
+</Tip>

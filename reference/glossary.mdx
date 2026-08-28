@@ -1,0 +1,84 @@
+---
+title: 'Piggy Banker Glossary of Key Terms'
+sidebarTitle: 'Glossary'
+description: 'A reference guide to the key terms and concepts used throughout Piggy Banker — organized by theme so you can find exactly what you need.'
+---
+
+Use this glossary as a quick reference for the key terms and concepts you'll encounter throughout Piggy Banker. Terms are grouped by theme so you can orient yourself whether you're exploring your portal for the first time, building financial dashboards, or setting up automated agent workflows.
+
+## Your Portal
+
+<AccordionGroup>
+  <Accordion title="Client Portal">
+    An isolated workspace for one client or business inside Piggy Banker. Each client portal has its own metrics, pages, agents, connected data sources, and Business Context. Client portals are fully separated from one another — data and settings in one portal never bleed into another.
+  </Accordion>
+  <Accordion title="CFO Team Portal">
+    The top-level dashboard where CFO teams manage all of their client portals from a single view. From the CFO Team Portal, you can create new client portals, check the status of all your clients, and navigate into any individual client's workspace.
+  </Accordion>
+  <Accordion title="Overview">
+    The home screen of a client portal. The Overview surfaces the most important information at a glance: pending tasks, active alerts, recent agent activity, and any metrics that need attention. It's the first screen you see when you open a client portal.
+  </Accordion>
+  <Accordion title="Context">
+    Durable facts about the client's business that you configure in the portal and that Piggy uses as background knowledge when answering questions and running agents. Context includes details like the company's industry, fiscal year, key products or services, and operational assumptions. The richer the Context, the more accurate and relevant Piggy's responses will be.
+  </Accordion>
+</AccordionGroup>
+
+## Financial Data
+
+<AccordionGroup>
+  <Accordion title="Metric">
+    A named, auto-updating financial data point connected to your live data sources. Examples include Monthly Revenue, Burn Rate, Gross Margin %, and Cash on Hand. Metrics are the building blocks of dashboards and the data Piggy reads when answering questions or running reports. When your General Ledger syncs, every metric that draws from it updates automatically.
+  </Accordion>
+  <Accordion title="General Ledger (GL)">
+    The primary accounting record for a business — the authoritative source of all financial transactions. Piggy Banker connects directly to your GL to pull Actuals. Supported GL platforms include QuickBooks, Xero, and Puzzle.
+  </Accordion>
+  <Accordion title="Actuals">
+    Confirmed historical financial data pulled directly from your connected General Ledger. Actuals reflect what actually happened — real revenue, real expenses, real cash movements — as of the last closed period. Actuals are read-only; they update automatically when your GL syncs.
+  </Accordion>
+  <Accordion title="Forecast">
+    Forward-looking financial projections that extend beyond the last closed period. Forecasts can be formula-based (calculated from assumptions you define) or manually entered. Piggy can build and update forecasts, and you can compare them against Actuals to track variance.
+  </Accordion>
+  <Accordion title="Burn Rate">
+    The net cash a business spends per month — calculated as total cash outflows minus total cash inflows. A higher burn rate means the business is consuming cash faster. Burn Rate is a foundational metric for any startup or growth-stage company and feeds directly into Cash Runway.
+  </Accordion>
+  <Accordion title="Cash Runway">
+    How many months of operating cash the business has remaining at its current Burn Rate. Calculated as current cash divided by monthly Burn Rate. Cash Runway is one of the most watched metrics for CFOs and investors — Piggy can alert you when it falls below a threshold you set.
+  </Accordion>
+</AccordionGroup>
+
+## Pages and Dashboards
+
+<AccordionGroup>
+  <Accordion title="Page">
+    A free-form, Notion-style canvas for building financial dashboards, reports, and working views. Pages are made up of Blocks — you can mix metric widgets, charts, tables, and text on a single Page. Piggy can create and edit Pages on your behalf.
+  </Accordion>
+  <Accordion title="Block">
+    A single element on a Page. Blocks can be metric widgets (showing one live number), charts (line, bar, waterfall), tables (multi-metric grids), or text (narrative context and headings). Combine Blocks to build any layout you need.
+  </Accordion>
+  <Accordion title="Dashboard">
+    A Page configured as a financial reporting view — typically a curated set of the most important metrics and charts for a client or use case. Dashboards are often shared with clients or used as the basis for board reports and investor updates.
+  </Accordion>
+  <Accordion title="Playbook">
+    A saved Page template or financial operating procedure that captures how you approach a specific type of client work — for example, a standard onboarding dashboard or a monthly close checklist. Playbooks let you apply a proven structure to new client portals without rebuilding from scratch each time.
+  </Accordion>
+  <Accordion title="Template">
+    A pre-built Page layout derived from a Playbook. When you apply a Template to a new or existing client portal, Piggy creates the Pages, metrics, and structure defined in the Playbook, scoped to that client's data.
+  </Accordion>
+</AccordionGroup>
+
+## Agents and Automation
+
+<AccordionGroup>
+  <Accordion title="Agent">
+    A workflow that runs automatically inside a client portal. Agents can read metrics, generate summaries, monitor thresholds, send reports, and flag anomalies. You create and configure agents through Piggy or the Agents section of the portal navigation.
+  </Accordion>
+  <Accordion title="Skill">
+    A saved workflow instruction that tells Piggy how to handle a specific, recurring type of request. Skills have a name, a trigger condition (when should Piggy use this?), and a set of workflow instructions (what should Piggy do?). Once saved, Piggy activates the right Skill automatically when your request matches its trigger — no need to reference the Skill by name. See [Agent Skills](/reference/agent-skills).
+  </Accordion>
+  <Accordion title="Trigger">
+    A scheduled instruction that runs an agent automatically on a set cadence — daily, weekly, monthly, or custom. Triggers fire unattended and deliver their results to Slack or email. Because they run without a surrounding conversation, Trigger prompts must be fully self-contained. See [Agent Triggers](/reference/agent-triggers).
+  </Accordion>
+  <Accordion title="Piggy">
+    The AI companion embedded throughout Piggy Banker — available in the chat sidebar of every portal page. Piggy assists with building dashboards, creating and updating metrics, answering financial questions, checking data connections, creating agents, and running reports. You interact with Piggy in plain language; no special syntax or commands are required. See [Meet Piggy](/reference/piggy-ai).
+  </Accordion>
+</AccordionGroup>

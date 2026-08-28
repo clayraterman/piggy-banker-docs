@@ -1,0 +1,90 @@
+---
+title: 'Metrics: Live Financial Data Points in Piggy Banker'
+sidebarTitle: 'Metrics'
+description: 'Metrics are the core data unit in Piggy Banker — connect a source, define a metric, and use it in pages, agents, Slack reports, and Piggy answers.'
+---
+
+Metrics are the foundational building block of every financial view in Piggy Banker. You connect a data source, define a named metric that pulls from it, and then use that live-updating number anywhere you need it — on a dashboard page, inside an agent workflow, in a Slack report, or as context for Piggy's answers. Define a metric once and it stays current everywhere it appears, automatically.
+
+## What Is a Metric?
+
+A **metric** is a named, live-updating financial data point scoped to a specific client portal. It has a name, a data source, and optionally a formula that transforms raw source data into the number you care about.
+
+Examples of metrics you might define:
+
+- **Monthly Revenue** — total revenue booked in the current calendar month
+- **Burn Rate** — net cash out per month based on General Ledger actuals
+- **Headcount** — total active employees as of today
+- **Gross Margin %** — gross profit divided by revenue, expressed as a percentage
+- **Cash Runway** — current cash balance divided by average monthly burn
+
+A metric is not a static snapshot — it recalculates whenever its underlying source data refreshes. When your General Ledger syncs, every metric that depends on it updates automatically.
+
+## Metric Sources
+
+Metrics pull their underlying data from the sources connected in the **Connections** section of a client portal. The three types of source data available are:
+
+<AccordionGroup>
+  <Accordion title="General Ledger (required)">
+    The General Ledger is the primary data source for every client portal. It provides actuals for revenue, expenses, assets, liabilities, and equity — the full chart of accounts. Most P&L, balance sheet, and cash-flow metrics draw directly from GL data. You must connect a General Ledger before you can create GL-backed metrics.
+  </Accordion>
+  <Accordion title="Bank accounts and credit cards (optional)">
+    Connect bank and credit card accounts to create real-time cash-position and spending metrics. Bank-backed metrics give you up-to-the-day cash balances and transaction-level visibility that complements the accrual view your GL provides.
+  </Accordion>
+  <Accordion title="Manually entered values">
+    Some metrics don't live in any connected system — headcount, pipeline value, or a custom KPI your client tracks in a spreadsheet. You can enter these values directly and still use them in pages, agents, and Piggy conversations alongside your connected-source metrics.
+  </Accordion>
+</AccordionGroup>
+
+## Types of Metrics
+
+Metrics fall into four broad categories based on what financial question they answer:
+
+<CardGroup cols={2}>
+  <Card title="P&L Metrics" icon="chart-line">
+    Revenue, COGS, Gross Profit, Operating Expenses, EBITDA, Net Income. These pull from your General Ledger income statement accounts and update with each GL sync.
+  </Card>
+  <Card title="Cash Flow Metrics" icon="arrow-right-arrow-left">
+    Cash In, Cash Out, Burn Rate, Net Cash Flow, Cash Runway. These combine GL data with bank account balances for a complete cash picture.
+  </Card>
+  <Card title="Forecast Metrics" icon="crystal-ball">
+    Projected Revenue, Forecasted Burn, Budget vs. Actuals variance. These layer assumptions and formula-based projections on top of historical source data.
+  </Card>
+  <Card title="Headcount Metrics" icon="users">
+    Total Headcount, Headcount by Department, Open Roles, Fully Loaded Cost per Employee. These combine HR data or manually entered values with payroll expense from the GL.
+  </Card>
+</CardGroup>
+
+## Where Metrics Appear
+
+Once you define a metric, you can use it in multiple places across a client portal without redefining it each time:
+
+- **Pages** — add any metric as a widget on a dashboard page: a single number scorecard, a time-series chart, or a row in a financial table.
+- **Agents** — agents read live metric values when they run. A daily burn-rate agent, for example, reads your Burn Rate metric each morning and reports it to Slack.
+- **Slack reports** — when an agent sends a scheduled Slack message, it formats the current values of whichever metrics you configure it to include.
+- **Piggy's answers** — when you ask Piggy a financial question, it uses your defined metrics as the authoritative numbers for that client rather than performing ad-hoc calculations from raw data.
+
+## Creating a Metric
+
+Creating a metric involves three steps: connecting a source, defining the metric's calculation, and naming it so Piggy and agents can reference it consistently.
+
+<Steps>
+  <Step title="Connect your data source">
+    Navigate to **Connections** in the client portal sidebar and connect at least one General Ledger integration. Bank accounts are optional but recommended for cash-flow metrics.
+  </Step>
+  <Step title="Open the Metrics builder">
+    Navigate to **Pages**, then open the Metrics section. Click **New Metric** to begin defining a named data point.
+  </Step>
+  <Step title="Choose a source and define the calculation">
+    Select the data source (GL account, bank feed, or manual entry) and define how the raw data maps to the metric value — a direct account total, a formula, or a ratio.
+  </Step>
+  <Step title="Name and save the metric">
+    Give the metric a clear, descriptive name. Piggy and your agents use this name to reference the metric in conversations and automated workflows.
+  </Step>
+</Steps>
+
+For a complete walkthrough with screenshots, see [Create Your First Metric](/setup/create-metrics).
+
+<Tip>
+Name metrics clearly and consistently — use full words rather than abbreviations whenever possible. Piggy and your agents reference metrics by name in conversations and automated reports. A metric named **Monthly Gross Profit** is easier for Piggy to find and explain correctly than one named **GP_mo** or **metric_3**.
+</Tip>

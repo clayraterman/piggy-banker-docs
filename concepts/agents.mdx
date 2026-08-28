@@ -1,0 +1,100 @@
+---
+title: 'Agents: Schedule and Automate Your Financial Workflows'
+sidebarTitle: 'Agents'
+description: 'Agents run scheduled workflows inside your client portal — monitoring metrics, sending Slack reports, and alerting your team when a threshold is crossed.'
+---
+
+Agents are Piggy Banker's automation layer — they run scheduled or event-triggered workflows inside a client portal so your team doesn't have to perform the same financial checks manually, week after week. An agent can monitor a metric, send a formatted Slack report, answer a standing financial question on a cadence, or fire an alert the moment a number crosses a threshold you define. Once configured, an agent works continuously in the background, powered by the same live data your pages display.
+
+## What Can an Agent Do?
+
+Agents are capable of a wide range of financial workflow automation:
+
+<AccordionGroup>
+  <Accordion title="Send scheduled Slack reports">
+    Deliver a formatted financial summary — revenue, burn rate, cash position, or any metric you choose — to a Slack channel or direct message on a daily, weekly, or monthly cadence.
+  </Accordion>
+  <Accordion title="Answer recurring financial questions">
+    Schedule Piggy to answer a standing question on a set schedule — for example, *"What is our current cash runway?"* — and deliver the answer to Slack or email without you asking each time.
+  </Accordion>
+  <Accordion title="Monitor metrics and alert on thresholds">
+    Watch a metric continuously and trigger an alert when it crosses a boundary you define — for example, when monthly burn exceeds $200,000 or cash runway drops below 60 days.
+  </Accordion>
+  <Accordion title="Run financial checks">
+    Evaluate a set of conditions against live data — for example, verifying that all revenue accounts are reconciled at month-end — and surface any discrepancies in the activity feed or via Slack.
+  </Accordion>
+</AccordionGroup>
+
+## Skills
+
+A **Skill** is a reusable set of saved instructions that defines exactly how an agent handles a specific type of task. Think of a Skill as the agent's operating procedure for one category of work: what steps to take, what conventions to follow, and when to activate.
+
+Key things to know about Skills:
+
+- **Built-in Skills** cover common financial workflows out of the box — variance summaries, cash-position reports, and standard metric monitors ship ready to use.
+- **Custom Skills** let you encode how your team specifically approaches a task. Save a custom Skill when the built-in behavior doesn't match your client's workflow or reporting conventions.
+- **Automatic activation** — once saved, an agent activates a Skill on its own when a request matches the Skill's trigger condition. You don't need to name the Skill in your instructions.
+
+To create a custom Skill, open the **Agents** section, click **Skills**, and define a name, a trigger condition, and step-by-step instructions for Piggy to follow.
+
+For a full reference of available built-in Skills, see [Agent Skills Reference](/reference/agent-skills).
+
+## Triggers
+
+A **Trigger** is the scheduling mechanism that tells an agent when to run. Every agent needs at least one trigger to activate automatically.
+
+Piggy Banker supports two categories of triggers:
+
+<CardGroup cols={2}>
+  <Card title="Schedule-Based Triggers" icon="calendar">
+    Run an agent at a fixed time — every Monday morning, on the first of the month, or every weekday at 9 am. Specify your timezone when creating the trigger so the schedule maps to local business hours.
+  </Card>
+  <Card title="Event-Based Triggers" icon="bolt">
+    Fire an agent when something happens in your data — a metric crosses a threshold, a data sync completes, or a specific condition in your client's financials becomes true.
+  </Card>
+</CardGroup>
+
+<Warning>
+Trigger schedules use a fixed UTC time internally. A trigger set for a specific local time may shift by one hour when daylight saving time changes. Review your trigger schedules at each DST transition to ensure reports arrive at the right time.
+</Warning>
+
+You can pause a trigger without deleting it, resume it at any time, and update its schedule or prompt as your client's needs evolve.
+
+## Major Use Case: Automated Slack Reports
+
+The most common agent workflow in Piggy Banker is the **automated Slack report** — a cadenced message that delivers live financial metrics directly into a Slack channel or direct message.
+
+Here is how the full workflow operates:
+
+<Steps>
+  <Step title="Build the page your report will draw from">
+    Create a page in the client portal with the metrics you want included in the report — revenue, burn rate, cash balance, or any KPI your client tracks. This page is the agent's data source.
+  </Step>
+  <Step title="Create an agent and connect it to that page">
+    In the **Agents** section, create a new agent and point it at the page. Write a prompt that tells the agent what to include — for example, *"Summarize the current values of Monthly Revenue, Burn Rate, and Cash Runway from the Operations Dashboard page."*
+  </Step>
+  <Step title="Set a schedule trigger">
+    Choose the cadence — weekly every Monday at 8 am, monthly on the first business day, or daily — and specify your timezone.
+  </Step>
+  <Step title="Choose a Slack destination">
+    Set the delivery destination to a Slack channel (such as **#finance-updates**) or a direct message. Piggy Banker connects to Slack via the Connections section.
+  </Step>
+  <Step title="Activate the agent">
+    Save the agent. It becomes active immediately and will run at the next scheduled trigger time.
+  </Step>
+</Steps>
+
+For a complete walkthrough, see [Set Up Automated Slack Reports](/guides/automated-slack-reports).
+
+<Note>
+Agents read the **live, current values** of your page metrics each time they run — not a snapshot from when the agent was created. This means every Slack report reflects the most recent data from your connected General Ledger and bank accounts, without any manual refresh on your part.
+</Note>
+
+<CardGroup cols={2}>
+  <Card title="Automated Slack Reports Guide" icon="slack" href="/guides/automated-slack-reports">
+    Step-by-step instructions for building and deploying an automated Slack report for a client.
+  </Card>
+  <Card title="Agent Skills Reference" icon="list-check" href="/reference/agent-skills">
+    Browse the full list of built-in Skills and learn how to create custom Skills for your team's workflows.
+  </Card>
+</CardGroup>

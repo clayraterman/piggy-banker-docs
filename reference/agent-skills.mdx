@@ -1,0 +1,67 @@
+---
+title: 'Agent Skills: Save and Reuse Workflows in Piggy'
+sidebarTitle: 'Agent Skills'
+description: 'Skills save workflow instructions so Piggy handles recurring requests correctly — define a process once and Piggy activates the right Skill automatically.'
+---
+
+Skills let you save a workflow once and have Piggy activate it automatically whenever the right situation arises — no need to re-explain the same process each time you want it run. Instead of typing out the same detailed instructions for a board report or a variance check every week, you write the instructions once, save them as a Skill, and Piggy recognizes when to use it on its own.
+
+## What Is a Skill?
+
+A Skill is a saved set of instructions with three parts:
+
+- **A name** — a short, readable identifier in lowercase hyphen-separated format (e.g. `monthly-board-report`)
+- **A trigger condition** — the situation in which Piggy should activate this Skill (e.g. _"Use when asked for a board report or investor update"_)
+- **Workflow instructions** — the full set of steps Piggy should follow once the Skill activates: which metrics to pull, what format to use, what comparisons to include, and where to send the result
+
+When you send Piggy a request that matches a Skill's trigger condition, Piggy activates that Skill automatically — you don't need to name it or reference it explicitly.
+
+## Creating a Skill
+
+<Steps>
+  <Step title="Start the conversation with Piggy">
+    Ask Piggy to save a new Skill: _"Save a new Skill for our monthly board report."_ Alternatively, navigate to **Agents → Skills → New Skill** to open the Skill editor directly.
+  </Step>
+  <Step title="Give the Skill a name">
+    Use a lowercase, hyphen-separated name that describes the workflow clearly — for example, `monthly-board-report`, `weekly-variance-check`, or `new-hire-impact`. A good name makes it easy to find and update the Skill later.
+  </Step>
+  <Step title="Write the trigger condition">
+    Describe when Piggy should activate this Skill. Phrase it as a "use when" statement: _"Use when asked for a board report, investor update, or monthly executive summary."_ Make it specific enough that Piggy won't activate it for unrelated requests, but broad enough to catch the different ways someone might phrase the same ask.
+  </Step>
+  <Step title="Write the workflow instructions">
+    Describe every step Piggy should follow once the Skill activates: which metrics to include, what time period to cover, how to format the output, what comparisons to make, and where to deliver the result. The more detail you provide here, the more consistently Piggy will execute the workflow.
+  </Step>
+  <Step title="Save the Skill">
+    Confirm the Skill with Piggy or click **Save** in the Skill editor. The Skill is now active and scoped to this client portal.
+  </Step>
+</Steps>
+
+## Example Skills
+
+<AccordionGroup>
+  <Accordion title="monthly-board-report">
+    **Trigger condition:** Use when asked for a board report, investor update, or monthly executive summary.
+
+    **Instructions:** Pull Monthly Revenue, Gross Margin %, and Cash on Hand for the most recently closed month. Compare each metric to the prior month and to the same month last year. Format the output as an executive summary with a one-paragraph narrative at the top, followed by a table of the three metrics with their period-over-period changes. Flag any metric that moved more than 15% in either direction. Include a brief interpretation of what drove the largest change.
+  </Accordion>
+  <Accordion title="weekly-variance-check">
+    **Trigger condition:** Use when asked for a variance check, budget vs. actuals review, or weekly financial summary.
+
+    **Instructions:** Compare actuals to budget for every major line item for the prior week. Identify any item where the variance exceeds 10% in either direction. Summarize the flagged items with a brief explanation of the likely cause for each. Format the output as a bulleted list suitable for Slack. Do not include items where actuals and budget are within 10% of each other.
+  </Accordion>
+  <Accordion title="new-hire-impact">
+    **Trigger condition:** Use when asked to model the impact of a new hire, evaluate a proposed hire, or show the effect of adding headcount.
+
+    **Instructions:** Ask for the proposed hire's role, start date, and annual salary if not already provided. Model the payroll cost by month from the start date through the end of the current fiscal year, including an employer burden rate of 15% on top of base salary. Show the effect on monthly Burn Rate and Cash Runway, using last month's actual burn as the current baseline. Present the results as a table with a plain-language summary of how many months of runway are lost and when the runway would fall below 6 months if applicable.
+  </Accordion>
+</AccordionGroup>
+
+## Updating or Removing a Skill
+
+To update an existing Skill, tell Piggy what you want to change: _"Update the `monthly-board-report` Skill to also include Operating Expenses."_ Piggy will revise the instructions and confirm the updated version before saving.
+
+To delete a Skill you no longer need, ask Piggy: _"Delete the `weekly-variance-check` Skill."_ You can also manage, edit, and delete Skills directly from **Agents → Skills** in the portal navigation.
+
+<Note>
+  Skills are scoped to the individual client portal where they were created — they don't carry over to other client portals automatically. If you want the same Skill in multiple portals, create it separately in each one, or save it as a Playbook template that you can apply when setting up new clients.
+</Note>

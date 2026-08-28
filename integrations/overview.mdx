@@ -1,0 +1,109 @@
+---
+title: 'Integrations Overview: Connect Your Financial Data Sources'
+sidebarTitle: 'Integrations'
+description: 'Connect Piggy Banker to your general ledger, bank accounts, HR systems, spreadsheets, and databases — no manual data entry required.'
+---
+
+Piggy Banker connects to the systems where your financial data already lives — no manual data entry needed. Link your general ledger, bank accounts, HR platform, or spreadsheets and Piggy Banker automatically keeps your financial models current, so you and your clients always work from accurate, up-to-date numbers.
+
+## General Ledger (Required)
+
+Your general ledger is the foundation of every financial model in Piggy Banker. Connect one of the supported accounting systems to pull in actuals automatically each time your books close.
+
+**Supported systems:**
+- **QuickBooks Online** — the most common starting point for small and mid-market companies
+- **Xero** — a popular alternative for companies that prefer cloud-native accounting
+- **Puzzle** — built for startups that want accounting and finance in one place
+
+Once your general ledger is connected, Piggy Banker syncs chart of accounts, transactions, and period-close data on an ongoing basis. You don't need to export reports or paste numbers manually.
+
+<Tip>
+  Ask Piggy: "Check whether my QuickBooks sync is up to date" — Piggy will report the last completed sync and flag any issues before you rely on the numbers.
+</Tip>
+
+To set up your general ledger connection, see [Connect Your General Ledger](/setup/connect-general-ledger).
+
+## Bank Accounts & Credit Cards (Optional)
+
+Connect your bank accounts and credit cards to bring live balance and transaction data directly into Piggy Banker. This gives you real-time cash visibility alongside your modeled financials.
+
+Bank and credit card connections are made via **Plaid** or directly through your banking provider. Once connected, Piggy Banker pulls current balances and transaction history so your cash runway and burn rate metrics stay accurate without manual updates.
+
+To connect a bank account or credit card, see [Connect Bank Accounts & Cards](/setup/connect-bank-accounts).
+
+## HR & Payroll Systems (Optional)
+
+Connect your HR platform to bring headcount, compensation, and people data into your financial model. This is especially useful for workforce planning, departmental cost modeling, and headcount-driven forecasting.
+
+**Supported systems include:**
+- **Rippling** — direct integration
+- **Gusto** — via Merge
+- **BambooHR** — via Merge
+- **Workday** — via Merge
+- **ADP Workforce Now, Paychex, Paycor, Justworks, TriNet, UKG Pro, Deel, Personio, Hibob, and dozens more** — via Merge
+
+If your HR system isn't listed, ask Piggy to check whether it's in the catalog before assuming you need a manual file upload.
+
+## Spreadsheets & Files (Optional)
+
+Use spreadsheet and file connections when some of your data still lives outside your primary systems.
+
+- **Google Sheets** — connect a live sheet so any variable maintained in a spreadsheet stays in sync with your Piggy Banker model automatically
+- **CSV uploads** — upload a raw file for a one-off import or a report your other systems don't sync automatically
+
+When you upload a CSV, choose whether the file should become a permanent data source in your model or remain attached to the current chat session only. Uploaded files are tracked by filename — ask Piggy by that name if you need to check the import status later.
+
+## Databases (Optional)
+
+Connect a PostgreSQL-compatible database for advanced data connections when your data lives in a system of record that doesn't have a dedicated integration.
+
+**Supported database connections:**
+- **PostgreSQL** (via Fivetran)
+- **Amazon RDS for PostgreSQL** (via Fivetran)
+- **Amazon Aurora PostgreSQL** (via Fivetran)
+- **Google Cloud SQL for PostgreSQL** (via Fivetran)
+
+Database connections are a premium integration — check your workspace billing settings for the current plan limits that apply to your account.
+
+---
+
+<CardGroup cols={2}>
+  <Card title="General Ledger" icon="book" href="/setup/connect-general-ledger">
+    Connect QuickBooks Online, Xero, or Puzzle to keep actuals current automatically.
+  </Card>
+  <Card title="Bank Accounts & Cards" icon="credit-card" href="/setup/connect-bank-accounts">
+    Pull in live balances and transactions via Plaid or a direct provider connection.
+  </Card>
+  <Card title="HR & Payroll" icon="users" href="/integrations/overview">
+    Sync headcount and compensation data from Rippling, Gusto, BambooHR, Workday, and more.
+  </Card>
+  <Card title="Spreadsheets & Files" icon="table" href="/integrations/overview">
+    Connect Google Sheets or upload a CSV for budget data or one-off imports.
+  </Card>
+  <Card title="Databases" icon="database" href="/integrations/overview">
+    Link a PostgreSQL-compatible database for advanced data connections.
+  </Card>
+  <Card title="MCP & External Agents" icon="robot" href="/integrations/mcp-export">
+    Export your financial data to Claude, GPT, or any MCP-compatible AI agent.
+  </Card>
+</CardGroup>
+
+## Connection Status
+
+To check whether a connection is working, open **Connections** inside your client portal. Each connection shows its current status, the last completed sync, and any reported errors.
+
+You can also ask Piggy directly — for example:
+
+- *"Is my QuickBooks connection working?"*
+- *"When did my last bank sync complete?"*
+- *"Check whether the Rippling sync has finished loading."*
+
+Piggy will report the sync status and flag anything that needs your attention before you rely on the data in your model.
+
+## MCP & External Agents
+
+In addition to direct integrations, Piggy Banker can export your financial data via **MCP (Model Context Protocol)** and **WebMCP**. This lets external AI agents — such as Claude, GPT, or a custom AI tool your team builds — read and interact with your live Piggy Banker financial models.
+
+MCP export is designed for developers and power users who want to plug Piggy Banker data into an external AI workflow without leaving their tool of choice.
+
+For setup instructions and details on what external agents can access, see [MCP Export & External Agents](/integrations/mcp-export).

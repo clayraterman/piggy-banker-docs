@@ -1,0 +1,76 @@
+---
+title: 'Connect Your General Ledger to Start Using Piggy Banker'
+sidebarTitle: 'General Ledger'
+description: 'Connect QuickBooks Online, Xero, or Puzzle to Piggy Banker to unlock all financial metrics, AI-powered analysis, and live client dashboards.'
+---
+
+Connecting your general ledger (GL) is the single most important step you'll take in Piggy Banker. Your GL is the authoritative source of truth for every financial metric, dashboard, and AI-driven insight on the platform — nothing else can substitute for it. Complete this step first, before you build metrics or set up any other integrations.
+
+## Supported General Ledger Systems
+
+Piggy Banker connects natively to the three most widely used cloud accounting platforms for scaling businesses:
+
+<CardGroup cols={3}>
+  <Card title="QuickBooks Online" icon="building-columns">
+    The most popular small-business accounting platform. Connect via OAuth — no credentials stored.
+  </Card>
+  <Card title="Xero" icon="building-columns">
+    Preferred by many global and international teams. Connects using Xero's standard OAuth flow.
+  </Card>
+  <Card title="Puzzle" icon="building-columns">
+    Built for startups. Connects directly through Puzzle's native integration with Piggy Banker.
+  </Card>
+</CardGroup>
+
+## Connect Your General Ledger
+
+<Steps>
+  <Step title="Open Connections in your client portal">
+    Navigate to your client portal and click **Connections** in the left sidebar. This page shows every active data source linked to your workspace.
+  </Step>
+  <Step title="Add a new GL connection">
+    Click **Add Connection**, then select your accounting system — **QuickBooks Online**, **Xero**, or **Puzzle** — from the list of available integrations.
+  </Step>
+  <Step title="Sign in and approve the connection">
+    A secure login window opens for your GL provider. Sign in with your accounting credentials and click **Approve** (or **Allow Access**) to grant Piggy Banker read access to your books. You complete this step in your browser — Piggy Banker never handles your password directly.
+  </Step>
+  <Step title="Wait for the initial data sync">
+    After you approve the connection, Piggy Banker begins importing your data. The initial sync runs in the background, so you can continue exploring the platform while it completes. Larger datasets or longer transaction histories may take a few minutes.
+  </Step>
+  <Step title="Confirm the sync with Piggy">
+    Once the import has had time to run, ask Piggy to verify the results:
+
+    > "Has my QuickBooks sync finished? Which accounting periods are available?"
+
+    Piggy will confirm the sync status, report the last successful load time, and tell you exactly which periods are ready for analysis.
+  </Step>
+</Steps>
+
+## What Data Gets Imported
+
+When your GL connects, Piggy Banker imports the following financial data automatically:
+
+| Data Type | Description |
+|---|---|
+| **Chart of Accounts** | Every account in your accounting system, including account type, category, and sub-category |
+| **Transaction History** | Detailed journal entries, categorized by account, date, and amount |
+| **Profit & Loss Data** | Income, cost of goods sold, gross profit, and all operating expense accounts |
+| **Balance Sheet Data** | Assets, liabilities, and equity balances, available by period |
+
+All imported data maps to Piggy Banker's standard financial model so you can start building metrics immediately after the sync completes.
+
+## Keeping Data Fresh
+
+Piggy Banker syncs your GL automatically on a recurring schedule — your metrics and dashboards always reflect your latest closed data without any manual work. If you need an immediate refresh (for example, right after you close a period in your accounting system), you can trigger a manual sync at any time:
+
+1. Go to **Connections** in your client portal.
+2. Find your GL connection and click the **Refresh** (or **Sync Now**) button.
+3. Ask Piggy to confirm the new sync completed successfully before relying on updated figures.
+
+<Warning>
+  Your GL connection must be active and fully synced before you can create financial metrics in Piggy Banker. If you attempt to build a metric without a connected GL, the platform will prompt you to complete this step first.
+</Warning>
+
+<Note>
+  **Your credentials are never stored.** Piggy Banker connects to your GL using OAuth — the industry-standard authorization protocol. Only an approved, scoped access token is stored on our side. Your actual username and password never touch Piggy Banker's servers, and you can revoke access from your GL provider's settings at any time.
+</Note>

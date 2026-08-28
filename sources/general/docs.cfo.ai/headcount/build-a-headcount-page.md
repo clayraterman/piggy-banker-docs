@@ -1,0 +1,58 @@
+# Source: https://docs.cfo.ai/headcount/build-a-headcount-page
+
+Once an HR system like Rippling is connected, ask Ari to build a **Headcount page**: a dashboard with an employee-detail table and a department-summary table, backed by payroll formulas Ari creates for you.
+
+## 
+
+[​](https://docs.cfo.ai/headcount/build-a-headcount-page#what-ari-needs)
+
+What Ari needs
+
+Ari resolves the integration’s fields to the Variables and Dimensions it needs. At minimum:
+
+- **Employee name** — the row axis for the employee-detail table.
+- **Department** — the row axis for the department-summary table, and the segment payroll formulas split by.
+- **Pay rate** — assumed annual unless you also give a pay period.
+- **Start date** and **termination date** — required so the active-employee payroll formula knows who’s currently employed.
+
+Optionally, Ari can also bring in job title, employment type, employment status, pay period, pay currency, work location, and country.
+
+## 
+
+[​](https://docs.cfo.ai/headcount/build-a-headcount-page#pay-period-handling)
+
+Pay period handling
+
+If pay rates aren’t all annual, give Ari a pay period mapping, like Annual to 12 months, Monthly to 1, and Weekly to about 0.23. Ari creates a **Pay Period Months** Variable from that mapping and uses it to derive each employee’s per-period cost correctly, instead of assuming everyone is paid annually.
+
+## 
+
+[​](https://docs.cfo.ai/headcount/build-a-headcount-page#before-you-start)
+
+Before you start
+
+Ari needs your workspace’s **Last close** date set before it can build the active-employee payroll formula. See [Actuals, Forecast, and formula ranges](https://docs.cfo.ai/formulas/core-concepts/actuals-forecast-and-formula-ranges). If Last close is not set, Ari can explain the required workspace setting.
+
+## 
+
+[​](https://docs.cfo.ai/headcount/build-a-headcount-page#what-you-get)
+
+What you get
+
+Ask Ari to name the new Page, or accept the “Headcount” default. Ari creates any calculated Variables and formulas it needs, then adds:
+
+- An **employee-detail table**, one row per employee.
+- A **department-summary table**, rolling headcount and payroll cost up by department.
+
+From there, treat the Headcount page like any other: ask Ari to add comparisons, reformat it, or build a Scenario to model a hiring plan against it.
+
+## 
+
+[​](https://docs.cfo.ai/headcount/build-a-headcount-page#related)
+
+Related
+
+- [Understand Scenarios](https://docs.cfo.ai/scenarios/understand-scenarios)
+- [Build and format a Table Block](https://docs.cfo.ai/dashboards/build-and-format-tables)
+
+Ctrl+I

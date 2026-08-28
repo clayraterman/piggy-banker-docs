@@ -1,0 +1,151 @@
+# Source: https://docs.cfo.ai/integrations/integrations-directory
+
+cfo.ai connects to the systems where your financial and operational data already lives, so your Model stays current without manual entry.
+
+## 
+
+[​](https://docs.cfo.ai/integrations/integrations-directory#standard-and-premium-integrations)
+
+Standard and premium integrations
+
+Your plan can classify connected sources as standard or premium:
+
+- **Standard**: QuickBooks Online, Xero, Rippling, Google Sheets, and many more.
+- **Premium**: NetSuite SuiteAnalytics and all database connections.
+
+File upload is not a billable integration. Check your workspace’s Usage or billing settings for the current limits and classification that apply to your plan.
+
+## 
+
+[​](https://docs.cfo.ai/integrations/integrations-directory#file-upload)
+
+File upload
+
+**CSV / Raw File Upload** is a manual option for bringing in a raw file directly. Use it when a live connection is not set up yet, or for a one-off or specialized report a system does not sync automatically. File upload is not a billable integration. An uploaded file is tracked as its own connection, using its filename until you rename it, so ask Ari by that name if you need to check on it later. After upload, ask Ari whether the file has finished loading — ingestion runs in the background, and a model that ends up with fewer rows than the source file isn’t necessarily a problem: a query that intentionally scopes the data down looks the same from the outside as one that’s missing rows, so ask Ari to explain what the load actually produced before treating a smaller row count as an error. This is for bringing a file’s data into your Model as Actuals. To attach a file to an Ari chat message instead — for Ari to read a screenshot, PDF, or spreadsheet in the moment — see [Attach files to a chat message](https://docs.cfo.ai/workspace-settings/file-attachments-in-chat).
+
+## 
+
+[​](https://docs.cfo.ai/integrations/integrations-directory#accounting-and-erp)
+
+Accounting and ERP
+
+- **QuickBooks Online** (Standard)
+- **Xero** (Standard)
+- **NetSuite SuiteAnalytics** (via Fivetran, Premium)
+
+Use an accounting or ERP integration when you want Actuals to update automatically each time your books close.
+
+## 
+
+[​](https://docs.cfo.ai/integrations/integrations-directory#hr)
+
+HR
+
+- **Rippling** (Standard)
+
+Connect Rippling to bring headcount, compensation, and other people data into your Model alongside your financials. cfo.ai’s catalog also lists a much longer roster of HR and payroll systems available to connect (via Merge), including BambooHR, Gusto, Workday, ADP Workforce Now, Paychex, Paycor, Justworks, TriNet, UKG Pro, Deel, Personio, Hibob, and dozens more. If your HR system isn’t Rippling, ask Ari to check whether it’s in the catalog before assuming you need a file upload or manual entry instead.
+
+## 
+
+[​](https://docs.cfo.ai/integrations/integrations-directory#crm)
+
+CRM
+
+- **HubSpot** (via Fivetran)
+- **Salesforce** (via Fivetran)
+
+Connect a CRM when Bookings, pipeline, or customer data needs to feed your Model directly, rather than being re-entered from a report export.
+
+## 
+
+[​](https://docs.cfo.ai/integrations/integrations-directory#spreadsheets)
+
+Spreadsheets
+
+- **Google Sheets** (via Fivetran, Standard)
+
+Use a Google Sheets connection when a Variable is still maintained in a spreadsheet outside your other systems.
+
+## 
+
+[​](https://docs.cfo.ai/integrations/integrations-directory#databases)
+
+Databases
+
+- **PostgreSQL** (via Fivetran, Premium)
+- **Amazon RDS for PostgreSQL** (via Fivetran, Premium)
+- **Amazon Aurora PostgreSQL** (via Fivetran, Premium)
+- **Google Cloud SQL for PostgreSQL** (via Fivetran, Premium)
+
+Use a database connection when your data lives in a system of record that does not have a dedicated integration above, but is reachable through one of these PostgreSQL-compatible sources.
+
+## 
+
+[​](https://docs.cfo.ai/integrations/integrations-directory#connections-for-ari)
+
+Connections for Ari
+
+The integrations above bring data into your Model. Separately, **Settings → Connections** lets an authorized workspace administrator connect external tools and services for Ari to use directly. The **MCP** and **APIs** tabs show available connections and the services already connected for your workspace.
+
+### 
+
+[​](https://docs.cfo.ai/integrations/integrations-directory#mcp-connectors)
+
+MCP Connectors
+
+Browsable by category:
+
+- **Payments** — Stripe, PayPal, Square, Mercado Pago
+- **Banking & Spend** — Mercury, Ramp, Brex, Expensify, Plaid
+- **Accounting & Tax** — Avalara AvaTax, Avalara Returns, Numeric
+- **HR & Payroll** — Gusto, Deel
+- **Equity & Compliance** — Carta and Vanta
+- **Market Data** — Alpha Vantage and Morningstar
+- **CRM & Sales** — HubSpot, Intercom, Close, and Attio
+- **Productivity & Docs** — Notion, Linear, Asana, Atlassian (Jira and Confluence), Airtable, monday.com
+- **Data & Analytics** — Google BigQuery, Supabase, ThoughtSpot
+
+If you don’t see what you need, use **Add server** or the search bar to look for others. For how to connect cfo.ai’s own MCP server to Claude Code, see the [MCP Server](https://docs.cfo.ai/integrations/mcp-server) page.
+
+### 
+
+[​](https://docs.cfo.ai/integrations/integrations-directory#apis)
+
+APIs
+
+A separate, direct list of API connections:
+
+- Stripe
+- Adyen (Transfers, Management, Balance Platform)
+- Increase
+- Synctera
+- Mercury
+- Brex
+- Pleo
+- Pennylane
+- TaxJar
+- Rippling
+- CoinAPI
+- Tradier
+- Frankfurter — FX rates, no key needed
+- U.S. Treasury Fiscal Data — no key needed
+
+Use **Add API** or the search bar for anything not listed.
+
+## 
+
+[​](https://docs.cfo.ai/integrations/integrations-directory#how-sources-stay-current)
+
+How sources stay current
+
+After a source is connected, cfo.ai manages its initial load and subsequent refreshes through the provider appropriate to that connection. Ask Ari to check the last completed sync and any reported problems before relying on a time-sensitive result.
+
+## 
+
+[​](https://docs.cfo.ai/integrations/integrations-directory#something-look-off)
+
+Something look off?
+
+[**Ask Ari**\\ \\ Ask Ari to check a specific number, account, or entity against its source.](https://app.cfo.ai)
+
+Ctrl+I

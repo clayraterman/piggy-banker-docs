@@ -1,0 +1,73 @@
+# Source: https://docs.cfo.ai/formulas/work-with-ari/ask-ari-to-create-or-update-formulas
+
+Ari can turn a business rule into a saved Variable formula.
+
+## 
+
+[​](https://docs.cfo.ai/formulas/work-with-ari/ask-ari-to-create-or-update-formulas#start-with-a-clear-request)
+
+Start with a clear request
+
+A complete request names the target Variable and calculation:
+
+> Set Gross Profit to Revenue minus Cost of Goods Sold.
+
+Add context only when it changes where the formula should apply.
+
+## 
+
+[​](https://docs.cfo.ai/formulas/work-with-ari/ask-ari-to-create-or-update-formulas#choose-the-scope)
+
+Choose the scope
+
+Default formula:
+
+> Use this calculation for Gross Profit everywhere.
+
+Formula for a Dimension:
+
+> When Payroll is broken down by Department, calculate it as Headcount times Average Salary.
+
+Segment formula:
+
+> For the Sales department, calculate Commission as Revenue times Commission Rate.
+
+Ari uses the visible Table Block and Dimension items to resolve the correct formula scope.
+
+## 
+
+[​](https://docs.cfo.ai/formulas/work-with-ari/ask-ari-to-create-or-update-formulas#choose-the-formula-range)
+
+Choose the formula range
+
+> Use imported Payroll for Actuals and Headcount times Average Salary for Forecast.
+
+Formula-range rules must be scoped by Date. Ari can derive the correct range from the visible table target or explain why the target does not support the requested range.
+
+## 
+
+[​](https://docs.cfo.ai/formulas/work-with-ari/ask-ari-to-create-or-update-formulas#choose-the-scenario)
+
+Choose the scenario
+
+> Make this change in the Plan scenario.
+
+If you do not name a Scenario, Ari uses the current context. Include the Scenario when a change could otherwise land in the wrong place.
+
+## 
+
+[​](https://docs.cfo.ai/formulas/work-with-ari/ask-ari-to-create-or-update-formulas#validate-before-writing)
+
+Validate before writing
+
+For an extra review step, ask:
+
+> Draft and validate this formula, but do not save it yet.
+
+When you are ready:
+
+> Save the validated formula and check the result in the P&L table.
+
+Ari can validate supported writes without applying them. When you approve the saved change, ask Ari to verify the resulting values in the relevant Table Block.
+
+Ctrl+I

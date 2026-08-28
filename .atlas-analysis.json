@@ -1,32 +1,11 @@
 {
-  "$schema": "https://mintlify.com/docs.json",
-  "name": "Piggy Banker",
+  "projectType": "saas",
+  "projectName": "Piggy Banker",
+  "projectDescription": "A multi-tenant AI-powered financial management platform for CFO teams and their clients, featuring live financial models, metrics, dashboards, and automated agent workflows.",
   "theme": "almond",
-  "logo": {
-    "light": "https://media.brand.dev/4a303fc0-19a1-4358-b1b3-aa68cac74466.svg",
-    "dark": "https://media.brand.dev/6e60fb45-47d5-4b1d-9b38-f03a566c743e.svg"
-  },
-  "favicon": "https://media.brand.dev/75115206-2e51-4492-9f10-6378d3af202c.png",
-  "colors": {
-    "primary": "#717171",
-    "light": "#040404",
-    "dark": "#f9a304"
-  },
-  "fonts": {
-    "heading": {
-      "family": "Inter"
-    },
-    "body": {
-      "family": "Inter"
-    }
-  },
-  "navbar": {
-    "primary": {
-      "type": "button",
-      "label": "Sign In",
-      "href": "https://app.piggybanker.ai"
-    }
-  },
+  "primaryColor": "#717171",
+  "lightColor": "#040404",
+  "darkColor": "#f9a304",
   "navigation": {
     "tabs": [
       {
@@ -83,7 +62,7 @@
         "tab": "Reference",
         "groups": [
           {
-            "group": "Piggy AI",
+            "group": "Piggy AI Companion",
             "pages": [
               "reference/piggy-ai",
               "reference/agent-skills",
@@ -101,5 +80,27 @@
         ]
       }
     ]
-  }
+  },
+  "keyFeatures": [
+    "Multi-tenant client portal for CFO teams",
+    "Live financial metrics connected to General Ledger (QuickBooks, Xero, Puzzle)",
+    "Free-form Notion-style dashboard pages with financial widgets",
+    "AI agents for scheduled workflows and financial Q&A",
+    "Automated Slack reports with live data on a cadence",
+    "Business context layer for AI-aware financial models",
+    "Playbooks and templates for reusable dashboard setups",
+    "MCP/WebMCP export for external agent integrations",
+    "Piggy AI companion for in-app guidance and CFO-level advice",
+    "Flat-fee pricing per client with flexible extra usage"
+  ],
+  "publicApiSurface": [
+    "MCP server endpoint for external agent integrations",
+    "WebMCP export for external AI clients",
+    "General Ledger connections (QuickBooks Online, Xero, Puzzle)",
+    "Bank account and credit card balance connections",
+    "Metrics API (create, update, read live metrics)",
+    "Agent triggers (schedule recurring workflows)",
+    "Slack webhook delivery for automated reports",
+    "Client portal management endpoints"
+  ]
 }

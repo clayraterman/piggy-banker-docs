@@ -1,0 +1,62 @@
+# Source: https://docs.cfo.ai/workspace-settings/file-attachments-in-chat
+
+Attach files to an Ari chat message when you want to discuss a screenshot, an Excel workbook, a PDF report, a CSV export, or another document that is not already available in your Model. A normal chat attachment gives Ari access to the file in that conversation. A CSV can also be imported as a Model data source when you choose that option.
+
+## 
+
+[​](https://docs.cfo.ai/workspace-settings/file-attachments-in-chat#what-you-can-attach)
+
+What you can attach
+
+| File category | Examples | Maximum size |
+| --- | --- | --- |
+| Images | PNG, JPEG, WebP, and other image files | 10 MB per file |
+| Documents and other files | PDF, Excel, CSV, text files, and other supported files | 50 MB per file |
+
+You can attach up to **five files per message**. Use the attachment control in the chat input, select your files, and wait for their uploads to complete before sending the message.
+
+## 
+
+[​](https://docs.cfo.ai/workspace-settings/file-attachments-in-chat#how-ari-reads-each-type)
+
+How Ari reads each type
+
+- **Images and PDFs** are made available directly for Ari to inspect.
+- **Text files and CSVs** can be included as readable conversation context. Large text content may be shortened before it is included.
+- **Excel workbooks and other binary files** are opened through Ari’s secure workspace, where Ari can inspect workbook sheets, formulas, cached values, and other file contents.
+
+If a workbook is large, tell Ari which sheet, date range, or business question matters most.
+
+## 
+
+[​](https://docs.cfo.ai/workspace-settings/file-attachments-in-chat#choose-how-a-csv-should-be-used)
+
+Choose how a CSV should be used
+
+A CSV attachment can serve one of two purposes:
+
+- **Data source** imports the file so its rows can become available to your Model.
+- **Chat only** lets Ari discuss or analyze the file without creating a data connection.
+
+Importing a CSV can continue in the background. Ask Ari to confirm that the load has completed before treating the rows as available Model data.
+
+## 
+
+[​](https://docs.cfo.ai/workspace-settings/file-attachments-in-chat#good-to-know)
+
+Good to know
+
+- Ari can look up files shared earlier in the same conversation.
+- Attachments do not automatically move into a different conversation. Attach the file again if you start a new chat.
+- A damaged, encrypted, or otherwise unreadable file may require a different export or an unprotected copy.
+
+## 
+
+[​](https://docs.cfo.ai/workspace-settings/file-attachments-in-chat#related)
+
+Related
+
+- [Integrations Directory](https://docs.cfo.ai/integrations/integrations-directory)
+- [Connect and sync your data](https://docs.cfo.ai/integrations/connect-and-sync-data)
+
+Ctrl+I

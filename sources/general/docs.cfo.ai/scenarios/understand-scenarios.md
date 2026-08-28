@@ -1,0 +1,63 @@
+# Source: https://docs.cfo.ai/scenarios/understand-scenarios
+
+A Scenario lets you explore a different version of your Model without changing Main. Use one when a pricing decision, hiring plan, financing event, or other assumption needs its own saved alternative.
+
+## 
+
+[​](https://docs.cfo.ai/scenarios/understand-scenarios#main-and-child-scenarios)
+
+Main and child Scenarios
+
+Every Model has one **Main** Scenario. Main holds the numbers your team treats as the current plan, and it’s what most Pages show by default. An editable Scenario branches from Main. Changes you make in that Scenario, such as updating a formula or adjusting a headcount assumption, apply there until you decide whether to merge them into Main. Child Scenarios are useful for:
+
+- Modeling a what-if question, like a hiring freeze or a pricing change, without disturbing the plan everyone else is working from.
+- Drafting next quarter’s Forecast before you’re ready to share it.
+- Comparing two versions of the same plan side by side.
+
+## 
+
+[​](https://docs.cfo.ai/scenarios/understand-scenarios#how-a-scenario-stays-current)
+
+How a Scenario stays current
+
+An editable Scenario automatically inherits updates from Main while keeping its own changes. For example, refreshed accounting data can appear in both Main and your hiring-plan Scenario, while the alternative hiring assumption remains specific to the Scenario. Connected source data is shared. A Scenario changes the Model rules, values, and presentation that differ from Main; it does not create a private copy of an integration.
+
+## 
+
+[​](https://docs.cfo.ai/scenarios/understand-scenarios#what-a-scenario-would-merge-in)
+
+What a Scenario would merge in
+
+Before merging a Scenario, ask Ari what would change. Ari can inspect the saved change summary and explain which Variables, formulas, values, Pages, or tables differ from Main. Merging applies the Scenario’s changes to Main and removes the merged Scenario. Review the affected changes before approving the merge.
+
+## 
+
+[​](https://docs.cfo.ai/scenarios/understand-scenarios#snapshots-preserve-a-point-in-time)
+
+Snapshots preserve a point in time
+
+A **Snapshot** freezes Main or an editable Scenario at a specific point in its history. It is read-only and cannot be merged. Use a Snapshot to preserve a submitted budget, board-reporting baseline, or the plan your team approved at a particular date.
+
+## 
+
+[​](https://docs.cfo.ai/scenarios/understand-scenarios#review-and-reverse-changes)
+
+Review and reverse changes
+
+cfo.ai keeps a changelog of every write to a Scenario. You can:
+
+- **Undo** a specific change or a related batch of changes.
+- **Redo** a change you undid.
+- **Revert** a Scenario to an earlier point in its history. This rolls back later changes, so review the impact first.
+
+Ask Ari to show you the changelog, or to explain what changed between two points in time, before deciding to undo or revert.
+
+## 
+
+[​](https://docs.cfo.ai/scenarios/understand-scenarios#next-steps)
+
+Next steps
+
+See [Create and compare Scenarios](https://docs.cfo.ai/scenarios/create-and-compare-scenarios) for how to branch a new Scenario and view it alongside Main on a Table Block.
+
+Ctrl+I

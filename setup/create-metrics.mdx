@@ -1,0 +1,111 @@
+---
+title: 'Create Financial Metrics from Your Live Connected Data'
+sidebarTitle: 'Create Metrics'
+description: 'Build named, auto-updating financial metrics from your connected GL and bank data — the core building blocks of every Piggy Banker dashboard and agent.'
+---
+
+Metrics are the engine of Piggy Banker. Each metric is a named, automatically-refreshing data point that you define once and use everywhere — on dashboards (Pages), in agent analyses, and across client reports. Rather than pulling numbers manually from your accounting system or bank, you build metrics directly from your connected data sources and let Piggy Banker keep them current for you.
+
+## Before You Start
+
+<Warning>
+  You need at least one connected data source before you can create metrics. Your general ledger (QuickBooks Online, Xero, or Puzzle) is required. Bank account connections are optional but unlock additional metric types like live cash balances. If you haven't connected your GL yet, complete [Connect Your General Ledger](/setup/connect-general-ledger) first.
+</Warning>
+
+Make sure your initial GL sync has completed before building metrics — Piggy needs the imported chart of accounts and transaction history to map accounts correctly. Ask Piggy to confirm your sync status if you're unsure.
+
+## Create a Metric
+
+<Steps>
+  <Step title="Go to the Metrics section">
+    In your client portal, click **Metrics** in the left sidebar. This page lists every metric already created for this client, organized by group.
+  </Step>
+  <Step title="Click 'New Metric'">
+    Click the **New Metric** button in the top-right corner. A metric creation panel opens on the right side of the screen.
+  </Step>
+  <Step title="Give the metric a clear name">
+    Enter a descriptive name that makes the metric's purpose immediately obvious to anyone viewing the dashboard. Good examples:
+
+    - `Monthly Net Revenue`
+    - `Operating Cash Flow`
+    - `Total Headcount`
+    - `Gross Margin %`
+    - `Net Burn Rate`
+
+    Avoid vague names like "Revenue" or "Cash" — be specific about the time grain, scope, or calculation so the metric is unambiguous in reports.
+  </Step>
+  <Step title="Choose a data source">
+    Select the source that contains the underlying data for this metric:
+    - **Connected GL** (QuickBooks Online, Xero, or Puzzle) — for P&L, balance sheet, and expense metrics
+    - **Bank Account** — for live balance and cash-position metrics
+    - **Manual Entry** — for metrics you want to track but don't have a connected source for yet
+  </Step>
+  <Step title="Configure the metric">
+    Set the metric's parameters:
+
+    | Setting | Description |
+    |---|---|
+    | **Date Range** | The time window the metric covers (e.g., current month, trailing 12 months, year-to-date) |
+    | **Account Mapping** | The GL accounts or account groups to include in the calculation |
+    | **Aggregation** | How the values roll up: **Sum** (totals), **Average** (mean over the period), or **Last Value** (most recent point-in-time figure) |
+  </Step>
+  <Step title="Preview and save">
+    Click **Preview** to see the metric's calculated values before saving. Review the numbers against your source data to confirm the account mapping is correct. When everything looks right, click **Save** to publish the metric to your workspace.
+  </Step>
+</Steps>
+
+## Common Metrics to Create First
+
+Build these foundational metrics immediately after connecting your GL — they cover the core financial picture every CFO team needs:
+
+<CardGroup cols={2}>
+  <Card title="Monthly Revenue" icon="arrow-trend-up">
+    **Source:** GL income accounts  
+    **Aggregation:** Sum  
+    Maps all top-line income accounts for the current calendar month. The starting point for almost every financial analysis.
+  </Card>
+  <Card title="Gross Profit / Gross Margin %" icon="percent">
+    **Source:** GL income and COGS accounts  
+    **Aggregation:** Sum (for gross profit); calculated field for margin %  
+    Revenue minus cost of goods sold. Add the margin % variant to track unit economics over time.
+  </Card>
+  <Card title="Operating Expenses" icon="receipt">
+    **Source:** GL expense accounts  
+    **Aggregation:** Sum  
+    Total operating costs excluding COGS. Break this down by department or category for deeper visibility.
+  </Card>
+  <Card title="Net Burn Rate" icon="fire">
+    **Source:** GL cash flow or bank accounts  
+    **Aggregation:** Sum  
+    Cash out minus cash in for the period. Essential for any pre-profitability company tracking runway.
+  </Card>
+  <Card title="Cash on Hand" icon="vault">
+    **Source:** Bank account balance metric  
+    **Aggregation:** Last Value  
+    Total cash across all connected bank accounts as of the most recent sync. Requires at least one bank connection.
+  </Card>
+  <Card title="Net Income" icon="chart-line">
+    **Source:** GL income and expense accounts  
+    **Aggregation:** Sum  
+    Revenue minus all expenses for the period. The bottom-line metric your clients check most often.
+  </Card>
+</CardGroup>
+
+## Metric Grouping
+
+Keep your metrics organized by grouping related metrics together. Groups appear as sections in the Metrics list and help your team navigate large metric libraries quickly. Common group names include:
+
+- **P&L Metrics** — revenue, gross profit, operating expenses, net income
+- **Cash Metrics** — cash on hand, burn rate, runway, operating cash flow
+- **Balance Sheet Metrics** — total assets, total liabilities, net equity
+- **Headcount Metrics** — total headcount, new hires, attrition
+
+To create a group, click **New Group** from the Metrics page, name it, and drag existing metrics into it — or assign a group when you create a new metric.
+
+<Tip>
+  Not sure how to configure a metric? Just describe what you want to measure to Piggy in plain language:
+
+  > "Create a metric for our monthly gross margin percentage using our QuickBooks data."
+
+  Piggy will walk you through the account mapping, suggest the right aggregation method, and help you save the metric — no manual configuration required.
+</Tip>

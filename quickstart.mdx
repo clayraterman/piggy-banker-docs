@@ -1,47 +1,111 @@
 ---
-title: "Quickstart"
-description: "Begin with a guide on the fastest path to a successful outcome"
+title: "Get Started with Piggy Banker: A Five-Step Setup Guide"
+sidebarTitle: "Quickstart"
+description: "Create your account, add a client portal, supply business context, connect your General Ledger, and build your first financial metric."
 ---
 
-Describe how someone begins using your product. What is the first thing they need to do? Are there any prerequisites?
-
-A quickstart should take someone from zero to using your product. They'll get a quick win and a sense of what they can accomplish.
-
-## Prerequisites
-
-Before you begin, you must have:
-
-- Requirement one (for example, Node.js 18+, a free account, an API key)
-- Requirement two (for example, a compatible device, a compatible browser, a compatible operating system)
-
-## Get started
+This guide walks you through everything you need to go from a blank account to a live client portal with real financial data flowing in. By the end, you'll have a connected General Ledger, a working metric, and a solid foundation for building dashboards and automations.
 
 <Steps>
-  <Step title="Install">
-    Describe how to install your product or sign up.
+  <Step title="Create your account">
+    Sign up at [app.piggybanker.ai](https://app.piggybanker.ai) and follow the onboarding prompts.
 
-    ```bash
-    npm install your-package
-    ```
+    When asked to choose a plan, select **CFO Team** if you manage multiple clients, or **Solo** if you're working with a single entity. You can upgrade at any time — pricing is a flat fee per client with optional usage add-ons.
+
+    <Tip>
+      During sign-up, Piggy will ask a few questions about your practice to personalize your workspace. Take a moment to answer them — Piggy uses this context across the app.
+    </Tip>
   </Step>
-  <Step title="Configure">
-    Describe any setup or configuration needed before first use.
 
-    ```bash
-    your-cli init
-    ```
+  <Step title="Add a client portal">
+    From your CFO Team dashboard, click **Add Client** and fill in two fields:
+
+    - **Client name** — the name you'll use to identify this client across your dashboard.
+    - **Business description** — one or two sentences about what the business does, its industry, and its size.
+
+    Piggy creates a dedicated portal for this client. Every piece of data, every page, and every agent you build lives inside that portal — completely isolated from your other clients.
+
+    <Note>
+      You can add as many client portals as your plan allows. Each one is billed at the flat per-client rate.
+    </Note>
   </Step>
-  <Step title="Run it">
-    Show the first thing a user does to see it working.
 
-    ```bash
-    your-cli start
-    ```
+  <Step title="Add business context">
+    Open the client portal and navigate to **Context**. This is where you store durable facts about the business — the kind of information Piggy needs to give accurate, relevant answers without you having to re-explain things every session.
+
+    Add facts such as:
+
+    - Fiscal year start and close
+    - Primary revenue model (e.g. SaaS subscriptions, project-based services, product sales)
+    - Key business drivers and KPIs the client tracks
+    - Any known seasonality or one-time events
+
+    <Tip>
+      Think of Context as a briefing document for Piggy. The richer it is, the more precise and useful Piggy's responses become across every section of the portal.
+    </Tip>
+  </Step>
+
+  <Step title="Connect your General Ledger">
+    Navigate to **Connections** inside the client portal and click **Add Connection**. Piggy Banker supports three General Ledger providers:
+
+    - **QuickBooks Online**
+    - **Xero**
+    - **Puzzle**
+
+    Select your provider, complete the sign-in and authorization flow in your browser, then return to the portal. Piggy starts importing your chart of accounts, transactions, and historical periods in the background.
+
+    <Warning>
+      A General Ledger connection is required before you can create metrics or build financial dashboards. Piggy cannot generate Pages from GL data until the initial sync completes.
+    </Warning>
+
+    Once the sync finishes, Piggy confirms which accounting periods are available. You're ready to build.
+  </Step>
+
+  <Step title="Create your first metric">
+    Navigate to **Pages** and click **New Page**, then add a **Metric Block**. Give your metric a name — for example, **Monthly Revenue** — and configure its source:
+
+    1. Set **Source** to your connected General Ledger.
+    2. Map the metric to the relevant account category (e.g. Income → Total Revenue).
+    3. Set the **Date grain** to Monthly and choose your desired lookback range.
+    4. Click **Save**.
+
+    Piggy renders the metric immediately. You can ask Piggy to explain any figure, adjust the date range, or build a chart on top of the same data — all without leaving the page.
+
+    <Tip>
+      Monthly Revenue is a great first metric, but you can also try **Gross Profit**, **Operating Expenses**, or **Net Cash Position** to quickly validate that your GL data imported correctly.
+    </Tip>
   </Step>
 </Steps>
 
-<Tip>
-  Give people a way to get help. This could be a link to a support page, a chat with a customer support agent, or a forum for your product.
+## Next steps
 
-  Example: Need help? Reach out to us at [support@yourcompany.com](mailto:support@yourcompany.com).
-</Tip>
+<CardGroup cols={2}>
+  <Card
+    title="Explore the Portal"
+    icon="grid-2"
+    href="/portal-overview"
+  >
+    Learn what each section of the client portal does and how they work together.
+  </Card>
+  <Card
+    title="Create Metrics"
+    icon="chart-line"
+    href="/concepts/metrics"
+  >
+    Go deeper on metric types, date grains, and mapping GL accounts to business KPIs.
+  </Card>
+  <Card
+    title="Build a Dashboard"
+    icon="table-cells"
+    href="/guides/build-a-financial-dashboard"
+  >
+    Combine metrics, charts, and narrative text into a polished financial dashboard.
+  </Card>
+  <Card
+    title="Meet Piggy"
+    icon="robot"
+    href="/reference/piggy-ai"
+  >
+    Discover what Piggy can do, how to ask better questions, and how to get the most from your AI companion.
+  </Card>
+</CardGroup>

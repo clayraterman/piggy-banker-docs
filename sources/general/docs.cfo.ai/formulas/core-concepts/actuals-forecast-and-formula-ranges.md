@@ -1,0 +1,72 @@
+# Source: https://docs.cfo.ai/formulas/core-concepts/actuals-forecast-and-formula-ranges
+
+A **formula range** lets a Variable use different calculations across different parts of the timeline. Actuals and Forecast are the most common examples. The **Last close** date separates closed Actuals from future Forecast periods.
+
+## 
+
+[​](https://docs.cfo.ai/formulas/core-concepts/actuals-forecast-and-formula-ranges#example)
+
+Example
+
+Payroll might use imported accounting data for Actuals and a planning formula for Forecast:
+
+```
+Headcount * `Average Salary`
+```
+
+The imported data supports Actuals. The planning formula applies in Forecast.
+
+## 
+
+[​](https://docs.cfo.ai/formulas/core-concepts/actuals-forecast-and-formula-ranges#formula-ranges-depend-on-date)
+
+Formula ranges depend on Date
+
+A formula range is a boundary on the Date Dimension. A range-specific formula must include the Model’s Date grain, which is commonly monthly. For a monthly Model, the Date part of the scope looks like:
+
+```
+[Date.Month in any]
+```
+
+A formula scoped only by Department cannot be limited to Actuals or Forecast until its scope also includes Date.
+
+## 
+
+[​](https://docs.cfo.ai/formulas/core-concepts/actuals-forecast-and-formula-ranges#combine-formula-ranges-with-segments)
+
+Combine formula ranges with segments
+
+A formula range can be combined with other Dimensions. For example, Sales can use one Forecast formula while other departments use a broader Forecast formula. The formula must match both the formula range and the segment before it applies.
+
+## 
+
+[​](https://docs.cfo.ai/formulas/core-concepts/actuals-forecast-and-formula-ranges#when-last-close-changes)
+
+When Last close changes
+
+Moving Last close changes which dates fall into Actuals and Forecast. The formulas do not need to be rewritten; cfo.ai applies them to the periods on the correct side of the updated boundary.
+
+## 
+
+[​](https://docs.cfo.ai/formulas/core-concepts/actuals-forecast-and-formula-ranges#if-a-formula-does-not-apply)
+
+If a formula does not apply
+
+Check:
+
+- The formula is assigned to the intended formula range, Actuals or Forecast.
+- Date is included in the formula scope.
+- The Date granularity matches the table.
+- A more specific segment formula is not overriding it.
+- You are viewing the intended Scenario.
+
+## 
+
+[​](https://docs.cfo.ai/formulas/core-concepts/actuals-forecast-and-formula-ranges#related)
+
+Related
+
+- [Choose where a formula applies](https://docs.cfo.ai/formulas/core-concepts/choose-where-a-formula-applies)
+- [Workspace and team settings](https://docs.cfo.ai/workspace-settings/team-and-workspace)
+
+Ctrl+I

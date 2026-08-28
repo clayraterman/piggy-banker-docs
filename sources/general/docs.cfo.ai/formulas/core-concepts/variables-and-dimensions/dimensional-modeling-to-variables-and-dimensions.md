@@ -1,0 +1,61 @@
+# Source: https://docs.cfo.ai/formulas/core-concepts/variables-and-dimensions/dimensional-modeling-to-variables-and-dimensions
+
+If you are familiar with business intelligence or dimensional modeling, cfo.ai uses many of the same ideas with finance-friendly language.
+
+## 
+
+[​](https://docs.cfo.ai/formulas/core-concepts/variables-and-dimensions/dimensional-modeling-to-variables-and-dimensions#common-translations)
+
+Common translations
+
+| Dimensional-modeling term | cfo.ai concept |
+| --- | --- |
+| Measure or fact | Variable |
+| Dimension or attribute | Dimension |
+| Dimension entry | Dimension item |
+| Group by, slice, or dice | Segment by and filtering |
+| Grain | The Dimensions and Date granularity used for a value |
+| Cube cell | A Variable value at a segment, date, and scenario |
+
+## 
+
+[​](https://docs.cfo.ai/formulas/core-concepts/variables-and-dimensions/dimensional-modeling-to-variables-and-dimensions#variables-are-the-values-being-measured)
+
+Variables are the values being measured
+
+Revenue, Expenses, Units Sold, Headcount, and Gross Margin are examples of Variables. They occupy the value being calculated or displayed.
+
+## 
+
+[​](https://docs.cfo.ai/formulas/core-concepts/variables-and-dimensions/dimensional-modeling-to-variables-and-dimensions#dimensions-identify-business-context)
+
+Dimensions identify business context
+
+Department, Region, Product, Customer, Account, and Date identify where a Variable’s value belongs. For example:
+
+> Revenue = 100,000 at Department = Sales, Region = West, Date = January 2026, Scenario = Plan
+
+Revenue is the Variable. Department, Region, and Date identify the cell address. Plan provides Scenario context.
+
+## 
+
+[​](https://docs.cfo.ai/formulas/core-concepts/variables-and-dimensions/dimensional-modeling-to-variables-and-dimensions#grain-explains-what-one-value-represents)
+
+Grain explains what one value represents
+
+Revenue by month has a different grain from Revenue by day. Revenue by Department and month has a different grain from company-wide Revenue by month. Formulas recalculate at the requested grain. A margin shown by Department is calculated for each department rather than taking a company-wide margin and dividing it afterward.
+
+## 
+
+[​](https://docs.cfo.ai/formulas/core-concepts/variables-and-dimensions/dimensional-modeling-to-variables-and-dimensions#you-do-not-need-a-data-warehouse-design)
+
+You do not need a data-warehouse design
+
+Users do not need to build a star schema or cube to work in cfo.ai. The useful mental model is simpler:
+
+- Variables are calculated values
+- Dimensions organize those values
+- A segment identifies a slice of a Variable’s data.
+- A cell address identifies one complete result, including its period.
+
+Ctrl+I
