@@ -1,71 +1,47 @@
 ---
-title: 'What Is a Client Portal in Piggy Banker? An Overview'
-sidebarTitle: 'Client Portal'
-description: 'A client portal is an isolated workspace for one business. Manage finances, dashboards, and automations without mixing client data.'
+title: "Create and enter a client workspace"
+sidebarTitle: "Client workspace"
+description: "Set up an isolated client workspace without mixing client data, access, Context, metrics, or agent runs."
+icon:
+  name: "building-2"
+  library: "lucide"
 ---
 
-Every client you manage in Piggy Banker lives inside its own **client portal** — a fully isolated workspace scoped to a single business. Each portal holds that client's financial data, metrics, pages, connected accounts, and AI configuration, completely separated from every other client you serve. This architecture lets your CFO team deliver a tailored experience for each business while managing every relationship from one unified dashboard.
+# Create and enter a client workspace
 
-## CFO Team Portal vs. Client Portal
+A client workspace is the security, data, and operating boundary for one business. Its connected accounts, Context, metrics, values, Pages, artifacts, and agent runs must never resolve against another client.
 
-Piggy Banker has two distinct levels of workspace:
+## Before you create it
 
-- **CFO Team Portal** — the top-level view your team sees when you log in. It lists every client you manage, shows portfolio-level alerts, and lets you navigate to any individual client's workspace with a single click.
-- **Client Portal** — the individual workspace scoped to one business. Everything inside a client portal — data, metrics, pages, agents, and context — belongs exclusively to that client.
+Collect:
 
-Think of the CFO team portal as your control room and each client portal as a dedicated room for one client's financial life.
+- the legal and operating name,
+- the primary entity and any additional entities,
+- fiscal year and reporting conventions,
+- the responsible CFO team members,
+- the client collaborators who need access, and
+- the accounting system that will become the required ledger source.
 
-## The Six Sections of a Client Portal
+## Setup sequence
 
-Every client portal is organized into six sections. Each section covers a distinct part of how you manage that client's financial operations.
+1. Create the client under the correct firm.
+2. Grant only the access needed for setup.
+3. Enter the client's [business Context](/concepts/context).
+4. Connect and verify the [general ledger](/setup/connect-general-ledger).
+5. Add optional bank/card sources.
+6. Review source readiness and freshness.
+7. Create the first metrics and models.
 
-<CardGroup cols={2}>
-  <Card title="Overview" icon="house">
-    Your starting point inside a client portal. The Overview surface shows open tasks, alerts, and a live feed of recent agent activity — giving you an at-a-glance status on the client's financial health.
-  </Card>
-  <Card title="Context" icon="building">
-    A set of durable facts about the business — its model, revenue drivers, fiscal year, and key definitions. Piggy and your agents draw on this background knowledge whenever they answer questions or run workflows.
-  </Card>
-  <Card title="Agents" icon="robot">
-    Scheduled and event-driven workflows that run automatically. Agents can monitor metrics, send Slack reports, answer recurring financial questions, and alert you when a threshold is crossed.
-  </Card>
-  <Card title="Pages" icon="layout-dashboard">
-    Free-form financial dashboards built from metric widgets, charts, tables, and text blocks. Pages are your primary reporting surface — you can share them read-only with clients and stakeholders.
-  </Card>
-  <Card title="Connections" icon="plug">
-    The data sources powering the portal. Connect a General Ledger for core financial data, and optionally link bank accounts or credit cards to enrich your cash-flow and balance views.
-  </Card>
-  <Card title="Playbooks" icon="book-open">
-    Saved page templates and step-by-step financial operating procedures. Apply a saved template to any client in seconds, or give Piggy a playbook to follow for recurring workflows like month-end close.
-  </Card>
-</CardGroup>
+## Multi-entity clients
 
-## The Overview Page
+A client may authorize more than one accounting realm or tenant. Keep each connection independent so its entity and lineage remain clear. Do not merge or sum connected sources simply because they belong to the same client.
 
-When you open a client portal, the **Overview** page is your first stop. It surfaces three types of live information:
+When multiple sources can answer the same finance domain, Piggy Banker selects one ready owner for that domain. Other sources remain available for reconciliation or fallback; they are not automatically aggregated.
 
-- **Tasks** — action items assigned to you or your team, such as reviewing a variance or approving a metric change.
-- **Alerts** — notifications triggered when a metric crosses a defined threshold, such as cash runway falling below 90 days.
-- **Agent Activity Feed** — a chronological log of everything your agents have done inside this portal: reports sent, questions answered, and thresholds evaluated.
+## Workspace versus portal access
 
-Use the Overview page at the start of every client review session to catch anything that needs your attention before you dive into pages or metrics.
+Internal firm members work in the client workspace. Client collaborators use authenticated, client-scoped access appropriate to their role. The portal remains a separate shell so internal controls cannot leak through a hidden navigation treatment.
 
-## Switching Between Clients
-
-Your CFO team portal gives you a complete client list at the top level. To move between clients, click the client's name from the team dashboard — the portal switches context instantly, loading that client's live data, pages, and agents.
-
-<Steps>
-  <Step title="Open the CFO team portal">
-    From any screen, click your team name or the home icon in the top navigation to return to the team-level view.
-  </Step>
-  <Step title="Select a client">
-    Click the client's name or card from the client list. Piggy Banker loads that client's portal, switching all data and navigation context to that business.
-  </Step>
-  <Step title="Work inside the portal">
-    Navigate between Overview, Context, Agents, Pages, Connections, and Playbooks using the sidebar. All data and AI interactions are scoped to this client until you switch again.
-  </Step>
-</Steps>
-
-<Note>
-Client portals are fully data-isolated. A metric, page, agent, or context entry you create in one client's portal is never visible in another client's portal — even if both clients are on the same CFO team account. You cannot accidentally query or share data across portals.
-</Note>
+<Warning>
+  Never reuse one client's metric identifier, source reference, artifact link, or agent destination for another client. Piggy Banker rejects cross-client references, but names and descriptions should still make the intended scope obvious to operators.
+</Warning>

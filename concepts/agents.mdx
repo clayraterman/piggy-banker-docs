@@ -1,100 +1,66 @@
 ---
-title: 'Agents: Schedule and Automate Your Financial Workflows'
-sidebarTitle: 'Agents'
-description: 'Agents run scheduled workflows inside your client portal — monitoring metrics, sending Slack reports, and alerting your team when a threshold is crossed.'
+title: "Agents: repeatable finance workflows"
+sidebarTitle: "Agents"
+description: "Understand templates, immutable revisions, client deployments, runs, evidence, and controlled actions."
+icon:
+  name: "bot"
+  library: "lucide"
 ---
 
-Agents are Piggy Banker's automation layer — they run scheduled or event-triggered workflows inside a client portal so your team doesn't have to perform the same financial checks manually, week after week. An agent can monitor a metric, send a formatted Slack report, answer a standing financial question on a cadence, or fire an alert the moment a number crosses a threshold you define. Once configured, an agent works continuously in the background, powered by the same live data your pages display.
+# Agents: repeatable finance workflows
 
-## What Can an Agent Do?
+Agents turn a well-defined finance process into a versioned, client-scoped workflow. Their durable lifecycle is:
 
-Agents are capable of a wide range of financial workflow automation:
+```text
+Agent template → immutable revision → client deployment → run
+```
 
-<AccordionGroup>
-  <Accordion title="Send scheduled Slack reports">
-    Deliver a formatted financial summary — revenue, burn rate, cash position, or any metric you choose — to a Slack channel or direct message on a daily, weekly, or monthly cadence.
-  </Accordion>
-  <Accordion title="Answer recurring financial questions">
-    Schedule Piggy to answer a standing question on a set schedule — for example, *"What is our current cash runway?"* — and deliver the answer to Slack or email without you asking each time.
-  </Accordion>
-  <Accordion title="Monitor metrics and alert on thresholds">
-    Watch a metric continuously and trigger an alert when it crosses a boundary you define — for example, when monthly burn exceeds $200,000 or cash runway drops below 60 days.
-  </Accordion>
-  <Accordion title="Run financial checks">
-    Evaluate a set of conditions against live data — for example, verifying that all revenue accounts are reconciled at month-end — and surface any discrepancies in the activity feed or via Slack.
-  </Accordion>
-</AccordionGroup>
+## Template
 
-## Skills
+The template defines reusable workflow intent: what the agent should do, what evidence it needs, expected output, and available configuration.
 
-A **Skill** is a reusable set of saved instructions that defines exactly how an agent handles a specific type of task. Think of a Skill as the agent's operating procedure for one category of work: what steps to take, what conventions to follow, and when to activate.
+## Revision
 
-Key things to know about Skills:
+Publishing creates an immutable revision. Live behavior is never silently changed by editing an already-published definition.
 
-- **Built-in Skills** cover common financial workflows out of the box — variance summaries, cash-position reports, and standard metric monitors ship ready to use.
-- **Custom Skills** let you encode how your team specifically approaches a task. Save a custom Skill when the built-in behavior doesn't match your client's workflow or reporting conventions.
-- **Automatic activation** — once saved, an agent activates a Skill on its own when a request matches the Skill's trigger condition. You don't need to name the Skill in your instructions.
+## Deployment
 
-To create a custom Skill, open the **Agents** section, click **Skills**, and define a name, a trigger condition, and step-by-step instructions for Piggy to follow.
+A deployment applies one revision to one client. It resolves:
 
-For a full reference of available built-in Skills, see [Agent Skills Reference](/reference/agent-skills).
+- enabled state,
+- schedule,
+- destinations,
+- relevant Context,
+- approval posture,
+- skills,
+- and client-specific overrides.
 
-## Triggers
+Client defaults such as a Slack channel, reporting style, Context pack, or approval policy can come from workspace defaults. A deployment can inherit or explicitly override them.
 
-A **Trigger** is the scheduling mechanism that tells an agent when to run. Every agent needs at least one trigger to activate automatically.
+## Run
 
-Piggy Banker supports two categories of triggers:
+A run records the exact revision and resolved configuration used for that execution. It also retains inputs, tool activity, results, evidence, artifacts, approvals, tasks, and events.
 
-<CardGroup cols={2}>
-  <Card title="Schedule-Based Triggers" icon="calendar">
-    Run an agent at a fixed time — every Monday morning, on the first of the month, or every weekday at 9 am. Specify your timezone when creating the trigger so the schedule maps to local business hours.
-  </Card>
-  <Card title="Event-Based Triggers" icon="bolt">
-    Fire an agent when something happens in your data — a metric crosses a threshold, a data sync completes, or a specific condition in your client's financials becomes true.
-  </Card>
-</CardGroup>
+This makes the answer to “why did the agent do that?” inspectable.
 
-<Warning>
-Trigger schedules use a fixed UTC time internally. A trigger set for a specific local time may shift by one hour when daylight saving time changes. Review your trigger schedules at each DST transition to ensure reports arrive at the right time.
-</Warning>
+## Run modes
 
-You can pause a trigger without deleting it, resume it at any time, and update its schedule or prompt as your client's needs evolve.
+| Mode | Behavior |
+| --- | --- |
+| **Manual test** | Produces an in-app, reviewable artifact; does not create external delivery or approval work |
+| **Manual live run** | Uses the queued production path and configured action controls |
+| **Scheduled run** | Enters the queue at an eligible schedule slot after readiness checks |
 
-## Major Use Case: Automated Slack Reports
+## Data access
 
-The most common agent workflow in Piggy Banker is the **automated Slack report** — a cadenced message that delivers live financial metrics directly into a Slack channel or direct message.
+Agents read approved, client-scoped finance sources, saved metrics, series, Context, and skills. They do not receive raw database access or permission to cross client boundaries.
 
-Here is how the full workflow operates:
+The target product will let Page composition inform reporting workflows. Today, agents consume the underlying finance and metric primitives rather than a rendered Page object.
 
-<Steps>
-  <Step title="Build the page your report will draw from">
-    Create a page in the client portal with the metrics you want included in the report — revenue, burn rate, cash balance, or any KPI your client tracks. This page is the agent's data source.
-  </Step>
-  <Step title="Create an agent and connect it to that page">
-    In the **Agents** section, create a new agent and point it at the page. Write a prompt that tells the agent what to include — for example, *"Summarize the current values of Monthly Revenue, Burn Rate, and Cash Runway from the Operations Dashboard page."*
-  </Step>
-  <Step title="Set a schedule trigger">
-    Choose the cadence — weekly every Monday at 8 am, monthly on the first business day, or daily — and specify your timezone.
-  </Step>
-  <Step title="Choose a Slack destination">
-    Set the delivery destination to a Slack channel (such as **#finance-updates**) or a direct message. Piggy Banker connects to Slack via the Connections section.
-  </Step>
-  <Step title="Activate the agent">
-    Save the agent. It becomes active immediately and will run at the next scheduled trigger time.
-  </Step>
-</Steps>
+## Controlled side effects
 
-For a complete walkthrough, see [Set Up Automated Slack Reports](/guides/automated-slack-reports).
+An agent can propose an external action. Proposal, human decision, queued dispatch, and provider delivery are separate states. Approval is not proof that a message was delivered.
 
 <Note>
-Agents read the **live, current values** of your page metrics each time they run — not a snapshot from when the agent was created. This means every Slack report reflects the most recent data from your connected General Ledger and bank accounts, without any manual refresh on your part.
+  A schedule is not a substitute for readiness. Required data, destination configuration, and policy checks must pass before scheduled work can proceed.
 </Note>
-
-<CardGroup cols={2}>
-  <Card title="Automated Slack Reports Guide" icon="slack" href="/guides/automated-slack-reports">
-    Step-by-step instructions for building and deploying an automated Slack report for a client.
-  </Card>
-  <Card title="Agent Skills Reference" icon="list-check" href="/reference/agent-skills">
-    Browse the full list of built-in Skills and learn how to create custom Skills for your team's workflows.
-  </Card>
-</CardGroup>

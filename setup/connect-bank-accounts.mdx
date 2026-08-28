@@ -1,80 +1,48 @@
 ---
-title: 'Connect Bank Accounts and Cards for Live Balance Data'
-sidebarTitle: 'Bank Accounts'
-description: 'Link your bank accounts and credit cards to Piggy Banker to display real-time cash balances alongside your GL-powered financial metrics.'
+title: "Connect optional bank and card accounts"
+sidebarTitle: "Banks & cards"
+description: "Add bank and card feeds for current balance observations without treating them as a replacement for the general ledger."
+icon:
+  name: "credit-card"
+  library: "lucide"
 ---
 
-Bank and card connections are optional, but they give your financial dashboards something your general ledger alone cannot — live cash balances that update throughout the day. Once connected, your actual cash position appears right alongside your GL-driven metrics, giving your team and your clients a complete financial picture in a single view.
+# Connect optional bank and card accounts
 
-## What You Can Connect
+Bank and card feeds are optional. Use them when current balance observations or bank-transaction visibility improve a client's liquidity view.
 
-Piggy Banker supports connections for three categories of accounts:
+They complement the general ledger; they do not replace it.
 
-<CardGroup cols={3}>
-  <Card title="Bank Accounts" icon="landmark">
-    Operating accounts, savings accounts, and sweep accounts at any supported institution.
-  </Card>
-  <Card title="Credit Cards" icon="credit-card">
-    Business credit cards, including cards issued by banks or dedicated fintech providers.
-  </Card>
-  <Card title="Corporate Cards" icon="wallet">
-    Spend management platforms like Brex, Ramp, and Mercury that combine cards with spend controls.
-  </Card>
-</CardGroup>
+## What these feeds are for
 
-## Connect a Bank Account or Card
+A bank-data connection can provide:
 
-<Steps>
-  <Step title="Open Connections in the client portal">
-    Navigate to your client portal and click **Connections** in the left sidebar. All your active data sources — including any GL already connected — appear here.
-  </Step>
-  <Step title="Add a bank or card connection">
-    Click **Add Connection**, then choose **Bank / Credit Card** from the integration type list.
-  </Step>
-  <Step title="Search for your bank or card provider">
-    Use the search field to find your institution by name. If you don't see your bank listed directly, look for it in the full Plaid directory — most US financial institutions are supported.
-  </Step>
-  <Step title="Complete the secure login flow">
-    A secure authentication window opens. Depending on your institution, you'll complete either:
-    - A **Plaid-powered** login flow (used by most traditional banks and many fintechs), or
-    - Your provider's **own OAuth flow** (used by Mercury, Brex, Ramp, and others).
+- observed account balances,
+- account identity and type, and
+- bank transaction observations where supported.
 
-    Follow the on-screen prompts, including any multi-factor authentication your bank requires. Piggy Banker never sees or stores your banking credentials.
-  </Step>
-  <Step title="Select which accounts to include">
-    After authenticating, choose the specific accounts you want to link. You can include multiple accounts from the same institution or exclude accounts that aren't relevant to the client's financial view. Click **Connect Accounts** to finish.
-  </Step>
-</Steps>
+It does not provide the full accounting model needed for a P&L, balance sheet, cash-flow statement, AR, AP, or journal detail.
 
-## How Bank Data Appears in Piggy Banker
+## Cash versus credit
 
-Bank and card connections surface as **balance metrics** in your workspace. Here's what that means in practice:
+- Deposit-account balances may contribute to a current liquidity watch view.
+- Credit-card balances are liabilities or watch items.
+- Never add a card balance to cash on hand.
+- A provider balance and the ledger's book balance can have different timestamps and meanings; show both provenance and as-of date.
 
-- Each connected account becomes an available data point you can add to any **Page** (dashboard) as a live balance tile or chart.
-- Bank balances are **distinct from your GL transaction data** — they show current account balances, not categorized accounting entries. Your GL remains the source of truth for P&L and balance sheet metrics.
-- Balances refresh automatically and can be combined into composite metrics (like a total cash position across all accounts).
+## Setup
 
-<Note>
-  Bank connections are **read-only**. Piggy Banker can read your account balances and transaction history for display purposes, but it never initiates transfers, moves funds, or takes any action within your bank account.
-</Note>
+1. Open **Connections** for the correct client.
+2. Choose the available bank-data provider.
+3. Authorize only the accounts needed for the finance model.
+4. Confirm account type, currency, and ownership.
+5. Review the observed as-of time and freshness.
+6. Decide which balances should appear in a metric or Page.
 
-## Supported Providers
+<Warning>
+  Do not describe a bank observation as “real-time” unless its provider timestamp supports that claim. Accounting statement values and bank balance observations often update on different cadences.
+</Warning>
 
-Piggy Banker supports connections to hundreds of financial institutions. Commonly used providers include:
+## Reconciliation
 
-| Provider | Connection Method |
-|---|---|
-| **Mercury** | Native OAuth / MCP |
-| **Brex** | Native OAuth / MCP |
-| **Ramp** | Native OAuth / MCP |
-| **Chase** | Plaid |
-| **Bank of America** | Plaid |
-| **Wells Fargo** | Plaid |
-| **Silicon Valley Bank / First Citizens** | Plaid |
-| **Other US banks and credit unions** | Plaid (thousands of institutions supported) |
-
-If your institution isn't listed above, search for it during the connection flow. The Plaid network covers the vast majority of US financial institutions.
-
-<Tip>
-  After connecting all your bank accounts, create a **Cash Position** metric that sums the balances across every account. Add it as a featured metric at the top of your client's main dashboard page so your team always sees total available cash at a glance — no manual tallying required.
-</Tip>
+When a live observation differs from the books, preserve both values and investigate the timing or classification difference. Do not overwrite one source with the other simply to make a dashboard agree.

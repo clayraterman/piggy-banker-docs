@@ -1,75 +1,79 @@
 ---
-title: 'Plan and Track Headcount in Piggy Banker in Real Time'
-sidebarTitle: 'Headcount Planning'
-description: 'Connect your HR system or enter headcount manually, build a live headcount dashboard, and model the payroll impact of future hires in real time.'
+title: "Model headcount and payroll impact"
+sidebarTitle: "Headcount planning"
+description: "Build a finance-owned headcount model from trusted inputs and payroll measures without assuming an unsupported HR connection."
+icon:
+  name: "users-round"
+  library: "lucide"
 ---
 
-Headcount is almost always the largest single expense on the P&L — and the hardest to track accurately when data is spread across HR systems, spreadsheets, and offer letters. Piggy Banker brings everything together: connect your HR system (or enter data manually), and you'll have a live headcount dashboard that shows current staff, payroll cost by department, and the real-time impact of any planned hire. This guide walks you through setup, dashboard construction, and forward-looking hire modeling.
+# Model headcount and payroll impact
 
-## Connecting HR Data
-
-**Option 1 — Connect an HR system**
-
-If you use an HR platform like Rippling, navigate to **Settings** → **Connections** and select your HR system from the integrations directory. Complete the authorization flow. Once connected, Piggy Banker pulls in employee records — name, department, pay rate, start date, termination date, employment type, and more — and keeps them in sync automatically.
-
-Piggy Banker requires at minimum: **employee name**, **department**, **pay rate**, **start date**, and **termination date**. These fields are needed to calculate who is currently active and what payroll cost to attribute to each period.
-
-**Option 2 — Enter headcount data manually**
-
-If you don't have a connected HR system, create a manual data source under **Connections** → **Manual Entry**. Enter each employee as a row with their role, department, start date, and monthly cost. You can update this list whenever someone joins or leaves.
-
-## Core Headcount Metrics to Create
-
-Build these four metrics to cover the essential headcount picture:
-
-**Total Headcount**
-A count of active employees across the entire organization, filtered to records where the termination date is blank or in the future. Updates automatically as your HR system syncs.
-
-**Headcount by Department**
-The same active-employee count segmented by department dimension. Use this metric in charts and tables to see how headcount is distributed — and how it shifts over time as you hire and restructure.
-
-**Monthly Payroll Cost**
-The total payroll expense for the current month, sourced from your GL's payroll accounts or calculated from the HR roster (pay rate × active employees). If employees have different pay periods (weekly, biweekly, monthly), provide a pay period mapping so each employee's cost is derived correctly.
-
-**Loaded Cost per Employee**
-A formula metric: `Monthly Payroll Cost ÷ Total Headcount`. This gives you a blended average that helps you spot when cost-per-head is rising faster than headcount — a common early warning for comp inflation or benefits cost escalation.
-
-## Building a Headcount Dashboard
-
-1. Go to **Pages** → **New Page** and name it `Headcount` (or `Team & Payroll`).
-2. Add **Metric Widgets** for Total Headcount, Monthly Payroll Cost, and Loaded Cost per Employee at the top of the page — these are the three numbers leadership checks most often.
-3. Add a **Table** block with the following columns for the employee detail view:
-
-   | Name | Role | Department | Start Date | Monthly Cost |
-   |---|---|---|---|---|
-
-   One row per active employee. Sort by department, then by name within each department.
-
-4. Add a second **Table** block below for the department summary view:
-
-   | Department | Headcount | Monthly Payroll | % of Total Payroll |
-   |---|---|---|---|
-
-5. Add a **Stacked Bar Chart** with Headcount by Department over time. Use the trailing 12 months as the window. This makes it easy to see which teams are growing fastest and how the mix has shifted.
-
-## Modeling a New Hire
-
-Before you commit to a new hire, use Piggy Banker to see the exact payroll and cash impact. Create a **planned hire metric** — a manual metric with future monthly values set to the new employee's fully loaded monthly cost starting on their projected start date. Then add that metric to your Cash Flow or Payroll dashboards to see how it changes your burn rate, runway, and ending cash for each month going forward.
-
-For a more powerful scenario analysis, try asking Piggy directly:
-
-```text
-If we hire two engineers in Q3 at $150k each,
-what happens to our monthly burn rate and cash runway?
-Show me the effect on payroll and ending cash for each month.
-```
-
-Piggy will model the impact, show you the month-by-month delta, and surface the exact month where your runway crosses any threshold you care about — all without touching your live plan.
+A finance-owned headcount model connects staffing decisions to payroll, operating expense, cash, and forecast outcomes.
 
 <Note>
-  For the most accurate headcount modeling, add a **Context** entry with your team structure, hiring plan, and compensation philosophy. Context is durable business information that informs Piggy's answers across every conversation — so you don't have to re-explain your org chart every time you ask a headcount question.
+  Piggy Banker does not currently promise a general HR-system connector. Use trusted client inputs and available finance sources; label manual and forecast data clearly.
 </Note>
 
-<Card title="Understand Context" icon="book" href="/concepts/context">
-  Learn how to add durable business facts that make Piggy's answers more accurate and consistent across your entire workspace.
-</Card>
+## Define the model grain
+
+Choose one of these grains deliberately:
+
+- employee,
+- open role,
+- department,
+- role family, or
+- monthly aggregate.
+
+Employee-level detail gives precision but increases privacy and maintenance requirements. Use the least granular model that supports the decision.
+
+## Suggested inputs
+
+Depending on the model, inputs may include:
+
+- department or cost center,
+- role and employment type,
+- start and end dates,
+- base compensation,
+- payroll tax and benefit load,
+- bonus or commission assumption,
+- recruiting or equipment cost,
+- currency, and
+- status such as active, planned, or backfill.
+
+Store shared scalar rates as reusable inputs. Store scenario-specific hiring timing and amounts as forecast assumptions.
+
+## Calculated measures
+
+Useful metrics include:
+
+- active headcount,
+- monthly payroll,
+- fully loaded people cost,
+- planned hires,
+- annualized payroll,
+- payroll as a percentage of revenue,
+- department people cost, and
+- forecast cash impact.
+
+## Connect to actual finance data
+
+Use payroll expense from the ready general ledger as the actual financial anchor. Reconcile the modeled historical cost to the books before relying on future periods.
+
+Do not claim that a manually maintained roster is live provider data. Preserve owner, effective date, and review cadence for every manual input.
+
+## Suggested Page
+
+A headcount Page can combine:
+
+1. current headcount and payroll,
+2. hires and departures by month,
+3. department cost,
+4. forecast versus budget,
+5. cash or runway impact,
+6. scenario comparison, and
+7. decisions requiring approval.
+
+## Controls
+
+Protect personal data, restrict client access appropriately, and avoid placing sensitive employee detail in a broadly shared Page or agent message.

@@ -1,71 +1,76 @@
 ---
-title: 'Build a Live Cash Flow Model with Your Accounting Data'
-sidebarTitle: 'Cash Flow Model'
-description: 'Connect your GL and bank accounts to Piggy Banker and build a live, auto-updating cash flow model — with runway alerts so you never get caught off guard.'
+title: "Design a cash flow model"
+sidebarTitle: "Cash flow model"
+description: "Combine accounting cash flow, balance observations, forecast assumptions, and runway views without mixing their provenance."
+icon:
+  name: "waves"
+  library: "lucide"
 ---
 
-Cash flow is the most critical metric for almost every business — and it's also one of the most time-consuming to track manually. Piggy Banker eliminates that work entirely. Connect your general ledger and bank accounts once, define your core cash metrics, and you'll have a live, auto-updating cash flow model that always reflects your current position. This guide walks you through every step, from creating your first cash metric to setting up an automated runway alert.
+# Design a cash flow model
 
-## What You Need First
+“Cash flow” can mean three different things. Keep them separate before composing the model.
 
-**Required:**
-- A connected general ledger (GL). Your GL is the primary source for inflows, outflows, and operating expense data. See [Connect Your General Ledger](/setup/connect-general-ledger) if this isn't set up yet.
+| Layer | Meaning |
+| --- | --- |
+| **Accounting cash flow** | Period activity reported from the books |
+| **Current balance observations** | Point-in-time bank or card balances with provider timestamps |
+| **Cash forecast** | Future receipts, payments, and ending cash driven by assumptions |
 
-**Optional but recommended:**
-- Connected bank account(s). Bank connections provide real-time cash balance data for your Cash on Hand metric, which is more accurate than deriving it from GL entries alone. See [Connect Bank Accounts](/setup/connect-bank-accounts).
+## Choose the decision
 
-## Step 1: Create Your Core Cash Metrics
+Decide whether the model supports weekly liquidity management, a 13-week forecast, monthly board reporting, or runway planning. The answer determines the grain, source periods, and assumptions.
 
-Build these five metrics to form the foundation of your cash flow model. You can create each one manually, or ask Piggy to create them all at once (see the tip at the bottom of this guide).
+## Build the metric spine
 
-<Steps>
-  <Step title="Cash Inflows">
-    Create a metric named **Cash Inflows** sourced from your GL's receipts and collections accounts — typically accounts receivable payments, direct sales receipts, and any other cash-generating line items. Set the aggregation to **Sum** and the period to **Monthly**.
-  </Step>
+A practical model may include:
 
-  <Step title="Cash Outflows">
-    Create a metric named **Cash Outflows** sourced from your GL's operating expense, payroll, and vendor payment accounts. Include everything that represents cash leaving the business in a given month. Set the aggregation to **Sum** and the period to **Monthly**.
-  </Step>
+- opening cash,
+- operating cash inflows,
+- payroll and operating outflows,
+- investing and financing flows,
+- net cash change,
+- ending cash,
+- minimum cash policy,
+- forecast ending cash, and
+- runway or funding gap.
 
-  <Step title="Net Cash Flow">
-    Create a metric named **Net Cash Flow** as a formula metric: `Cash Inflows − Cash Outflows`. This gives you a signed monthly figure — positive means the business generated cash, negative means it burned it.
-  </Step>
+Bind accounting actuals to ready ledger references. Use observed bank balances as separately labeled points of comparison, not as replacements for statement history.
 
-  <Step title="Cash on Hand">
-    Create a metric named **Cash on Hand** sourced from your connected bank account balance (if available) or from your GL cash account. This is your point-in-time cash balance — the actual dollars in the bank at any given moment.
-  </Step>
+## Forecast deliberately
 
-  <Step title="Cash Runway">
-    Create a metric named **Cash Runway** as a formula metric: `Cash on Hand ÷ Monthly Burn Rate`, where **Monthly Burn Rate** is the absolute value of your average monthly Net Cash Flow over a trailing period (typically 3 months). The result is expressed in months. A runway of 12 means you have 12 months of operating cash at your current burn rate.
-  </Step>
-</Steps>
+Forecast assumptions might cover collections timing, payroll, vendor payments, financing events, or minimum cash. Give each assumption an owner, effective period, scenario, and rationale.
 
-## Step 2: Build the Cash Flow Dashboard
-
-With your metrics created, put them together on a page so your whole team can see the current position at a glance.
-
-1. Go to **Pages** → **New Page** and name it `Cash Flow Dashboard` (or `Cash & Runway`).
-2. Add a **Metric Widget** for each of the five metrics above. Place Cash on Hand and Cash Runway at the top — these are the two numbers your team will check most often.
-3. Add a **Chart** block below the metric widgets. Select Cash on Hand as the metric and choose **Line** as the chart type. Set the time window to the trailing 12 months. This gives you a visual trend of your cash balance over time — a rising line signals healthy inflows, a falling line signals accelerating burn.
-4. Add a second **Chart** showing Net Cash Flow as a **Bar** chart by month. Positive bars are green (net inflow months), negative bars are red (net burn months).
-5. Add a **Text** block at the top of the page with a brief summary or any standing notes (e.g., "Runway calculated on 3-month trailing burn. Bank data syncs daily.").
-
-## Step 3: Set Up a Cash Alert
-
-A cash flow model is only as useful as the alerts it generates. Create an agent that monitors Cash Runway daily and notifies your team the moment it drops below a threshold — so you have time to act before a cash crisis becomes an emergency.
-
-Go to **Agents** → **New Agent** and name it something like `Cash Runway Alert`. Write a prompt like the one below, then set the schedule to **Daily** and the delivery target to your `#finance-alerts` Slack channel.
-
-**Example alert prompt:**
+For a rolling model, preserve the relationship:
 
 ```text
-Check Cash Runway daily.
-If Cash Runway falls below 6 months, send an alert to Slack #finance-alerts immediately.
-Include: current Cash on Hand, Monthly Burn Rate, and projected runway date.
+opening cash + inflows - outflows = ending cash
+next period opening cash = prior period ending cash
 ```
 
-Activate the agent. It will check your live Cash Runway metric every day and stay silent unless the threshold is breached — then it fires an immediate Slack alert with the key numbers your team needs to act.
+Treat that as a model invariant and test it across every period.
 
-<Tip>
-  Skip the manual setup entirely and ask Piggy to do it for you: *"Build me a cash flow model with inflows, outflows, net cash flow, cash on hand, and runway — and set up an alert if runway drops below 6 months."* Piggy will create the metrics, build the page, and configure the agent in a single conversation.
-</Tip>
+## Compose the Page
+
+A decision-ready cash Page can include:
+
+1. current liquidity and its as-of time,
+2. forecast ending cash by week,
+3. minimum-cash threshold,
+4. major inflow and outflow drivers,
+5. variance from the prior forecast,
+6. scenario assumptions, and
+7. actions with owners.
+
+## Validation
+
+- Reconcile historical ending cash to the accounting statement.
+- Compare observed bank balances without forcing them to equal book cash.
+- Keep credit-card balances out of cash on hand.
+- Test missing periods and zero inflows.
+- Verify multi-entity and currency treatment.
+- Show whether runway is actual, forecast, or scenario-derived.
+
+<Note>
+  This is a modeling pattern, not a promise that every source, Page block, or alert control is currently exposed in the UI.
+</Note>

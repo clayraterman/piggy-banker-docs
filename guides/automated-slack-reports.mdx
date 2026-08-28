@@ -1,110 +1,77 @@
 ---
-title: 'Automate Slack Financial Reports with Piggy Agents'
-sidebarTitle: 'Slack Reports'
-description: 'Set up a Piggy Banker agent once and receive formatted financial reports in Slack on autopilot — daily, weekly, or monthly, with live metric data.'
+title: "Send a scheduled financial report to Slack"
+sidebarTitle: "Slack report workflow"
+description: "Generate a grounded client report on a cadence, review the exact message, approve it, and track Slack delivery."
+icon:
+  name: "send"
+  library: "lucide"
 ---
 
-This is one of the most powerful workflows in Piggy Banker: configure an agent once and receive beautifully formatted financial reports in Slack on complete autopilot. Every time the agent fires, it reads live metric data — not a cached snapshot — so the numbers your team sees in Slack are always current. Set it up in under ten minutes and never manually pull a finance report again.
+# Send a scheduled financial report to Slack
 
-## What You'll Build
+This is Piggy Banker's flagship end-to-end workflow: generate a repeatable CFO report from current client evidence, review the exact outbound message, approve it, and retain delivery history.
 
-An agent that reads live metric data from a Piggy Banker page and sends a formatted Slack message on a recurring schedule — daily, weekly, monthly, or any custom cadence you define. The message can include summaries, comparisons to a prior period, and automatic flags for any metrics that are off-track.
-
-## Prerequisites
-
-Before you start, make sure you have:
-
-- A connected general ledger (GL) with live data flowing in
-- At least one metric created and populating correctly
-- A Piggy Banker page that contains the metrics you want to report on
-- A Slack workspace you can authorize (you'll need permission to add apps to at least one channel)
-
-## Set Up Your Slack Report
+<Note>
+  **Current behavior:** Production Slack delivery is human-approved. The workflow consumes canonical finance data, saved metrics, and Context; it does not yet send a rendered Page snapshot. Policy-controlled unattended delivery is future work.
+</Note>
 
 <Steps>
+  <Step title="Make the finance source ready">
+    Connect and sync the required general ledger. Add bank/card feeds only when current balance observations improve the report. Resolve stale, partial, or missing required domains.
+  </Step>
+  <Step title="Define the reporting primitives">
+    Create and reconcile the saved metrics the report needs. Record source periods, formula references, assumptions, and known omissions.
+  </Step>
   <Step title="Connect Slack">
-    Go to **Settings** → **Connections** → **Slack** and click **Authorize**. Follow the OAuth prompts to give Piggy Banker permission to post in your workspace. Select the default channel during authorization — you can override it per agent later.
+    Authorize the client's Slack connection and choose a client default channel or an agent-specific destination override.
   </Step>
-
-  <Step title="Build (or confirm) your report page">
-    The agent reads data from a specific page in your portal. If you haven't built one yet, create a page now with the metrics you want to report on. See [Build a Financial Dashboard](/guides/build-a-financial-dashboard) for a step-by-step walkthrough. If a page already exists with the right metrics, you're ready to proceed.
+  <Step title="Validate the destination">
+    Send a real validation message. A mock delivery is not proof that production Slack credentials and channel access work.
   </Step>
-
-  <Step title="Go to Agents and create a new agent">
-    Navigate to **Agents** in the sidebar and click **New Agent**. This opens the agent configuration panel.
+  <Step title="Deploy the reporting workflow">
+    Start with the Weekly CFO Brief template or another approved cadence template. Select the immutable revision for this client.
   </Step>
-
-  <Step title="Name your agent">
-    Give the agent a name you'll recognize at a glance. Examples:
-
-    - `Weekly Finance Summary`
-    - `Monday Morning Cash Report`
-    - `Monthly P&L to #finance`
-    - `Daily Revenue Pulse`
+  <Step title="Configure the deployment">
+    Resolve Context, reporting style, Skills, destination, UTC schedule, and approval policy. Review inherited defaults and explicit overrides.
   </Step>
-
-  <Step title="Write your agent prompt">
-    The agent prompt is the instruction the agent follows every time it runs. Be specific: name the page, name the metrics, define the comparison period, and specify the Slack destination. See [Writing a Good Agent Prompt](#writing-a-good-agent-prompt) below for tips and a ready-to-use example.
+  <Step title="Run a manual test">
+    The test reads current finance evidence and saves a reviewable in-app artifact without creating approvals or sending externally.
   </Step>
-
-  <Step title="Set the schedule">
-    Choose how often the agent should run:
-
-    | Option | Example |
-    |---|---|
-    | **Daily** | Every weekday at 8 am ET |
-    | **Weekly** | Every Monday at 9 am ET |
-    | **Monthly** | First business day of each month at 7 am ET |
-    | **Custom cron** | Any cron expression for non-standard cadences |
-
-    Include your timezone when you set a specific local time.
+  <Step title="Review the artifact">
+    Verify periods, units, metric definitions, formulas, assumptions, omissions, narrative, and proposed call to action.
   </Step>
-
-  <Step title="Choose your Slack delivery target">
-    Specify whether the agent should post to a **Slack channel** (e.g. `#finance-updates`) or send a **direct message** to you. You can target any channel the Piggy Banker app has been added to.
+  <Step title="Activate the schedule">
+    Eligible UTC schedule slots enter the queue only after readiness checks pass.
   </Step>
-
-  <Step title="Activate the agent">
-    Click **Activate**. The agent starts enabled immediately and will fire on its next scheduled run. You can test it manually by clicking **Run Now** to confirm the output looks correct before the first scheduled delivery.
+  <Step title="Review the proposed Slack action">
+    The scheduled run produces an evidence receipt, report artifact, and exact channel-bound message payload.
+  </Step>
+  <Step title="Approve with separation of duties">
+    A different eligible human approves or rejects the proposal. Approval queues dispatch; it is not delivery confirmation.
+  </Step>
+  <Step title="Track delivery">
+    Agent Activity retains status, Slack channel and message identifiers, failures, and retries. Provider retries reuse a stable message identity to avoid duplicate posts.
   </Step>
 </Steps>
 
-## Writing a Good Agent Prompt
+## Recommended report contract
 
-Because the agent runs unattended — with no conversation context around it — your prompt needs to be completely self-contained. Write it as if you were giving a new analyst a standing instruction for the first time.
+A strong recurring brief includes:
 
-**Tips:**
+- explicit source and comparison periods,
+- cash and liquidity,
+- P&L or operating performance,
+- saved KPI series,
+- runway or forecast evidence,
+- material variances,
+- assumptions and omissions,
+- owner-ready actions, and
+- a clear operator-review requirement.
 
-- **Name the page explicitly.** Don't say "the dashboard" — say "the 'Weekly Dashboard' page."
-- **Name the specific metrics.** List each metric you want included: `Monthly Revenue`, `Gross Margin %`, `Cash on Hand`.
-- **Specify a comparison period.** "vs. last month" or "vs. the same period last year" gives the agent the context to produce a meaningful delta.
-- **Define the output format.** Tell the agent if you want bullet points, a numbered list, a table, or a short narrative paragraph.
-- **Set a threshold for flags.** Ask the agent to call out anything more than a certain percentage off from target or prior period.
+## Before relying on the schedule
 
-**Example prompt:**
-
-```text
-Every Monday at 9am ET:
-1. Read the 'Weekly Dashboard' page
-2. Report: Monthly Revenue (vs. last month), Gross Margin %, Cash on Hand
-3. Flag any metric more than 10% off from last period
-4. Send the summary to Slack #finance-updates
-```
-
-<Note>
-  The agent reads live metric data at the exact moment it runs — not a cached snapshot from when the agent was configured. If your GL synced two hours before the agent fires, the report will reflect data as of that sync.
-</Note>
-
-## Pausing or Updating an Agent
-
-You can modify or stop any agent at any time without deleting it:
-
-1. Go to **Agents** in the sidebar.
-2. Select the agent you want to change.
-3. Click **Edit** to update the name, prompt, schedule, or delivery target, then save.
-4. Click **Pause** to suspend the agent without deleting it. Resume it later with a single click.
-5. Click **Delete** to remove the agent permanently.
-
-<Warning>
-  Agent prompts run unattended with no conversation history. If your prompt references a page name, metric name, or Slack channel that no longer exists, the agent will fail silently or produce an incomplete report. Review your agent prompts whenever you rename pages, metrics, or Slack channels.
-</Warning>
+- Reconcile one manual run to the books.
+- Confirm that the destination belongs to the correct client.
+- Test the exact report format with its audience.
+- Define who reviews approvals when the usual owner is unavailable.
+- Keep stale or missing required data visible instead of sending a confident but ungrounded narrative.

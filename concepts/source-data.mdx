@@ -9,4 +9,57 @@ icon:
 
 # Source data, lineage, and freshness
 
-Piggy Banker turns connected provider records into client-scoped finance data while preserving where each value came from.
+A connection is an authorization and sync relationship. **Source data** is the finance information made available through that relationship. The two are related, but “connected” does not mean every required dataset is usable.
+
+## From provider to finance model
+
+```text
+Provider connection
+  → normalized, client-scoped finance records
+  → selected source owner for each finance domain
+  → metric definition and series
+  → Page or agent
+```
+
+Piggy Banker normalizes provider records into shared finance domains while retaining bounded lineage: provider, linked account, source object, sync, and relevant dates.
+
+## Finance domains
+
+Depending on the provider, source data can include:
+
+- chart of accounts,
+- accounting balances and statements,
+- ledger transactions and lines,
+- customers and vendors,
+- invoices, bills, payments, and applications,
+- bank transactions, and
+- current balance observations.
+
+A provider does not automatically support every domain. A bank feed, for example, is not a general ledger.
+
+## Domain ownership
+
+Piggy Banker chooses exactly one **ready** source to answer each finance domain. Alternate sources remain independent for reconciliation and fallback. They are not summed into the selected source.
+
+This matters for multi-entity and multi-connection clients: authorization alone must never cause duplicate revenue, cash, or transaction totals.
+
+## Readiness states
+
+| State | Meaning |
+| --- | --- |
+| **Ready** | The domain is available for downstream use |
+| **Partial** | Some usable data exists, but coverage is incomplete |
+| **Stale** | Data exists, but its freshness is outside the expected window |
+| **Failed** | The latest sync or normalization failed |
+| **Unsupported** | The provider cannot supply this domain |
+| **Missing** | No usable source is available |
+
+A measured zero is different from missing data. Formula evaluation fails closed when a required reference is unavailable rather than silently treating it as zero.
+
+## Dimensions discovered from source data
+
+Classes, departments, locations, projects, customers, vendors, employees, items, or tracking categories can describe how measures are grouped. Current dimensions are discovered from the selected ready ledger source; they are not arbitrary global labels.
+
+## Reconnect behavior
+
+When reconnecting a source, preserve its connection identity and lineage when possible. Review which domain owns the data after the new sync. Manual finance records and active connected records should remain; stale, disconnected, or duplicate legacy rows should not be counted as current truth.

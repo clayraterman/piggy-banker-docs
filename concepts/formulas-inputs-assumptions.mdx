@@ -9,4 +9,59 @@ icon:
 
 # Formulas, inputs, and assumptions
 
-Piggy Banker keeps reusable inputs, planning assumptions, and formulas distinct so models remain understandable.
+Living models stay understandable when calculated logic, operator inputs, planning assumptions, and business facts have separate roles.
+
+## Choose the right primitive
+
+| Primitive | Use it for | Example |
+| --- | --- | --- |
+| **System reference** | Connected or plan-derived read-only finance value | Revenue |
+| **Saved metric** | Reusable calculated or recorded measure | Gross margin |
+| **Reusable input** | Client-wide scalar used by several formulas | Target gross margin |
+| **Forecast assumption** | Scenario- or model-specific planning driver | Monthly hiring plan |
+| **Context fact** | Durable explanation of how the business works | Billing occurs annually in advance |
+| **Page setting** | Local presentation choice | Show trailing 12 months |
+
+## Formula behavior
+
+Formulas are bounded expressions over approved, client-scoped references. The supported vocabulary includes arithmetic and comparisons plus functions such as:
+
+- `IF`
+- `SUM`
+- `AVG`
+- `MIN`
+- `MAX`
+- `CLAMP`
+
+This is not arbitrary JavaScript or an unrestricted spreadsheet runtime.
+
+A gross-margin metric might conceptually divide Gross profit by Revenue and handle the unavailable or zero-denominator case explicitly. The formula builder resolves references to saved objects rather than trusting free-form names.
+
+## Validation
+
+Formula drafts are evaluated on the server before persistence. Validation rejects or surfaces:
+
+- unknown identifiers,
+- references owned by another client,
+- unavailable source values,
+- ambiguous references,
+- direct self-references,
+- invalid operations, and
+- dependency problems.
+
+Missing values remain unavailable. They are not silently changed to zero to make a formula pass.
+
+## Inputs need governance
+
+For every reusable input or assumption, record:
+
+- a clear name and unit,
+- its business meaning,
+- an owner,
+- an effective period,
+- its source or rationale, and
+- when it should be reviewed.
+
+## Avoid circular meaning
+
+Even when a dependency graph is technically valid, definitions can still become conceptually circular. Prefer small formulas with named intermediate metrics. A Page should explain the decision; it should not hide an entire finance model inside one opaque expression.

@@ -1,56 +1,55 @@
 ---
-title: 'Workspace Settings and Preferences in Piggy Banker'
-sidebarTitle: 'Settings'
-description: 'Manage your team, data connections, billing, and preferences from Settings — or ask Piggy to update most workspace options directly in the chat sidebar.'
+title: "Workspace settings and access"
+sidebarTitle: "Settings & access"
+description: "Understand firm-level administration, client-level access, defaults, and the boundary between workspace and portal users."
+icon:
+  name: "settings"
+  library: "lucide"
 ---
 
-Workspace settings control your team, connections, billing, and personalization options — access them from **Settings** in the top navigation. Most settings apply across your entire workspace rather than to a single client portal, so changes here affect everyone on your team.
+# Workspace settings and access
 
-## General Settings
+Administration is split between the firm account and each client. This keeps portfolio-level controls separate from a client's finance model.
 
-Configure the foundational properties of your workspace:
+## Firm-level administration
 
-- **Workspace name** — the display name shown across your portal and in any share links. Renaming your workspace also regenerates its URL slug, so existing links built from the old slug will change.
-- **Fiscal year start month** — tells Piggy and your metrics which month begins your clients' fiscal year. Set this correctly before building any year-to-date or annual comparisons.
-- **Default currency** — the currency used as the default when displaying financial metrics across your portals.
+Firm owners are responsible for:
 
-## Team Settings
+- billing and subscription ownership,
+- firm members,
+- the client portfolio,
+- shared operating defaults, and
+- firm-level Templates / Playbooks as that library rolls out.
 
-Manage who has access to your workspace:
+Firm operators can work across client operations within their granted access without becoming billing owners.
 
-- **View team members** — see everyone currently in your workspace, their role, and any pending invitations.
-- **Invite new members** — send an email invitation to add a new team member. Choose their role before sending.
-- **Roles** — Piggy Banker has two workspace roles:
-  - **Admin** — full access to all portals, settings, billing, and team management
-  - **Viewer** — read-only access to shared pages and dashboards; cannot edit metrics, create agents, or change settings
+## Client-level administration
 
-<Note>
-  If you want to share a report with someone outside your team without granting them full workspace access, use the **Share** control on the relevant page instead of inviting them as a team member.
-</Note>
+Client configuration includes:
 
-## Connections
+- client collaborators and roles,
+- business Context,
+- provider Connections,
+- source-data readiness,
+- metrics and finance-model configuration,
+- agent deployments,
+- client destinations, and
+- client-specific overrides.
 
-Manage the data integrations that feed your client portals:
+## Defaults and overrides
 
-- **View active connections** — see all currently connected integrations and their sync status
-- **Add an integration** — connect a new General Ledger, HR platform, spreadsheet, or database
-- **Remove an integration** — disconnect a source you no longer need; historical data already synced will remain in the portal
-- **Check sync status** — see when each integration last synced and whether any errors occurred
+A workspace default can provide consistent configuration such as reporting style, Context pack, Slack channel, Notion destination, or approval policy. An agent deployment either inherits that default or records an explicit override.
 
-You can also ask Piggy about connection status: _"Has our QuickBooks sync finished?"_ or _"Are any of our integrations showing errors?"_
+The resolved value should be inspectable on every run. “Default changed later” must not erase what a historical run used.
 
-## Notifications
+## Access boundaries
 
-Control how and when Piggy Banker alerts you:
+- Firm scope does not collapse client data into one tenant.
+- Client roles apply to one business.
+- The authenticated portal is a separate shell.
+- A read permission does not grant write, approval, or external-delivery authority.
+- A proposer cannot approve their own outbound action.
 
-- **Email notifications** — choose which events trigger an email: agent run completions, sync failures, billing alerts, and team activity
-- **Slack notifications** — connect your Slack workspace and choose a default channel or DM for system alerts
-- **Alert thresholds** — set the metric thresholds that trigger proactive alerts from Piggy, such as cash runway falling below a set number of months
+## During rollout
 
-## Billing
-
-Review your plan, usage balance, and payment details, or purchase additional usage credits. See [Billing and Plans](/reference/billing) for a full breakdown of how Piggy Banker billing works.
-
-<Tip>
-  You can ask Piggy to update most workspace settings directly in the chat sidebar — for example: _"Rename this workspace to Acme Corp Financials"_ or _"Set the fiscal year start month to April."_ Piggy will confirm the change before applying it, so you stay in control of what gets updated.
-</Tip>
+Settings may be distributed across current product surfaces while the final firm and client navigation converges. Use the controls actually visible in your workspace; these docs avoid inventing a universal settings screen.

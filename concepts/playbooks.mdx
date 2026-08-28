@@ -1,79 +1,57 @@
 ---
-title: 'Playbooks: Reusable Templates and Procedures in Piggy Banker'
-sidebarTitle: 'Playbooks'
-description: 'Playbooks are saved page templates and financial procedures you reuse across clients — stamp a dashboard layout onto any new client portal in one click.'
+title: "Templates and Playbooks"
+sidebarTitle: "Templates & Playbooks"
+description: "Reuse dashboard layouts, reporting formats, and finance operating procedures across clients without copying client data."
+icon:
+  name: "library"
+  library: "lucide"
 ---
 
-Playbooks let your CFO team stop rebuilding the same dashboards and workflows from scratch every time you onboard a new client. A Playbook is either a **saved page template** — a dashboard layout you can stamp onto a new client portal in one click — or a **financial operating procedure** — a step-by-step process you write once and give to Piggy to follow whenever the situation calls for it. The more Playbooks you build, the faster you can bring a new client fully online.
+# Templates and Playbooks
 
-## Page Templates
-
-A page template captures the layout of a dashboard page — its blocks, structure, and organization — so you can recreate that same view for any client without starting from scratch.
-
-When you apply a page template to a new client portal, Piggy Banker clones the layout and prompts you to connect each block to that client's live metrics. The structure is inherited; the data is always client-specific.
-
-Common page templates to save include:
-
-- **Monthly P&L Dashboard** — revenue, gross profit, operating expenses, and net income as scorecards and trend charts
-- **Cash Flow Dashboard** — cash in, cash out, burn rate, and runway in one view
-- **Board Reporting Package** — a multi-section page with a KPI summary, P&L, headcount, and key risks
-- **Budget vs. Actuals** — a table comparing planned and actual values by department for the current period
+Templates and Playbooks are the firm-level library for reusing good finance work across clients. They sit outside the five-destination client navigation.
 
 <Note>
-Templates carry the block layout, not the metric connections. After applying a template, connect each block to the correct metric in the new client's portal. This keeps each client's data strictly isolated.
+  **Availability:** Versioned agent templates exist today. The unified firm-owned library for Page templates and operating Playbooks is coming soon.
 </Note>
 
-## Financial Playbooks
+## Keep three concepts distinct
 
-A financial playbook is a written procedure — a sequence of steps and decision rules — that you save so Piggy can follow it consistently without you explaining the process each time.
+### Agent template
 
-Playbooks work especially well for recurring, multi-step financial processes where consistency matters:
+A reusable workflow blueprint. Publishing creates an immutable revision; a client deployment chooses a revision, schedule, destinations, Context, approval policy, and overrides.
 
-- **Month-end close process** — a checklist of GL reconciliations, accrual entries, and review steps your team follows every month
-- **Board reporting checklist** — the sequence of pages to prepare, metrics to verify, and narrative sections to write before each board meeting
-- **New client onboarding procedure** — the order in which to connect data sources, configure Context, build initial pages, and run the first agent workflow
-- **Variance investigation workflow** — the steps Piggy should take when a metric deviates materially from plan: what data to pull, what questions to ask, what to surface in the activity feed
+### Page template
 
-Piggy can activate the right playbook based on context — if you say *"Let's do the month-end close,"* Piggy recognizes the intent, retrieves the matching playbook, and walks through it step by step.
+A reusable layout for a model or dashboard. It should contain structure, block settings, and semantic metric bindings—not copied client values.
 
-## Creating a Playbook
+### Operating Playbook
 
-<Steps>
-  <Step title="Build the page or process first">
-    For a **page template**: build the dashboard page you want to save — add all the blocks, arrange them, and configure them the way you want. For a **financial playbook**: write out the step-by-step procedure in plain language, either in the Piggy chat panel or in the Playbooks section directly.
-  </Step>
-  <Step title="Save as a Playbook">
-    For a page template, open the page menu and select **Save as Template**. Give it a descriptive name like *Monthly P&L Dashboard* or *Board Deck Template*. For a written playbook, open the **Playbooks** section in the sidebar, click **+ New Playbook**, and paste or type the procedure.
-  </Step>
-  <Step title="Add a trigger condition (for written playbooks)">
-    Give your written playbook a trigger description — a phrase that tells Piggy when to activate it: for example, *"Use when the user asks to run the month-end close or mentions closing the books."* This lets Piggy activate the playbook automatically without you naming it explicitly.
-  </Step>
-  <Step title="Save and publish">
-    Save the playbook. It becomes available immediately in the Playbooks library for this client portal, and you can also promote it to your CFO team's shared Playbook library for use across all clients.
-  </Step>
-</Steps>
+A repeatable finance process: purpose, cadence, inputs, procedures, review steps, output format, owners, and control points. A Playbook may refer to Page templates and agent templates without collapsing them into one object.
 
-## Using a Template
+## What reuse should preserve
 
-Apply a saved page template to a client portal at any time — at initial setup or months later when a new reporting need arises.
+- the business question,
+- layout and reporting grammar,
+- metric intent,
+- required source categories,
+- review and approval steps,
+- expected output format, and
+- version history.
 
-<Steps>
-  <Step title="Open the Playbooks section">
-    Navigate to **Playbooks** in the client portal sidebar and select the **Templates** tab. Browse your saved page templates.
-  </Step>
-  <Step title="Select a template and apply it">
-    Click the template you want to use and select **Apply to This Portal**. Piggy Banker creates a new page in the portal with the template's layout fully cloned.
-  </Step>
-  <Step title="Connect the blocks to this client's metrics">
-    Each block on the new page is ready for data but not yet connected to any metric. Click each block and select the appropriate metric from this client's portal. The block immediately loads live data.
-  </Step>
-</Steps>
+## What reuse must not copy
 
-<CardGroup cols={2}>
-  <Card title="Build a Financial Dashboard" icon="hammer" href="/guides/build-a-financial-dashboard">
-    Walk through building a full client-facing financial dashboard from scratch, then save it as a reusable template.
-  </Card>
-  <Card title="Agents" icon="robot" href="/concepts/agents">
-    Learn how agents can follow a Playbook procedure automatically on a schedule — combining templates with automated financial workflows.
-  </Card>
-</CardGroup>
+- another client's values,
+- connected-account identifiers,
+- private Context,
+- destination credentials or channels,
+- client-specific assumptions, or
+- permissions.
+
+## Resolve per client
+
+When applying a template, Piggy Banker should resolve its required metrics and sources inside the target client. Missing dependencies become setup work; they must not fall back to another client's objects.
+
+## Version deliberately
+
+Treat published operating knowledge as immutable. Create a new revision for material changes, test it with a client deployment, and keep run history tied to the exact version that produced the output.

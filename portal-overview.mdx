@@ -1,69 +1,55 @@
 ---
-title: "The Six Sections of Your Piggy Banker Client Portal"
-sidebarTitle: "Portal Overview"
-description: "Understand the six sections of a Piggy Banker client portal — from Overview and Context to Agents, Pages, Connections, and Playbooks."
+title: "How Piggy Banker is organized"
+sidebarTitle: "App structure"
+description: "Understand the firm workspace, isolated client workspaces, five client destinations, and Lil Piggy companion."
+icon:
+  name: "panels-top-left"
+  library: "lucide"
 ---
 
-Every client you manage in Piggy Banker gets its own dedicated portal — a self-contained workspace that holds everything related to that client's finances. When you open a client portal, you'll find six sections that together cover the full lifecycle of financial management: staying informed, providing AI context, automating workflows, building reports, connecting data, and applying best-practice templates.
+# How Piggy Banker is organized
 
-## Portal sections
+Piggy Banker has two operating levels: a **firm workspace** for managing a portfolio and an isolated **client workspace** for doing finance work for one business.
 
-<CardGroup cols={2}>
-  <Card
-    title="Overview"
-    icon="house"
-    href="/concepts/client-portal"
-  >
-    Your at-a-glance home for the client. See outstanding tasks, active alerts, and a summary of recent agent activity — all in one place, so you always know what needs attention.
-  </Card>
-  <Card
-    title="Context"
-    icon="brain"
-    href="/concepts/context"
-  >
-    Store durable facts about the business that Piggy uses every time it answers a question or runs an automation. Think of it as a living briefing document: industry, revenue model, KPIs, fiscal calendar, and anything else that shapes how the numbers should be interpreted.
-  </Card>
-  <Card
-    title="Agents"
-    icon="robot"
-    href="/concepts/agents"
-  >
-    Build and manage automated workflows that run on a schedule or in response to triggers. Each agent combines skills — discrete AI-powered actions — to complete tasks like drafting a monthly commentary, flagging budget variances, or preparing a board-ready summary.
-  </Card>
-  <Card
-    title="Pages"
-    icon="layout-dashboard"
-    href="/concepts/pages-and-dashboards"
-  >
-    Create Notion-style dashboards that mix live financial metrics, charts, tables, and written narrative. Pages pull directly from your connected General Ledger so every figure stays current without manual refreshes.
-  </Card>
-  <Card
-    title="Connections"
-    icon="plug"
-    href="/integrations/overview"
-  >
-    Manage the data sources powering the portal. Connect and sync your General Ledger (QuickBooks, Xero, or Puzzle) along with any other data integrations. The General Ledger connection is required before you can build metrics or Pages.
-  </Card>
-  <Card
-    title="Playbooks"
-    icon="book-bookmark"
-    href="/concepts/playbooks"
-  >
-    Apply pre-built templates and repeatable workflows to common financial tasks. Playbooks capture institutional knowledge — for example, a month-end close checklist or a variance analysis workflow — so your whole team operates consistently across every client.
-  </Card>
-</CardGroup>
+## Firm workspace
 
-## The CFO Team Portal
+After login, a CFO team lands in its multi-tenant workspace. This level is designed to contain:
 
-If you're on a CFO Team plan, you also have access to a top-level portal that sits above all of your individual client portals. Use the CFO Team Portal to:
+- a portfolio overview,
+- firm-wide agent activity,
+- the Templates / Playbooks library,
+- billing and team administration, and
+- the list of client workspaces.
 
-- **Monitor all clients at once** from a consolidated overview page that surfaces alerts and activity across your entire book of business.
-- **Run team-level agents** that operate across multiple clients or handle practice-wide tasks, such as generating a weekly digest of all client variances.
-- **Manage shared templates** so that playbooks and page layouts you perfect for one client can be pushed to others with a single action.
-- **Access individual client portals** directly from the team dashboard — click any client to jump straight into their portal without losing your place.
+Templates and Playbooks live here because they are reusable firm knowledge. They are not a sixth client destination.
 
-The CFO Team Portal is your command center. Individual client portals are where the detailed work happens.
+## Client workspace
+
+When you enter a client, the target navigation is exactly:
+
+| Destination | Purpose |
+| --- | --- |
+| **Overview** | Tasks, alerts, and recent agent activity |
+| **Context** | Durable Company, Money, and Strategy facts |
+| **Pages** | Free-form finance models, dashboards, and metric management |
+| **Agents** | Client deployments, schedules, skills, runs, and activity |
+| **Connections** | Live provider connections and read-only source-data status |
 
 <Note>
-  Every client portal is fully isolated. Data, pages, agents, and connections from one client are never visible to, or accessible from, another client's portal — even within the same CFO team account.
+  **Pages rollout:** Pages is the decided home for composed finance views and metric management. During rollout, some workspaces may still expose older reporting, forecasting, planning, or dashboard surfaces. Those are compatibility internals, not additional destinations in the final app.
 </Note>
+
+## Lil Piggy is always nearby
+
+Lil Piggy is a client-scoped side companion, not a destination. Its notepad, chat, calculations, and artifacts follow the current client and signed-in member. It can help investigate or prepare work without becoming a second source of truth.
+
+## Client portal
+
+The authenticated client portal is a separate, limited shell for client collaborators. It is not the internal workspace with navigation hidden by CSS. Access must remain scoped to the client and capabilities granted to that person.
+
+## A simple mental model
+
+- The **firm** owns the customer relationship, shared operating knowledge, and billing.
+- The **client workspace** owns that business's Context, source data, metrics, Pages, and agent runs.
+- The **portal** exposes approved client experiences through a separate shell.
+- **Lil Piggy** helps inside the current scope but does not broaden it.
