@@ -3,18 +3,19 @@
   "name": "Piggy Banker",
   "theme": "almond",
   "logo": {
-    "light": "https://media.brand.dev/4a303fc0-19a1-4358-b1b3-aa68cac74466.svg",
-    "dark": "https://media.brand.dev/6e60fb45-47d5-4b1d-9b38-f03a566c743e.svg"
+    "light": "/logo/piggy-banker.webp",
+    "dark": "/logo/piggy-banker.webp",
+    "href": "https://finance.piggybanker.io"
   },
-  "favicon": "https://media.brand.dev/75115206-2e51-4492-9f10-6378d3af202c.png",
+  "favicon": "/favicon.ico",
   "colors": {
-    "primary": "#717171",
-    "light": "#040404",
-    "dark": "#f9a304"
+    "primary": "#0A5C40",
+    "light": "#0E8A5F",
+    "dark": "#72D6AD"
   },
   "fonts": {
     "heading": {
-      "family": "Inter"
+      "family": "Roboto Slab"
     },
     "body": {
       "family": "Inter"
@@ -23,8 +24,8 @@
   "navbar": {
     "primary": {
       "type": "button",
-      "label": "Sign In",
-      "href": "https://app.piggybanker.ai"
+      "label": "Open Piggy Banker",
+      "href": "https://finance.piggybanker.io"
     }
   },
   "navigation": {
@@ -101,5 +102,6 @@
         ]
       }
     ]
-  }
+  },
+  "description": "Living, auto-updating financial models and workflows for CFO teams and the clients they serve."
 }
