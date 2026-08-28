@@ -1,0 +1,68 @@
+---
+title: "Dimensions: group and filter financial measures"
+sidebarTitle: "Dimensions"
+description: "Learn how department, class, location, customer, vendor, and other dimensions add analytical context to measures."
+icon:
+  name: "tags"
+  library: "lucide"
+---
+
+# Dimensions: group and filter financial measures
+
+A **measure** is a numeric result such as revenue or payroll expense. A **dimension** is a categorical attribute that explains how that measure can be grouped or filtered.
+
+## Common finance dimensions
+
+Depending on the connected ledger, dimensions can include:
+
+- class or tracking category,
+- department,
+- location,
+- project,
+- customer or contact,
+- vendor,
+- employee,
+- item or product, and
+- tracking category.
+
+Examples:
+
+- Revenue **by customer**
+- Operating expense **by department**
+- Gross profit **by product**
+- Cash collections **by customer**
+
+## Dimensions come from source data
+
+Current dimension discovery reads the selected ready ledger source over a bounded period. The default and maximum time window is 366 days, and discovery examines at most 10,000 ledger lines. Partial or truncated status means the discovered values and occurrence counts are not exhaustive history.
+
+The labels retain client and source scope. A second connection does not silently extend or combine the selected source's dimension set. Entity is linked-account or model scope today, not a discovered canonical dimension.
+
+<Note>
+  **Current boundary:** Dimensions are discovered source attributes, not first-class custom records. A final Pages experience can use them for grouping and filtering, but current metric-management UI may not expose every dimension operation described by the target model.
+</Note>
+
+## Grain comes first
+
+A dimension is only valid when the underlying data has that attribute at the required grain.
+
+For example:
+
+- A ledger line may contain department and customer.
+- A monthly statement total may not preserve either.
+- A bank balance observation has an account and timestamp, but no department.
+
+If a dimension is unavailable at the source grain, filtering the aggregate by that dimension would invent precision.
+
+## Good dimension design
+
+- Use stable business labels and retain source identifiers.
+- Define how uncategorized rows appear.
+- Avoid high-cardinality dimensions when they do not improve a decision.
+- Make multi-entity treatment explicit.
+- Preserve the selected time window when discovering available values.
+- Treat renamed or deleted provider values as lineage events, not new money.
+
+## Dimensions versus Context
+
+“Department = Sales” on a transaction is a dimension. “The Sales team owns new-logo revenue” is durable Context. One categorizes finance records; the other explains the business.

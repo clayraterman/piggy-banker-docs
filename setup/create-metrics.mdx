@@ -1,111 +1,60 @@
 ---
-title: 'Create Financial Metrics from Your Live Connected Data'
-sidebarTitle: 'Create Metrics'
-description: 'Build named, auto-updating financial metrics from your connected GL and bank data — the core building blocks of every Piggy Banker dashboard and agent.'
+title: "Create a metric from connected data"
+sidebarTitle: "Create a metric"
+description: "Turn a system reference, saved metric, input, assumption, or formula into a reusable client-scoped measure."
+icon:
+  name: "circle-plus"
+  library: "lucide"
 ---
 
-Metrics are the engine of Piggy Banker. Each metric is a named, automatically-refreshing data point that you define once and use everywhere — on dashboards (Pages), in agent analyses, and across client reports. Rather than pulling numbers manually from your accounting system or bank, you build metrics directly from your connected data sources and let Piggy Banker keep them current for you.
+# Create a metric from connected data
 
-## Before You Start
+Create a metric when a financial measure should have one durable definition and be reused across models, Pages, agents, or Lil Piggy.
 
-<Warning>
-  You need at least one connected data source before you can create metrics. Your general ledger (QuickBooks Online, Xero, or Puzzle) is required. Bank account connections are optional but unlock additional metric types like live cash balances. If you haven't connected your GL yet, complete [Connect Your General Ledger](/setup/connect-general-ledger) first.
-</Warning>
-
-Make sure your initial GL sync has completed before building metrics — Piggy needs the imported chart of accounts and transaction history to map accounts correctly. Ask Piggy to confirm your sync status if you're unsure.
-
-## Create a Metric
+<Note>
+  **UI transition:** Metric storage and evaluation exist today. Current Metric Studio supports saved metrics, reusable inputs, and a bounded system-reference set. It does not yet resolve arbitrary canonical accounts, ledger lines, live bank balances, or a dimension picker. The broader source and dimension workflow below is the target Pages model.
+</Note>
 
 <Steps>
-  <Step title="Go to the Metrics section">
-    In your client portal, click **Metrics** in the left sidebar. This page lists every metric already created for this client, organized by group.
+  <Step title="Start with the decision">
+    Write the question the metric should answer and who will use it. “Can we hire?” is more useful framing than “make a payroll chart.”
   </Step>
-  <Step title="Click 'New Metric'">
-    Click the **New Metric** button in the top-right corner. A metric creation panel opens on the right side of the screen.
+  <Step title="Choose a supported reference">
+    In the current product, select a supported system reference, saved metric, reusable input, forecast assumption, forecast-plan line, or recorded value. Confirm the source period and whether the value is a flow, point-in-time balance, or scenario value.
   </Step>
-  <Step title="Give the metric a clear name">
-    Enter a descriptive name that makes the metric's purpose immediately obvious to anyone viewing the dashboard. Good examples:
-
-    - `Monthly Net Revenue`
-    - `Operating Cash Flow`
-    - `Total Headcount`
-    - `Gross Margin %`
-    - `Net Burn Rate`
-
-    Avoid vague names like "Revenue" or "Cash" — be specific about the time grain, scope, or calculation so the metric is unambiguous in reports.
+  <Step title="Document the intended scope">
+    Record the linked-account or entity scope and any department, class, customer, or other intended filters. Use only dimensions present at the source grain. Attaching discovered dimensions through Metric Studio is not available yet.
   </Step>
-  <Step title="Choose a data source">
-    Select the source that contains the underlying data for this metric:
-    - **Connected GL** (QuickBooks Online, Xero, or Puzzle) — for P&L, balance sheet, and expense metrics
-    - **Bank Account** — for live balance and cash-position metrics
-    - **Manual Entry** — for metrics you want to track but don't have a connected source for yet
+  <Step title="Name and describe the measure">
+    Use a stable name, key, unit, and plain-language definition. Include exclusions or special accounting treatment in the description.
   </Step>
-  <Step title="Configure the metric">
-    Set the metric's parameters:
-
-    | Setting | Description |
-    |---|---|
-    | **Date Range** | The time window the metric covers (e.g., current month, trailing 12 months, year-to-date) |
-    | **Account Mapping** | The GL accounts or account groups to include in the calculation |
-    | **Aggregation** | How the values roll up: **Sum** (totals), **Average** (mean over the period), or **Last Value** (most recent point-in-time figure) |
+  <Step title="Build or record the value">
+    Add a bounded formula, reference another metric, or save a reusable input. Keep forecast assumptions tied to their model or scenario.
   </Step>
-  <Step title="Preview and save">
-    Click **Preview** to see the metric's calculated values before saving. Review the numbers against your source data to confirm the account mapping is correct. When everything looks right, click **Save** to publish the metric to your workspace.
+  <Step title="Evaluate before saving">
+    Review the resolved dependencies, sample period, null behavior, units, and source lineage. Correct unavailable or ambiguous references instead of substituting zero.
+  </Step>
+  <Step title="Choose presentation defaults">
+    Set useful number or percentage formatting. Leave Page-specific choices—date range, comparison, chart type, order—to the Page block.
   </Step>
 </Steps>
 
-## Common Metrics to Create First
+## Example: operating expense ratio
 
-Build these foundational metrics immediately after connecting your GL — they cover the core financial picture every CFO team needs:
+A sound definition identifies:
 
-<CardGroup cols={2}>
-  <Card title="Monthly Revenue" icon="arrow-trend-up">
-    **Source:** GL income accounts  
-    **Aggregation:** Sum  
-    Maps all top-line income accounts for the current calendar month. The starting point for almost every financial analysis.
-  </Card>
-  <Card title="Gross Profit / Gross Margin %" icon="percent">
-    **Source:** GL income and COGS accounts  
-    **Aggregation:** Sum (for gross profit); calculated field for margin %  
-    Revenue minus cost of goods sold. Add the margin % variant to track unit economics over time.
-  </Card>
-  <Card title="Operating Expenses" icon="receipt">
-    **Source:** GL expense accounts  
-    **Aggregation:** Sum  
-    Total operating costs excluding COGS. Break this down by department or category for deeper visibility.
-  </Card>
-  <Card title="Net Burn Rate" icon="fire">
-    **Source:** GL cash flow or bank accounts  
-    **Aggregation:** Sum  
-    Cash out minus cash in for the period. Essential for any pre-profitability company tracking runway.
-  </Card>
-  <Card title="Cash on Hand" icon="vault">
-    **Source:** Bank account balance metric  
-    **Aggregation:** Last Value  
-    Total cash across all connected bank accounts as of the most recent sync. Requires at least one bank connection.
-  </Card>
-  <Card title="Net Income" icon="chart-line">
-    **Source:** GL income and expense accounts  
-    **Aggregation:** Sum  
-    Revenue minus all expenses for the period. The bottom-line metric your clients check most often.
-  </Card>
-</CardGroup>
+- numerator: Operating expense for the selected period,
+- denominator: Revenue for the same period,
+- entity and currency scope,
+- behavior when Revenue is zero or unavailable,
+- percentage formatting, and
+- the connected statement periods used by each reference.
 
-## Metric Grouping
+## Review checklist
 
-Keep your metrics organized by grouping related metrics together. Groups appear as sections in the Metrics list and help your team navigate large metric libraries quickly. Common group names include:
-
-- **P&L Metrics** — revenue, gross profit, operating expenses, net income
-- **Cash Metrics** — cash on hand, burn rate, runway, operating cash flow
-- **Balance Sheet Metrics** — total assets, total liabilities, net equity
-- **Headcount Metrics** — total headcount, new hires, attrition
-
-To create a group, click **New Group** from the Metrics page, name it, and drag existing metrics into it — or assign a group when you create a new metric.
-
-<Tip>
-  Not sure how to configure a metric? Just describe what you want to measure to Piggy in plain language:
-
-  > "Create a metric for our monthly gross margin percentage using our QuickBooks data."
-
-  Piggy will walk you through the account mapping, suggest the right aggregation method, and help you save the metric — no manual configuration required.
-</Tip>
+- Does the name match the calculation?
+- Are numerator and denominator on compatible periods and grains?
+- Can an operator trace every dependency?
+- Are inputs and assumptions visibly different from actuals?
+- Does the definition remain useful outside one Page?
+- Has a sample period been reconciled to the books?

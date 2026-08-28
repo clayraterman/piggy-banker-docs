@@ -1,100 +1,58 @@
 ---
-title: 'Pages and Dashboards: Building Your Financial Views'
-sidebarTitle: 'Pages'
-description: 'Pages are free-form canvases for building financial dashboards with metric widgets, charts, and tables — shareable read-only with any stakeholder.'
+title: "Pages: compose living finance views"
+sidebarTitle: "Pages"
+description: "Learn how free-form Pages bind shared metrics into tables, charts, statements, and finance dashboards."
+icon:
+  name: "layout-dashboard"
+  library: "lucide"
 ---
 
-Pages are where your financial data becomes a story. Each page is a free-form, Notion-style canvas that you populate with blocks — metric widgets, charts, tables, and written narrative — arranged exactly how you want them. There are no rigid templates forcing you into a fixed layout: you decide which metrics matter for each client and how to present them. A page can be a simple burn-rate scorecard, a full board-ready P&L report, or a live operating dashboard your client checks every morning.
+# Pages: compose living finance views
 
-## What Is a Page?
-
-A **page** in Piggy Banker is a canvas made up of **blocks** stacked top to bottom. You add blocks, rearrange them freely, and connect each block to the live metrics and data powering your client portal.
-
-The available block types are:
-
-<CardGroup cols={2}>
-  <Card title="Metric Widgets" icon="gauge">
-    Display a single live metric value — a number, a percentage, or a currency amount — with optional trend indicators and comparison to a prior period or target.
-  </Card>
-  <Card title="Charts" icon="chart-bar">
-    Visualize one or more metrics over time with line charts, bar charts, and custom visuals. Charts update automatically as the underlying metric data refreshes.
-  </Card>
-  <Card title="Tables" icon="table">
-    Show multiple metrics in a structured grid — useful for P&L statements, budget vs. actuals comparisons, and multi-department breakdowns. Rows and columns map directly to live metric values.
-  </Card>
-  <Card title="Text Blocks" icon="text">
-    Add narrative context, section headings, or explanatory notes alongside your numbers. Use text blocks to annotate what a metric means for this specific client.
-  </Card>
-</CardGroup>
-
-Pages can be nested. A top-level **Board Reporting** page can contain subpages for each board meeting, all sharing the same underlying metrics without duplicating data.
-
-## Building a Page
-
-Building a page in Piggy Banker is an additive process — you start with a blank canvas and layer in blocks as you go. You can build manually or ask Piggy to scaffold a page for you.
-
-<Steps>
-  <Step title="Create a new page">
-    In the client portal sidebar, click **+ New Page**. Give the page a name that reflects its purpose — for example, *Monthly P&L*, *Cash Dashboard*, or *Board Deck – Q3*.
-  </Step>
-  <Step title="Add your first block">
-    Click **+ Add Block** and choose the block type: metric widget, chart, table, or text. Each block type prompts you to select the metric or data source that powers it.
-  </Step>
-  <Step title="Connect metrics as data sources">
-    For each block, select the metric you want to display. The block immediately pulls in live data from that metric. You can also ask Piggy in the chat panel to add a specific block: *"Add a chart showing Monthly Revenue for the last 12 months."*
-  </Step>
-  <Step title="Arrange and refine">
-    Drag blocks to reorder them on the canvas. Resize blocks to emphasize the most important numbers. Add text blocks between data blocks to provide narrative context.
-  </Step>
-</Steps>
+Pages are the free-form, Notion-style home for financial models, dashboards, and metric management. A Page composes shared finance primitives into a view for a specific decision or audience.
 
 <Note>
-When you ask Piggy to move or reorder an existing block on a page, it preserves the block's configuration and data connection. Always ask Piggy to reorder rather than delete and recreate a block to avoid losing your settings.
+  **Coming soon:** The final Pages route and free-form editor are a decided product contract, not a fully shipped destination in the current app. Existing reporting, forecasting, planning, and dashboard routes are compatibility internals during the transition.
 </Note>
 
-## Using Templates
+## What a Page contains
 
-Starting from a blank page is powerful but time-consuming when you need the same layout across multiple clients. Piggy Banker's **Playbooks** feature lets you save any page layout as a reusable template.
+A Page can compose metric-backed blocks such as:
 
-To apply a template when building a page:
+- key-number summaries,
+- financial statements,
+- tables,
+- charts,
+- variance views,
+- narrative and operating notes, and
+- model-specific inputs or assumptions where appropriate.
 
-<Steps>
-  <Step title="Choose 'Start from Template' at page creation">
-    Instead of opening a blank canvas, select **Start from Template** and browse your saved Playbook templates.
-  </Step>
-  <Step title="Select a template">
-    Pick the template that matches the report type — for example, *Monthly Close Report* or *Investor Dashboard*. Piggy Banker clones the layout into the new page.
-  </Step>
-  <Step title="Connect metrics to the new client's data">
-    Template blocks carry the layout but need to be connected to this client's metrics. Update each block's data source to point to the correct metric for this portal.
-  </Step>
-</Steps>
+The exact block catalog will be documented as each block ships.
 
-For a deep dive on creating and managing templates, see [Playbooks and Templates](/concepts/playbooks).
+## Bind, do not copy
 
-## Sharing Pages
+A Page block should reference a metric definition or series. It should not copy the metric's current value into page content.
 
-Share a live, read-only view of any page with a client, investor, or stakeholder — no Piggy Banker account required on their end.
+That separation creates two useful layers:
 
-To share a page:
+| Shared finance meaning | Page-local presentation |
+| --- | --- |
+| Name and definition | Date window |
+| Formula and dependencies | Comparison period |
+| Unit and value type | Chart or table style |
+| Source and lineage | Sort, order, and visible dimensions |
+| Recorded series | Narrative framing |
 
-<Steps>
-  <Step title="Open the page you want to share">
-    Navigate to the page in the client portal sidebar and open it.
-  </Step>
-  <Step title="Click Share">
-    Click **Share** in the top-right corner of the page.
-  </Step>
-  <Step title="Copy and send the link">
-    Copy the generated link and send it to the recipient. The recipient sees a read-only view of the page that updates in real time as your metrics refresh. They cannot edit the page, change any data, or access any other section of the client portal.
-  </Step>
-</Steps>
+When a metric definition is corrected, every Page that binds it can use the corrected meaning without duplicating logic.
 
-<CardGroup cols={2}>
-  <Card title="Build a Financial Dashboard" icon="hammer" href="/guides/build-a-financial-dashboard">
-    A step-by-step guide to building a full client-facing financial dashboard from scratch in Piggy Banker.
-  </Card>
-  <Card title="Playbooks and Templates" icon="book-open" href="/concepts/playbooks">
-    Learn how to save a page layout as a reusable template and apply it across clients in seconds.
-  </Card>
-</CardGroup>
+## Pages and metrics
+
+Metrics management belongs inside Pages because models and dashboards are where operators discover what they need. The metric remains a reusable client-level object even when it is first created while editing a Page.
+
+## Pages and agents
+
+The target flow lets an agent use the same metrics and Context that support a Page. Today, agent tools read canonical finance data and reporting primitives; they do not yet consume a rendered Page object or send a Page snapshot.
+
+## Page templates
+
+A Page template should preserve structure, block configuration, and semantic metric bindings without copying one client's finance data into another. See [Templates and Playbooks](/concepts/playbooks).

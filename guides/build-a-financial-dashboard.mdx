@@ -1,91 +1,76 @@
 ---
-title: 'Build a Live Financial Dashboard with Your Metrics'
-sidebarTitle: 'Build a Dashboard'
-description: 'Create a Notion-style dashboard page in Piggy Banker that auto-updates from your GL, bank, and metric data — no spreadsheets required.'
+title: "Build a financial Page"
+sidebarTitle: "Build a Page"
+description: "Design a useful finance view by choosing a decision, binding metric-backed blocks, and setting presentation locally."
+icon:
+  name: "panel-top-open"
+  library: "lucide"
 ---
 
-Turn your live metric data into a shareable, always-current financial dashboard in minutes. Pages in Piggy Banker are Notion-style canvases made up of blocks — metric widgets, charts, tables, and text — that update automatically as your underlying data changes. This guide walks you through building your first page from scratch.
+# Build a financial Page
 
-## Prerequisites
+A useful Page starts with a decision, not a pile of charts.
 
-- At least one metric created and connected to a data source. See [Create Metrics](/setup/create-metrics) if you haven't done this yet.
+<Note>
+  **Coming soon:** This guide describes the accepted Pages workflow. Exact click paths and the final block catalog will be added when the Pages editor ships.
+</Note>
 
-## Build Your Dashboard
+## 1. Define the audience and decision
 
-<Steps>
-  <Step title="Open Pages and create a new page">
-    In your client portal, navigate to **Pages** in the left sidebar. Click **New Page** to open a blank canvas.
-  </Step>
+Examples:
 
-  <Step title="Name your page">
-    Give the page a clear, descriptive name. Good examples:
+- a weekly CEO liquidity review,
+- a monthly board P&L,
+- a department budget review,
+- a 13-week cash forecast, or
+- a hiring affordability view.
 
-    - `Executive Summary`
-    - `Monthly P&L`
-    - `Cash Dashboard`
-    - `Q3 Board Report`
+Write the date cadence and the action the reader should be able to take.
 
-    You can rename the page at any time by clicking its title.
-  </Step>
+## 2. Select trustworthy metrics
 
-  <Step title="Add a metric widget">
-    Click the **+** button that appears when you hover between or below blocks, then select **Metric Widget**. Choose the metric you want to display from the list. The widget renders immediately with the live current value and updates automatically on every data sync.
+Choose the smallest set that explains the decision. For each metric, confirm:
 
-    Add as many metric widgets as you need — they stack and reflow to fill the available width.
-  </Step>
+- source and readiness,
+- time behavior,
+- entity and currency,
+- formula and dependencies,
+- relevant dimensions, and
+- whether the value is actual, input, or assumption.
 
-  <Step title="Add a chart">
-    Click **+** → **Chart**, then choose the metric (or metrics) you want to visualize. Select a chart type:
+## 3. Give the Page a hierarchy
 
-    | Chart type | Best for |
-    |---|---|
-    | **Line** | Trends over time (revenue, cash balance) |
-    | **Bar** | Period-over-period comparisons |
-    | **Stacked bar** | Part-to-whole breakdowns (expenses by department) |
-    | **Scorecard** | A single headline number with a delta vs. target |
+A practical order is:
 
-    Charts pull live data from your model — they are never static snapshots.
-  </Step>
+1. decision summary,
+2. primary outcome measures,
+3. drivers and variances,
+4. detailed table or statement,
+5. assumptions and data caveats, and
+6. follow-up actions.
 
-  <Step title="Add a text block">
-    Click **+** → **Text** to insert a rich-text block. Use text blocks to add narrative commentary, label a section, or provide context for the numbers directly above or below.
-  </Step>
+## 4. Configure blocks locally
 
-  <Step title="Rearrange your blocks">
-    Drag any block by its handle (the six-dot icon that appears on hover at the left edge) to reorder it on the page. Rearranging a block preserves all of its settings — you never have to rebuild it after moving it.
-  </Step>
+Bind each block to saved metrics, then choose the Page-specific date range, comparison, visible dimensions, formatting, and order. Do not create duplicate metrics simply to change a chart style.
 
-  <Step title="Save and share (optional)">
-    Pages save automatically as you build. To share a finished page with a client or team member, click the **Share** button in the top-right corner and choose your visibility settings. See [Pages and Dashboards](/concepts/pages-and-dashboards) for details.
-  </Step>
-</Steps>
+## 5. Make provenance visible
 
-## Block Types
+Show the period and as-of date. Distinguish connected actuals, observed balances, manual inputs, and forecast assumptions. If a dependency is stale or unavailable, surface that state.
 
-Every block you add to a page serves a distinct purpose. Here is a quick reference:
+## 6. Review before reuse
 
-**Metric Widget**
-Displays a single named metric as a live KPI tile — current value, label, and optional trend indicator. Use it to surface the numbers your audience needs to read first.
+Reconcile at least one period to the source books. Check formulas at boundary cases. Review the Page with its intended audience, then save the structure as a template when the same decision recurs across clients.
 
-**Chart**
-Renders one or more metrics as a visual: line, bar, stacked bar, or scorecard. Use a chart when the shape of the story (a trend, a comparison, a breakdown) communicates more than rows of numbers.
+## A good first Page
 
-**Table**
-A live grid built from your metrics and dimensions. Use a table when readers need the underlying numbers in rows and columns — for example, a full P&L, a variance report, or a departmental expense breakdown. You can format rows, add comparison columns, sort, and hide individual rows without changing the underlying data.
+Start with a compact CFO overview:
 
-**Text**
-Unstructured prose for narrative, context, or section headers. Text blocks do not contain data — they sit alongside your other blocks to explain what the numbers mean.
+- cash and liquidity,
+- revenue and gross margin,
+- operating spend,
+- runway or forecast ending cash,
+- major variances,
+- source freshness, and
+- current actions.
 
-## Using Templates
-
-If your workspace has a Playbook set up for a common dashboard type (Monthly P&L, Board Deck, Cash Report), you can start from that template instead of building from scratch. Go to **Pages** → **New from Playbook**, select the template, and the page will be pre-populated with the right blocks and metric wiring. Customize from there.
-
-<Tip>
-  Ask Piggy to build a dashboard for you. Try: *"Build me a monthly P&L dashboard with revenue, gross margin, operating expenses, and net income."* Piggy will create the page, add the right blocks, and wire up your metrics automatically.
-</Tip>
-
----
-
-<Card title="Automate Slack Financial Reports" icon="slack" href="/guides/automated-slack-reports">
-  Send this dashboard's data to your Slack channel on a schedule — daily, weekly, or monthly — without lifting a finger.
-</Card>
+More blocks do not make the model more trustworthy. Clear definitions and visible lineage do.

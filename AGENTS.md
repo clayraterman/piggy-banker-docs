@@ -1,33 +1,34 @@
-> **First-time setup**: Customize this file for your project. Prompt the user to customize this file for their project.
-> For Mintlify product knowledge (components, configuration, writing standards),
-> install the Mintlify skill: `npx skills add https://mintlify.com/docs`
+# Piggy Banker documentation guide
 
-# Documentation project instructions
+This repository publishes the Piggy Banker documentation site with Mintlify.
 
-## About this project
+## Source of truth
 
-- This is a documentation site built on [Mintlify](https://mintlify.com)
-- Pages are MDX files with YAML frontmatter
-- Configuration lives in `docs.json`
-- Use the Mintlify MCP server, `https://mcp.mintlify.com`, to edit content and settings via MCP
-- Use the Mintlify docs MCP server, `https://www.mintlify.com/docs/mcp`, to query information about using Mintlify via MCP
+Use current product direction first, then the canonical application repository and its contracts. Do not derive Piggy Banker behavior from competitor documentation or generated research archives.
 
-## Terminology
+## Product language
 
-{/* Add product-specific terms and preferred usage */}
-{/* Example: Use "workspace" not "project", "member" not "user" */}
+- The firm workspace manages clients, shared Templates / Playbooks, billing, and firm operations.
+- Client navigation is exactly Overview, Context, Pages, Agents, and Connections, in that order.
+- Metrics management belongs inside Pages; Metrics is not a separate destination.
+- Context contains Company, Money, and Strategy facts. It is not canonical finance data.
+- Connections and source data remain distinct from Context.
+- Lil Piggy is a client-scoped side companion, not a primary destination.
+- The client portal is a separate authenticated shell.
 
-## Style preferences
+## Accuracy boundaries
 
-{/* Add any project-specific style rules below */}
+- Label material availability as available now, coming soon, implemented-dark, or planned.
+- Do not present Pages, unified Page Templates / Playbooks, solo billing, or public MCP/WebMCP as shipped until verified.
+- Do not describe accounting data as real-time without a provider timestamp.
+- Do not turn unavailable data into zero.
+- Do not imply agents can mutate connected ledgers or bypass approvals.
+- Keep proposal, approval, dispatch, and provider delivery as separate states.
 
-- Use active voice and second person ("you")
-- Keep sentences concise — one idea per sentence
-- Use sentence case for headings
-- Bold for UI elements: Click **Settings**
-- Code formatting for file names, commands, paths, and code references
+## Writing style
 
-## Content boundaries
-
-{/* Define what should and shouldn't be documented */}
-{/* Example: Don't document internal admin features */}
+- Lead with the user outcome.
+- Use active voice and plain finance language.
+- Use sentence case for headings.
+- Bold actual UI labels only.
+- Prefer stable concepts over click-by-click instructions when the UI is still rolling out.

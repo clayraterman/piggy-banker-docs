@@ -1,111 +1,62 @@
 ---
-title: "Get Started with Piggy Banker: A Five-Step Setup Guide"
+title: "Quickstart: from client setup to your first workflow"
 sidebarTitle: "Quickstart"
-description: "Create your account, add a client portal, supply business context, connect your General Ledger, and build your first financial metric."
+description: "Follow the core Piggy Banker flow from a new client workspace through connected data, metrics, Pages, and agents."
+icon:
+  name: "rocket"
+  library: "lucide"
 ---
 
-This guide walks you through everything you need to go from a blank account to a live client portal with real financial data flowing in. By the end, you'll have a connected General Ledger, a working metric, and a solid foundation for building dashboards and automations.
+# Quickstart
+
+Use this sequence for every client. The order matters: an agent is only as useful as the source data, definitions, and Context underneath it.
+
+<Note>
+  **Availability:** Client setup, connected finance data, metrics primitives, and controlled agent runs exist today. The final free-form Pages experience is coming soon; current workspaces may expose compatibility reporting surfaces during the transition.
+</Note>
 
 <Steps>
-  <Step title="Create your account">
-    Sign up at [app.piggybanker.ai](https://app.piggybanker.ai) and follow the onboarding prompts.
-
-    When asked to choose a plan, select **CFO Team** if you manage multiple clients, or **Solo** if you're working with a single entity. You can upgrade at any time — pricing is a flat fee per client with optional usage add-ons.
-
-    <Tip>
-      During sign-up, Piggy will ask a few questions about your practice to personalize your workspace. Take a moment to answer them — Piggy uses this context across the app.
-    </Tip>
+  <Step title="Create the client workspace">
+    Add the business under your firm and confirm who should have access. A client workspace is an isolated finance context, not a folder inside another client's data.
   </Step>
-
-  <Step title="Add a client portal">
-    From your CFO Team dashboard, click **Add Client** and fill in two fields:
-
-    - **Client name** — the name you'll use to identify this client across your dashboard.
-    - **Business description** — one or two sentences about what the business does, its industry, and its size.
-
-    Piggy creates a dedicated portal for this client. Every piece of data, every page, and every agent you build lives inside that portal — completely isolated from your other clients.
-
-    <Note>
-      You can add as many client portals as your plan allows. Each one is billed at the flat per-client rate.
-    </Note>
+  <Step title="Add business Context">
+    Complete **Company**, **Money**, and **Strategy**. Record durable facts such as the operating model, entities, fiscal conventions, cash policy, goals, and constraints.
   </Step>
-
-  <Step title="Add business context">
-    Open the client portal and navigate to **Context**. This is where you store durable facts about the business — the kind of information Piggy needs to give accurate, relevant answers without you having to re-explain things every session.
-
-    Add facts such as:
-
-    - Fiscal year start and close
-    - Primary revenue model (e.g. SaaS subscriptions, project-based services, product sales)
-    - Key business drivers and KPIs the client tracks
-    - Any known seasonality or one-time events
-
-    <Tip>
-      Think of Context as a briefing document for Piggy. The richer it is, the more precise and useful Piggy's responses become across every section of the portal.
-    </Tip>
+  <Step title="Connect the general ledger">
+    A general ledger is required for the core workflow. Choose the supported accounting provider shown in **Connections**, authorize the correct company or tenant, sync it, and verify that the ledger domain is ready.
   </Step>
-
-  <Step title="Connect your General Ledger">
-    Navigate to **Connections** inside the client portal and click **Add Connection**. Piggy Banker supports three General Ledger providers:
-
-    - **QuickBooks Online**
-    - **Xero**
-    - **Puzzle**
-
-    Select your provider, complete the sign-in and authorization flow in your browser, then return to the portal. Piggy starts importing your chart of accounts, transactions, and historical periods in the background.
-
-    <Warning>
-      A General Ledger connection is required before you can create metrics or build financial dashboards. Piggy cannot generate Pages from GL data until the initial sync completes.
-    </Warning>
-
-    Once the sync finishes, Piggy confirms which accounting periods are available. You're ready to build.
+  <Step title="Add optional bank and card feeds">
+    Connect bank and card accounts when current balance observations are useful. These feeds complement the accounting source; they do not replace the books.
   </Step>
-
-  <Step title="Create your first metric">
-    Navigate to **Metrics** inside the client portal and click **New Metric**. Give your metric a name — for example, **Monthly Revenue** — and configure its source:
-
-    1. Set **Source** to your connected General Ledger.
-    2. Map the metric to the relevant account category (e.g. Income → Total Revenue).
-    3. Set the **Date grain** to Monthly and choose your desired lookback range.
-    4. Click **Save**.
-
-    Piggy calculates and saves the metric immediately. Once you have metrics defined, you can add them to **Pages** as charts, tables, or summary figures — and ask Piggy to explain any figure or adjust the date range on the spot.
-
-    <Tip>
-      Monthly Revenue is a great first metric, but you can also try **Gross Profit**, **Operating Expenses**, or **Net Cash Position** to quickly validate that your GL data imported correctly.
-    </Tip>
+  <Step title="Create reusable metrics">
+    Start with the measures needed for one decision. Use connected system references, saved metrics, reusable inputs, forecast assumptions, and formulas. Validate each metric before using it downstream.
+  </Step>
+  <Step title="Compose a Page">
+    Bind the metrics to a focused P&L, forecast, cash flow model, KPI view, or management dashboard. Keep the metric definition shared and presentation choices local to each Page block.
+  </Step>
+  <Step title="Add an agent workflow">
+    Configure a reusable workflow, run it manually, review its evidence and output, then enable a schedule and destination. External delivery follows the approval and dispatch policy.
   </Step>
 </Steps>
 
-## Next steps
+## Your first useful milestone
 
-<CardGroup cols={2}>
-  <Card
-    title="Explore the Portal"
-    icon="grid-2"
-    href="/portal-overview"
-  >
-    Learn what each section of the client portal does and how they work together.
-  </Card>
-  <Card
-    title="Create Metrics"
-    icon="chart-line"
-    href="/concepts/metrics"
-  >
-    Go deeper on metric types, date grains, and mapping GL accounts to business KPIs.
-  </Card>
-  <Card
-    title="Build a Dashboard"
-    icon="table-cells"
-    href="/guides/build-a-financial-dashboard"
-  >
-    Combine metrics, charts, and narrative text into a polished financial dashboard.
-  </Card>
-  <Card
-    title="Meet Piggy"
-    icon="robot"
-    href="/reference/piggy-ai"
-  >
-    Discover what Piggy can do, how to ask better questions, and how to get the most from your AI companion.
-  </Card>
-</CardGroup>
+Do not try to model the entire company at once. A strong first milestone is:
+
+1. one ready ledger source,
+2. complete high-level Context,
+3. five to ten clearly defined metrics,
+4. one decision-focused Page, and
+5. one manually tested reporting agent.
+
+Then build the flagship recurring workflow: a scheduled CFO brief that reads the client's current finance evidence, drafts the agreed format, and proposes the exact Slack message for human approval.
+
+## Readiness checklist
+
+- The correct client and entity are selected.
+- The ledger domain is **ready**, not merely connected.
+- Every displayed number has a source period and understandable lineage.
+- Missing data is not silently converted to zero.
+- Inputs and assumptions have owners and review dates.
+- The agent's destination and approval policy are explicit.
+- A manual test has been reviewed before scheduling.

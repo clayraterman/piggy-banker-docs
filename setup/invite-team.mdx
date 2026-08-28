@@ -1,64 +1,43 @@
 ---
-title: 'Invite Your Team and Share Client Access in Piggy Banker'
-sidebarTitle: 'Invite Team'
-description: 'Add CFO team members as admins or read-only viewers in Piggy Banker, and share client portal access with the clients your firm serves.'
+title: "Invite teammates and client collaborators"
+sidebarTitle: "Invite people"
+description: "Grant people access at the appropriate firm or client scope while preserving client isolation."
+icon:
+  name: "user-plus"
+  library: "lucide"
 ---
 
-Great financial work is a team effort. Piggy Banker lets you bring your entire CFO team into a shared workspace — giving each person the right level of access to the clients they support — and share read-only views with clients so they can follow along without needing a full account.
+# Invite teammates and client collaborators
 
-## Team Roles
+Access follows two scopes: the firm and an individual client. Grant the narrowest role that supports the person's work.
 
-Every person you invite gets one of two roles. Choose based on what they need to do in the workspace:
+## Firm access
 
-<CardGroup cols={2}>
-  <Card title="Admin" icon="shield-check">
-    Full access to all client portals, data connections, metrics, agents, pages, and workspace settings. Use this role for CFO team members who actively manage clients, build dashboards, or configure integrations.
-  </Card>
-  <Card title="Viewer" icon="eye">
-    Read-only access to the pages and dashboards assigned to them. Viewers cannot edit metrics, modify connections, or change any settings. Use this role for team members or junior staff who need to review data but not manage it.
-  </Card>
-</CardGroup>
+- **Firm owners** manage billing, firm users, and the full client portfolio.
+- **Firm operators** work across the firm's client operations without owning billing.
 
-Admins can see and manage all client workspaces. Viewers only see the specific clients they've been granted access to.
+## Client access
 
-## Invite a Team Member
+Client roles are scoped to one business:
 
-<Steps>
-  <Step title="Open Team settings">
-    Click **Settings** in the left sidebar of your workspace, then select **Team** from the settings menu.
-  </Step>
-  <Step title="Click 'Invite Member'">
-    Click the **Invite Member** button at the top of the Team page. An invitation dialog opens.
-  </Step>
-  <Step title="Enter their email and select a role">
-    Type the team member's work email address, then choose their role — **Admin** or **Viewer**. For Viewer accounts, you can also select which client portals they should have access to.
-  </Step>
-  <Step title="Send the invitation">
-    Click **Send Invite**. Piggy Banker sends them an email with a secure link to accept the invitation and set up their account. The invitation is valid for 7 days — you can resend it from the Team page if it expires.
-  </Step>
-</Steps>
+- **Client admins** manage that client's setup and collaborators.
+- **Editors** contribute to permitted client work.
+- **Viewers** have read-oriented access.
 
-Once they accept, the team member appears in your Team list with their assigned role. You can update their role or access at any time.
+Exact controls shown in the product can vary as rollout continues. The permission enforced by the server—not a hidden button—is authoritative.
 
-## Client Access
+## Invite checklist
 
-Your clients don't need a Piggy Banker account to view their financial dashboards. You have two ways to share their data with them:
+1. Confirm whether the person belongs at firm or client scope.
+2. Choose the correct client before inviting a client collaborator.
+3. Assign the least-privileged useful role.
+4. Verify that destinations, Context, Pages, and agent artifacts remain client-scoped.
+5. Remove or adjust access when responsibility changes.
 
-- **Shared Page Links** — Generate a read-only shareable link directly from any Page (dashboard). Anyone with the link can view the page without signing in. Use this for regular reporting cadences, board packages, or quick check-ins.
-- **Client Portal Invitations** — Invite a client directly to their portal as a Viewer. This gives them a persistent login they can return to anytime, rather than a static link.
+## Portal boundary
 
-Both options are strictly read-only. Clients cannot edit metrics, access other clients' data, or change any workspace settings.
+The authenticated client portal is a separate shell. Do not treat it as the internal workspace with navigation hidden. This preserves a clear boundary between firm operations and the client experience.
 
-## Removing Access
-
-When a team member leaves your firm or no longer needs access, revoke their access immediately:
-
-1. Go to **Settings → Team**.
-2. Find the team member in the list.
-3. Click the **···** menu next to their name and select **Remove Member**.
-
-Their access is revoked instantly. Any shared page links they generated remain active unless you manually expire them from the relevant Page's share settings.
-
-<Note>
-  **Seat limits apply to your plan.** Each active team member (Admin or Viewer) counts toward your workspace's seat allotment. Piggy Banker uses a flat fee per client plus additional usage charges — check **Settings → Billing** to review your current seat usage and plan limits, or ask Piggy to summarize your plan details for you.
-</Note>
+<Warning>
+  A person's ability to read finance data does not automatically grant permission to change connections, edit metrics, approve their own proposed action, or dispatch data externally.
+</Warning>

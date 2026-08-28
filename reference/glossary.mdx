@@ -1,84 +1,98 @@
 ---
-title: 'Piggy Banker Glossary: Key Terms and Concepts Explained'
-sidebarTitle: 'Glossary'
-description: 'A reference guide to the key terms and concepts used throughout Piggy Banker — organized by theme so you can find exactly what you need.'
+title: "Piggy Banker glossary"
+sidebarTitle: "Glossary"
+description: "Definitions for the core finance, data, Page, agent, access, and delivery concepts used throughout Piggy Banker."
+icon:
+  name: "book-a"
+  library: "lucide"
 ---
 
-Use this glossary as a quick reference for the key terms and concepts you'll encounter throughout Piggy Banker. Terms are grouped by theme so you can orient yourself whether you're exploring your portal for the first time, building financial dashboards, or setting up automated agent workflows.
+# Piggy Banker glossary
 
-## Your Portal
+## Product structure
 
-<AccordionGroup>
-  <Accordion title="Client Portal">
-    An isolated workspace for one client or business inside Piggy Banker. Each client portal has its own metrics, pages, agents, connected data sources, and Business Context. Client portals are fully separated from one another — data and settings in one portal never bleed into another.
-  </Accordion>
-  <Accordion title="CFO Team Portal">
-    The top-level dashboard where CFO teams manage all of their client portals from a single view. From the CFO Team Portal, you can create new client portals, check the status of all your clients, and navigate into any individual client's workspace.
-  </Accordion>
-  <Accordion title="Overview">
-    The home screen of a client portal. The Overview surfaces the most important information at a glance: pending tasks, active alerts, recent agent activity, and any metrics that need attention. It's the first screen you see when you open a client portal.
-  </Accordion>
-  <Accordion title="Context">
-    Durable facts about the client's business that you configure in the portal and that Piggy uses as background knowledge when answering questions and running agents. Context includes details like the company's industry, fiscal year, key products or services, and operational assumptions. The richer the Context, the more accurate and relevant Piggy's responses will be.
-  </Accordion>
-</AccordionGroup>
+**Firm**<br />The account and billing tenant that contains a CFO team and its managed clients.
 
-## Financial Data
+**Client workspace**<br />The isolated operating and data scope for one business.
 
-<AccordionGroup>
-  <Accordion title="Metric">
-    A named, auto-updating financial data point connected to your live data sources. Examples include Monthly Revenue, Burn Rate, Gross Margin %, and Cash on Hand. Metrics are the building blocks of dashboards and the data Piggy reads when answering questions or running reports. When your General Ledger syncs, every metric that draws from it updates automatically.
-  </Accordion>
-  <Accordion title="General Ledger (GL)">
-    The primary accounting record for a business — the authoritative source of all financial transactions. Piggy Banker connects directly to your GL to pull Actuals. Supported GL platforms include QuickBooks, Xero, and Puzzle.
-  </Accordion>
-  <Accordion title="Actuals">
-    Confirmed historical financial data pulled directly from your connected General Ledger. Actuals reflect what actually happened — real revenue, real expenses, real cash movements — as of the last closed period. Actuals are read-only; they update automatically when your GL syncs.
-  </Accordion>
-  <Accordion title="Forecast">
-    Forward-looking financial projections that extend beyond the last closed period. Forecasts can be formula-based (calculated from assumptions you define) or manually entered. Piggy can build and update forecasts, and you can compare them against Actuals to track variance.
-  </Accordion>
-  <Accordion title="Burn Rate">
-    The net cash a business spends per month — calculated as total cash outflows minus total cash inflows. A higher burn rate means the business is consuming cash faster. Burn Rate is a foundational metric for any startup or growth-stage company and feeds directly into Cash Runway.
-  </Accordion>
-  <Accordion title="Cash Runway">
-    How many months of operating cash the business has remaining at its current Burn Rate. Calculated as current cash divided by monthly Burn Rate. Cash Runway is one of the most watched metrics for CFOs and investors — Piggy can alert you when it falls below a threshold you set.
-  </Accordion>
-</AccordionGroup>
+**Client portal**<br />A separate authenticated shell for client collaborators; not the internal workspace with hidden navigation.
 
-## Pages and Dashboards
+**Overview**<br />The client destination for tasks, alerts, and agent activity.
 
-<AccordionGroup>
-  <Accordion title="Page">
-    A free-form, Notion-style canvas for building financial dashboards, reports, and working views. Pages are made up of Blocks — you can mix metric widgets, charts, tables, and text on a single Page. Piggy can create and edit Pages on your behalf.
-  </Accordion>
-  <Accordion title="Block">
-    A single element on a Page. Blocks can be metric widgets (showing one live number), charts (line, bar, waterfall), tables (multi-metric grids), or text (narrative context and headings). Combine Blocks to build any layout you need.
-  </Accordion>
-  <Accordion title="Dashboard">
-    A Page configured as a financial reporting view — typically a curated set of the most important metrics and charts for a client or use case. Dashboards are often shared with clients or used as the basis for board reports and investor updates.
-  </Accordion>
-  <Accordion title="Playbook">
-    A saved Page template or financial operating procedure that captures how you approach a specific type of client work — for example, a standard onboarding dashboard or a monthly close checklist. Playbooks let you apply a proven structure to new client portals without rebuilding from scratch each time.
-  </Accordion>
-  <Accordion title="Template">
-    A pre-built Page layout derived from a Playbook. When you apply a Template to a new or existing client portal, Piggy creates the Pages, metrics, and structure defined in the Playbook, scoped to that client's data.
-  </Accordion>
-</AccordionGroup>
+**Context**<br />Durable Company, Money, and Strategy facts that help interpret finance data. Context is not canonical finance data.
 
-## Agents and Automation
+**Page**<br />A free-form composition of metric-backed finance blocks for a decision or audience.
 
-<AccordionGroup>
-  <Accordion title="Agent">
-    A workflow that runs automatically inside a client portal. Agents can read metrics, generate summaries, monitor thresholds, send reports, and flag anomalies. You create and configure agents through Piggy or the Agents section of the portal navigation.
-  </Accordion>
-  <Accordion title="Skill">
-    A saved workflow instruction that tells Piggy how to handle a specific, recurring type of request. Skills have a name, a trigger condition (when should Piggy use this?), and a set of workflow instructions (what should Piggy do?). Once saved, Piggy activates the right Skill automatically when your request matches its trigger — no need to reference the Skill by name. See [Agent Skills](/reference/agent-skills).
-  </Accordion>
-  <Accordion title="Trigger">
-    A scheduled instruction that runs an agent automatically on a set cadence — daily, weekly, monthly, or custom. Triggers fire unattended and deliver their results to Slack or email. Because they run without a surrounding conversation, Trigger prompts must be fully self-contained. See [Agent Triggers](/reference/agent-triggers).
-  </Accordion>
-  <Accordion title="Piggy">
-    The AI companion embedded throughout Piggy Banker — available in the chat sidebar of every portal page. Piggy assists with building dashboards, creating and updating metrics, answering financial questions, checking data connections, creating agents, and running reports. You interact with Piggy in plain language; no special syntax or commands are required. See [Meet Piggy](/reference/piggy-ai).
-  </Accordion>
-</AccordionGroup>
+**Templates / Playbooks**<br />The firm-level library for reusable layouts, workflow blueprints, and finance operating procedures.
+
+**Lil Piggy**<br />A private, client-scoped notepad and grounded finance companion.
+
+## Data and models
+
+**Connection**<br />A client-scoped authorization and sync relationship with a provider.
+
+**Linked account**<br />One independently tracked provider company, tenant, item, or account relationship.
+
+**Source data**<br />Provider-derived finance domains made available after sync.
+
+**Canonical finance data**<br />Provider-neutral records normalized for the client while retaining source lineage.
+
+**Domain owner**<br />The one selected ready source used to answer a finance domain.
+
+**Lineage**<br />Metadata that connects a value to its client, provider, linked account, source object, period, and sync.
+
+**Freshness**<br />How current a dataset is relative to its expected cadence and as-of time.
+
+**Measure**<br />A numeric finance result, such as Revenue or Ending cash.
+
+**Dimension**<br />A categorical attribute used to group or filter measures, such as department, class, location, customer, vendor, item, or tracking category.
+
+**Metric definition**<br />The reusable name, meaning, type, formula, dependencies, source references, and format for a measure.
+
+**Metric series**<br />Periodized or point-in-time values associated with a metric definition.
+
+**System reference**<br />A read-only value derived from connected books or a plan.
+
+**Reusable input**<br />A directly entered scalar saved for reuse by multiple metrics.
+
+**Forecast assumption**<br />A model- or scenario-specific planning driver.
+
+**Formula**<br />A bounded expression over approved, client-scoped references.
+
+**Unavailable**<br />A required value cannot be resolved. It is materially different from a measured zero.
+
+## Agents and controls
+
+**Agent template**<br />A reusable workflow blueprint.
+
+**Revision**<br />An immutable published version of a template or Skill.
+
+**Deployment**<br />A revision configured for one client with schedules, destinations, Context, Skills, policies, and overrides.
+
+**Run**<br />One execution with snapshotted configuration, evidence, tool activity, results, and events.
+
+**Skill**<br />Reusable versioned instructions and output expectations for an agent. A Skill does not grant permissions.
+
+**Workspace default**<br />A client-scoped default inherited by a deployment unless explicitly overridden.
+
+**Artifact**<br />A reviewable output saved by a run or Lil Piggy session.
+
+**Proposal**<br />The exact normalized external action payload submitted for a human decision.
+
+**Approval**<br />A human decision that permits dispatch of the approved payload. Approval is not delivery.
+
+**Dispatch**<br />The queued attempt to send an approved payload through a provider.
+
+**Destination**<br />A server-bound external target, such as a configured Slack channel.
+
+**Dry run**<br />A manual test that creates an in-app artifact without tasks, approvals, or external delivery.
+
+## Availability labels
+
+**Available now**<br />Backed by the current product contract and implementation, although individual workspace rollout can vary.
+
+**Coming soon**<br />Part of the decided final product model but not fully shipped.
+
+**Implemented-dark**<br />A technical seam exists but is not a public or self-service product.
+
+**Planned**<br />Directional; not a commitment to current availability.

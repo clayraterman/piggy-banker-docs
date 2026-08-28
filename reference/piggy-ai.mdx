@@ -1,85 +1,67 @@
 ---
-title: 'Meet Piggy: Your AI Financial Companion in Piggy Banker'
-sidebarTitle: 'Piggy AI'
-description: 'Piggy is your always-on AI companion — ask questions, build dashboards, create metrics, and automate financial workflows in plain English.'
+title: "Lil Piggy: your client-scoped finance companion"
+sidebarTitle: "Lil Piggy"
+description: "Use the private notepad and grounded finance assistant to calculate, investigate, navigate, and prepare reviewable work."
+icon:
+  name: "message-square-text"
+  library: "lucide"
 ---
 
-Piggy is the AI companion embedded in every Piggy Banker portal — your real-time CFO assistant for building models, answering questions, and automating workflows. Open the chat sidebar at any time, type what you need in plain English, and Piggy gets to work — no formulas, no menus, no special syntax required.
+# Lil Piggy: your client-scoped finance companion
 
-## What Piggy Can Do
+Lil Piggy is a private notepad and grounded finance assistant that stays available while you work inside a client workspace. It is supplemental to the five client destinations, not a sixth destination or a second finance database.
 
-<CardGroup cols={2}>
-  <Card title="Build dashboards and pages" icon="layout-dashboard">
-    Ask Piggy to create a new dashboard page, add charts, and arrange metrics exactly how you want them presented.
-  </Card>
-  <Card title="Create and update metrics" icon="chart-line">
-    Tell Piggy which financial metrics matter to your client and it will build them — with automatic updates whenever your data refreshes.
-  </Card>
-  <Card title="Answer financial questions" icon="message-circle">
-    Ask anything: why did gross margin fall, how does this month compare to budget, what is our current cash position?
-  </Card>
-  <Card title="Set up agents and automations" icon="robot">
-    Have Piggy create Skills for reusable workflows and Triggers for recurring scheduled reports — all from a single conversation.
-  </Card>
-  <Card title="Check data connections and syncs" icon="plug">
-    Ask Piggy whether your General Ledger has finished syncing or whether a specific integration is connected and healthy.
-  </Card>
-  <Card title="Explain numbers and variances" icon="magnifying-glass">
-    Point Piggy at any metric or dashboard and ask it to explain what changed, what drove the movement, and what it means.
-  </Card>
-</CardGroup>
+## What a session contains
 
-## How to Talk to Piggy
+A Lil Piggy session can contain:
 
-Access Piggy through the **chat sidebar** — it's always visible on the right side of every portal page. Type your request in natural language, the same way you'd ask a question to a colleague. You do not need to learn any special syntax or know which menu to navigate.
+- a durable line-based notepad,
+- a chat thread,
+- calculations and metric references, and
+- generated, reviewable artifacts.
 
-Start with the outcome you want, not the technical action you think is required:
+Sessions belong to the signed-in member and current client. They remain private until selected material is explicitly saved to shared client notes.
 
-- Instead of _"Create a table block with variables"_ → try _"Build a P&L dashboard showing revenue, gross margin, and operating expenses for the last 12 months"_
-- Instead of _"Set a trigger"_ → try _"Send me a Slack message every Monday with our cash balance and burn rate"_
+## What Lil Piggy is good at
 
-Piggy uses the current page you have open, your connected data sources, and any [Business Context](/concepts/context) you've provided to interpret your requests. The more specific you are, the better the result.
+Use it to:
 
-## What Piggy Reads vs. Changes
+- answer questions grounded in the client's Context and finance evidence,
+- calculate or compare saved measures,
+- investigate a variance,
+- draft a narrative or reporting artifact,
+- navigate to a relevant product surface,
+- prepare a supported action for review, or
+- route a repeatable task into the Agents system.
 
-Not every request Piggy receives changes anything — and understanding the difference helps you stay in control.
+Example requests:
 
-**Read-only requests** let Piggy inspect existing data and return an explanation or analysis without modifying anything in your portal:
+- “Explain the change in gross margin and show the source periods.”
+- “Calculate runway under the current base-case assumptions.”
+- “Draft the finance section of this week's CFO brief.”
+- “Take me to the source data behind Ending cash.”
+- “Prepare this as an agent workflow; do not send anything yet.”
 
-- _"Why did gross margin drop in March?"_
-- _"Has our QuickBooks sync finished?"_
-- _"What is our current cash runway?"_
+## Grounding and recalculation
 
-**Change requests** ask Piggy to create, update, or delete something in your portal — a metric, a dashboard page, an agent, or a setting:
+Metric chips and calculations are reevaluated from canonical statements, saved metrics, and reusable inputs. An old pasted number is not treated as current merely because it appears in chat.
 
-- _"Create a new metric for Monthly Recurring Revenue"_
-- _"Add a bar chart comparing this month's revenue to last month's"_
-- _"Schedule a weekly variance report to Slack"_
+Lil Piggy should identify assumptions, source periods, and missing evidence. It does not turn unavailable data into zero.
 
-When Piggy is about to make a change, it will describe what it intends to do before it acts. If the proposed change isn't what you intended, tell Piggy to stop or adjust its approach before it proceeds.
+## Actions and permissions
 
-## Best Practices
+Lil Piggy uses a bounded server-owned command and tool catalog. It cannot invent permissions, select arbitrary destinations, or bypass approvals.
 
-The most effective prompts name a specific metric or page, include a time range, and describe the output format you want.
+- Read-oriented users can ask questions and calculate within their access.
+- Writes require the relevant client permission.
+- Slack or email actions require explicit confirmation and the normal approval/dispatch path.
+- Finance connections remain read-oriented; Lil Piggy does not write journal entries or mutate a connected ledger.
+- Voice and transcription are not currently available.
 
-| Instead of this… | Try this |
-|---|---|
-| _"Show me the data"_ | _"Show me Monthly Revenue and Gross Margin for the last 6 months on a line chart"_ |
-| _"Check our cash"_ | _"What is our current Cash Runway based on last month's burn rate? Alert me if it falls below 6 months."_ |
-| _"Run the usual report"_ | _"Pull the board report: Revenue, Gross Margin, and Cash for Q1, compared to Q1 of last year"_ |
-| _"Fix the numbers"_ | _"Our Burn Rate metric is showing a positive number — it should be negative. Can you check the formula?"_ |
+## Save deliberately
 
-When Piggy's first response isn't quite right, follow up with corrections rather than starting a new conversation. Piggy remembers the context of your current chat session and will refine its output based on your feedback.
+Use **Save to client notes** only for material that should become shared Context. Working notes, tentative reasoning, and personal reminders can remain private in the session.
 
-## Context Matters
-
-Piggy's answers are only as good as the context it has access to. It draws on two sources of background information:
-
-1. **Business Context** — durable facts about the client's business that you've set in the portal, such as fiscal year, industry, and key operational assumptions. See [Business Context](/concepts/context) to learn how to set this up.
-2. **The current page** — whatever dashboard or page you have open when you ask a question. Piggy uses what's visible on-screen to inform its interpretation of your request.
-
-If Piggy returns an answer that seems off, check that the right client portal is open and that Business Context is filled in for that client.
-
-<Note>
-  Piggy is an AI and can make mistakes — especially with complex multi-step calculations or unfamiliar data structures. Always review important financial figures before sharing them with clients or stakeholders.
-</Note>
+<Warning>
+  Lil Piggy can accelerate judgment, but it should not hide judgment. Review formulas, sources, assumptions, and the exact payload of any proposed external action.
+</Warning>

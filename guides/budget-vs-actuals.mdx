@@ -1,72 +1,73 @@
 ---
-title: 'Track Budget vs. Actuals in Real Time with Piggy Banker'
-sidebarTitle: 'Budget vs. Actuals'
-description: 'Pull live GL actuals into Piggy Banker, enter or import your budget, and build a real-time budget vs. actuals dashboard with variance metrics and charts.'
+title: "Design a budget vs. actuals view"
+sidebarTitle: "Budget vs. actuals"
+description: "Compare planned and actual performance with reusable metrics, explicit periods, dimensions, and variance formulas."
+icon:
+  name: "scale"
+  library: "lucide"
 ---
 
-Budget vs. actuals is the core of financial performance monitoring — and in most teams it's still a painful monthly ritual of copying numbers between spreadsheets. Piggy Banker replaces that ritual with a live dashboard that updates automatically as your GL closes each period. Define your budget once, connect your actuals, and every variance calculation stays current without any manual intervention.
+# Design a budget vs. actuals view
 
-## What You Need
+A budget-versus-actuals model compares a governed plan with connected accounting results at a compatible grain.
 
-- **Connected GL with actuals data.** Your general ledger is the source of truth for actual results. See [Connect Your General Ledger](/setup/connect-general-ledger).
-- **A budget.** This can be entered manually as a metric, imported from a spreadsheet, or built directly in Piggy Banker. Details below.
+<Note>
+  **Pages availability:** The finance-modeling contract in this guide applies now. Composing it in the final free-form Pages editor is coming soon.
+</Note>
 
-## Setting Up Budget Data
+## Define the comparison
 
-You have two options for getting your budget into Piggy Banker:
+Before calculating variance, align:
 
-**Option 1 — Enter budget values manually**
+- entity,
+- currency,
+- accounting period,
+- chart-of-accounts mapping,
+- department or other dimension,
+- sign convention, and
+- version or scenario of the plan.
 
-Create a metric for each budget line (e.g., `Budget Revenue`, `Budget Operating Expenses`) and choose **Manual** as the data source. Enter monthly values directly in the metric editor. This works well if your budget is stable and you update it once per quarter.
+An annual budget total and a monthly ledger series are not directly comparable until they share a period grain.
 
-**Option 2 — Import from a spreadsheet**
+## Core metrics
 
-If your budget lives in a CSV or Excel file, upload it via **Connections** → **Import CSV**. Map each column to a metric or dimension, and Piggy Banker will create the corresponding metrics automatically. After the initial import you can update the values by re-uploading a revised file.
+Common measures include:
 
-## Creating Budget vs. Actuals Metrics
+- Actual,
+- Budget,
+- Dollar variance,
+- Percentage variance,
+- Year-to-date actual,
+- Year-to-date budget,
+- Forecast,
+- Forecast versus budget, and
+- Full-year outlook.
 
-Once both your actuals and budget values exist as metrics, create **Variance metrics** that calculate the difference automatically:
+Define favorable and unfavorable treatment in the Page narrative. A positive expense variance can mean overspend even though the arithmetic result is positive.
 
-- **Revenue Variance** = `Actual Revenue − Budget Revenue`
-- **Revenue Variance %** = `Revenue Variance ÷ Budget Revenue × 100`
-- **OpEx Variance** = `Actual Operating Expenses − Budget Operating Expenses`
-- **Gross Margin Variance** = `Actual Gross Margin − Budget Gross Margin`
+## Use dimensions carefully
 
-Create as many variance metrics as your reporting requires. A positive Revenue Variance means you beat budget; a positive OpEx Variance means you overspent.
+Department, class, location, or project can support drilldown only when both actual and plan values carry compatible dimension meaning. Entity is linked-account or model scope rather than a discovered canonical dimension. An unallocated budget should remain visibly unallocated rather than being spread silently.
 
-## Building the Budget vs. Actuals Dashboard
+## Suggested Page structure
 
-<Steps>
-  <Step title="Create a new page">
-    Go to **Pages** → **New Page** and name it `Budget vs. Actuals` (or `BvA — [Month Year]` if you want period-specific views).
-  </Step>
+1. executive variance summary,
+2. revenue and gross-margin drivers,
+3. operating-expense table,
+4. department or category detail,
+5. forecast-to-budget outlook,
+6. assumptions and mapping caveats, and
+7. owner actions.
 
-  <Step title="Add a table block">
-    Click **+** → **Table** and configure it with the following columns:
+## Quality checks
 
-    | Metric | Budget | Actual | Variance ($) | Variance (%) |
-    |---|---|---|---|---|
+- Reconcile actuals to the selected statement period.
+- Confirm the plan version and approval date.
+- Test formulas when budget is zero or unavailable.
+- Separate mapping gaps from true operating variances.
+- Flag stale actuals before generating narrative.
+- Preserve plan and actual provenance in downstream agent output.
 
-    Add one row per metric you want to track (Revenue, Gross Margin, OpEx, Net Income, etc.). Format any row with a negative-favorable variance (e.g., OpEx) with sign inversion so over-budget shows as red. Use **bold** formatting on subtotal rows to make the hierarchy readable at a glance.
-  </Step>
-
-  <Step title="Add a bar chart comparing Budget vs. Actual by month">
-    Click **+** → **Chart** and select both `Budget Revenue` and `Actual Revenue` (or your key metric). Choose **Grouped Bar** as the chart type and set the time window to the current fiscal year. This gives a visual month-by-month comparison that makes it immediately obvious which periods you beat or missed budget.
-  </Step>
-
-  <Step title="Add a text block for narrative commentary">
-    Click **+** → **Text** and write a short summary of the current period's performance: what drove the biggest variances, which are one-time vs. recurring, and what the outlook is for the rest of the year. Update this block each month after close. Keeping the narrative alongside the numbers on the same page makes your BvA deck self-contained.
-  </Step>
-</Steps>
-
-## Automating BvA Reports
-
-Once your BvA dashboard is live, set up an agent to send a formatted summary to Slack at the end of each month — so your team gets the results without having to remember to check the dashboard.
-
-<Card title="Automate Slack Financial Reports" icon="slack" href="/guides/automated-slack-reports">
-  Send monthly BvA summaries directly to your #finance Slack channel, automatically, with live variance data.
-</Card>
-
-<Tip>
-  Ask Piggy to surface your biggest misses instantly: *"Show me where we were furthest from budget last month."* Piggy will rank the variances, identify the accounts behind the largest differences, and tell you which ones look structural vs. one-time.
-</Tip>
+<Note>
+  Plan-entry and Page controls are evolving. This guide defines the finance contract; it does not imply a spreadsheet import or a specific chart interaction that is not present in your workspace.
+</Note>

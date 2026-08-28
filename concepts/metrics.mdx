@@ -1,90 +1,64 @@
 ---
-title: 'Metrics: Live Financial Data Points in Piggy Banker'
-sidebarTitle: 'Metrics'
-description: 'Metrics are the core data unit in Piggy Banker — connect a source, define a metric, and use it in pages, agents, Slack reports, and Piggy answers.'
+title: "Metrics: reusable financial measures"
+sidebarTitle: "Metrics"
+description: "Understand metric definitions, values, sources, formats, and how one metric can power Pages, agents, and Lil Piggy."
+icon:
+  name: "chart-no-axes-combined"
+  library: "lucide"
 ---
 
-Metrics are the foundational building block of every financial view in Piggy Banker. You connect a data source, define a named metric that pulls from it, and then use that live-updating number anywhere you need it — on a dashboard page, inside an agent workflow, in a Slack report, or as context for Piggy's answers. Define a metric once and it stays current everywhere it appears, automatically.
+# Metrics: reusable financial measures
 
-## What Is a Metric?
+A metric gives a financial measure a stable identity that can be reused by Pages, agents, Lil Piggy, and other metrics.
 
-A **metric** is a named, live-updating financial data point scoped to a specific client portal. It has a name, a data source, and optionally a formula that transforms raw source data into the number you care about.
+A metric is more than the latest number.
 
-Examples of metrics you might define:
+## Definition versus values
 
-- **Monthly Revenue** — total revenue booked in the current calendar month
-- **Burn Rate** — net cash out per month based on General Ledger actuals
-- **Headcount** — total active employees as of today
-- **Gross Margin %** — gross profit divided by revenue, expressed as a percentage
-- **Cash Runway** — current cash balance divided by average monthly burn
+| Part | Answers |
+| --- | --- |
+| **Metric definition** | What is this measure, how is it calculated, how is it formatted, and what does it depend on? |
+| **Metric value or series** | What was the value for this period or point in time, under this scenario, and where did it come from? |
 
-A metric is not a static snapshot — it recalculates whenever its underlying source data refreshes. When your General Ledger syncs, every metric that depends on it updates automatically.
+A definition can include a name, key, description, value type, unit, formula, dependencies, source references, presentation metadata, input flag, and active/archive state. Values carry periods or timestamps plus provenance.
 
-## Metric Sources
+## Four building blocks
 
-Metrics pull their underlying data from the sources connected in the **Connections** section of a client portal. The three types of source data available are:
+### System references
 
-<AccordionGroup>
-  <Accordion title="General Ledger (required)">
-    The General Ledger is the primary data source for every client portal. It provides actuals for revenue, expenses, assets, liabilities, and equity — the full chart of accounts. Most P&L, balance sheet, and cash-flow metrics draw directly from GL data. You must connect a General Ledger before you can create GL-backed metrics.
-  </Accordion>
-  <Accordion title="Bank accounts and credit cards (optional)">
-    Connect bank and credit card accounts to create real-time cash-position and spending metrics. Bank-backed metrics give you up-to-the-day cash balances and transaction-level visibility that complements the accrual view your GL provides.
-  </Accordion>
-  <Accordion title="Manually entered values">
-    Some metrics don't live in any connected system — headcount, pipeline value, or a custom KPI your client tracks in a spreadsheet. You can enter these values directly and still use them in pages, agents, and Piggy conversations alongside your connected-source metrics.
-  </Accordion>
-</AccordionGroup>
+Read-only values derived from connected books or a plan, such as Revenue, COGS, Gross profit, OpEx, or Ending cash. Duplicate a system reference when you need an operator-owned tracked definition.
 
-## Types of Metrics
+### Saved metrics
 
-Metrics fall into four broad categories based on what financial question they answer:
+Reusable measures owned by the client. A saved metric can depend on system references, inputs, assumptions, or other saved metrics.
 
-<CardGroup cols={2}>
-  <Card title="P&L Metrics" icon="chart-line">
-    Revenue, COGS, Gross Profit, Operating Expenses, EBITDA, Net Income. These pull from your General Ledger income statement accounts and update with each GL sync.
-  </Card>
-  <Card title="Cash Flow Metrics" icon="arrow-right-arrow-left">
-    Cash In, Cash Out, Burn Rate, Net Cash Flow, Cash Runway. These combine GL data with bank account balances for a complete cash picture.
-  </Card>
-  <Card title="Forecast Metrics" icon="crystal-ball">
-    Projected Revenue, Forecasted Burn, Budget vs. Actuals variance. These layer assumptions and formula-based projections on top of historical source data.
-  </Card>
-  <Card title="Headcount Metrics" icon="users">
-    Total Headcount, Headcount by Department, Open Roles, Fully Loaded Cost per Employee. These combine HR data or manually entered values with payroll expense from the GL.
-  </Card>
-</CardGroup>
+### Reusable inputs
 
-## Where Metrics Appear
+Directly entered scalar values saved through the metric system. An input has no formula and can be referenced by several metrics—for example, a target margin or annual contract value.
 
-Once you define a metric, you can use it in multiple places across a client portal without redefining it each time:
+### Forecast assumptions
 
-- **Pages** — add any metric as a widget on a dashboard page: a single number scorecard, a time-series chart, or a row in a financial table.
-- **Agents** — agents read live metric values when they run. A daily burn-rate agent, for example, reads your Burn Rate metric each morning and reports it to Slack.
-- **Slack reports** — when an agent sends a scheduled Slack message, it formats the current values of whichever metrics you configure it to include.
-- **Piggy's answers** — when you ask Piggy a financial question, it uses your defined metrics as the authoritative numbers for that client rather than performing ad-hoc calculations from raw data.
+Planning primitives that belong to a model or scenario. They are distinct from reusable inputs and from durable business Context.
 
-## Creating a Metric
+## Time and grain
 
-Creating a metric involves three steps: connecting a source, defining the metric's calculation, and naming it so Piggy and agents can reference it consistently.
+Every metric should make its time behavior obvious:
 
-<Steps>
-  <Step title="Connect your data source">
-    Navigate to **Connections** in the client portal sidebar and connect at least one General Ledger integration. Bank accounts are optional but recommended for cash-flow metrics.
-  </Step>
-  <Step title="Open the Metrics builder">
-    Navigate to **Metrics** in the client portal sidebar. Click **New Metric** to begin defining a named data point.
-  </Step>
-  <Step title="Choose a source and define the calculation">
-    Select the data source (GL account, bank feed, or manual entry) and define how the raw data maps to the metric value — a direct account total, a formula, or a ratio.
-  </Step>
-  <Step title="Name and save the metric">
-    Give the metric a clear, descriptive name. Piggy and your agents use this name to reference the metric in conversations and automated workflows.
-  </Step>
-</Steps>
+- **Periodized flow** — revenue for March
+- **Point in time** — cash balance as of March 31
+- **Rolling window** — trailing-three-month gross margin
+- **Scenario value** — forecast ending cash for a selected plan
 
-For a complete walkthrough with screenshots, see [Create Your First Metric](/setup/create-metrics).
+The source grain determines what can be grouped or filtered safely. Do not present a monthly statement snapshot as if it were transaction-level evidence.
 
-<Tip>
-Name metrics clearly and consistently — use full words rather than abbreviations whenever possible. Piggy and your agents reference metrics by name in conversations and automated reports. A metric named **Monthly Gross Profit** is easier for Piggy to find and explain correctly than one named **GP_mo** or **metric_3**.
-</Tip>
+## Provenance and missing data
+
+A trustworthy metric exposes enough information to understand its source period, dependencies, and availability. Unavailable is not zero. Ambiguous or missing references should fail closed.
+
+## Shared meaning, local presentation
+
+The metric owns meaning and calculation. A Page block owns display choices such as date window, comparison, chart style, order, or visible dimensions. This lets one metric appear in several views without creating conflicting definitions.
+
+<Note>
+  **Availability:** The underlying reporting primitives, saved metrics, inputs, series, and server-side formula evaluation exist. Metric management is moving into Pages as the final product home.
+</Note>

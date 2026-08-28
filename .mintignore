@@ -5,3 +5,8 @@
 # Draft content
 drafts/
 *.draft.mdx
+
+# Generated research imported during the first Mintlify pass. Never index or
+# publish it as Piggy Banker documentation.
+sources/
+.atlas-analysis.json

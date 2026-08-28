@@ -1,83 +1,59 @@
 ---
-title: 'Agent Triggers: Schedule Recurring Workflows in Piggy'
-sidebarTitle: 'Agent Triggers'
-description: 'Triggers run Piggy on a set schedule — daily, weekly, or monthly — and deliver results to Slack or email automatically, with no manual input needed.'
+title: "Schedules, destinations, approvals, and dispatch"
+sidebarTitle: "Runs & delivery"
+description: "Configure recurring work safely and distinguish generation, human approval, queued dispatch, and provider delivery."
+icon:
+  name: "calendar-clock"
+  library: "lucide"
 ---
 
-Triggers let you schedule any agent workflow to run automatically — daily check-ins, weekly reports, monthly summaries — without manual intervention. Once a Trigger is active, Piggy runs the prompt on its own schedule and delivers the result to Slack or email, whether or not you're logged in.
+# Schedules, destinations, approvals, and dispatch
 
-## What Is a Trigger?
+Recurring work has four distinct concerns: **when to run, where an output may go, who must approve it, and whether the provider actually delivered it**.
 
-A Trigger is a saved scheduled instruction. It has four components:
+## Schedules
 
-- **A name** — so you can recognize and manage it later
-- **A self-contained prompt** — the exact request Piggy will run unattended, with no surrounding conversation for context
-- **A schedule** — daily, weekly, monthly, or a custom cadence, with your timezone
-- **A delivery destination** — a Slack DM, a Slack channel, or an email address
+Current schedules are evaluated in UTC. A scheduled slot is queued with a deterministic identity so retries do not create duplicate runs.
 
-As soon as you create a Trigger, it starts running. The first delivery happens at the next scheduled time.
+Before queueing, Piggy Banker evaluates readiness. A blocked or unevaluated required check prevents the run. Advisory setup warnings can remain visible without being silently converted into required data.
 
-## Creating a Trigger
+## Destinations
 
-<Steps>
-  <Step title="Navigate to Triggers">
-    Go to **Agents → Triggers → New Trigger** in the portal navigation. You can also ask Piggy directly: _"Schedule a weekly finance briefing every Monday at 8am ET."_
-  </Step>
-  <Step title="Give the Trigger a name">
-    Choose a name you'll recognize when reviewing your list of active Triggers — for example, _"Monday Morning Finance Briefing"_ or _"Monthly P&L Summary."_
-  </Step>
-  <Step title="Write a self-contained prompt">
-    Write the prompt as if you were asking Piggy from scratch, with no prior conversation. Name the specific page or metrics to read, state the time range explicitly, describe the format you want, and specify where the result should go. A prompt that depends on context from a previous conversation will not work as a Trigger.
-  </Step>
-  <Step title="Set the schedule">
-    Choose a cadence: daily, weekly, monthly, or a custom schedule using specific days and times. Always specify your timezone so Piggy fires the Trigger at the right local time. Note that Triggers use fixed UTC times — if your region observes daylight saving time, a Trigger set for a specific local time may shift by one hour when clocks change.
-  </Step>
-  <Step title="Choose the delivery destination">
-    Select where Piggy should send the result: a Slack DM, a specific Slack channel, or your verified email address. Piggy will confirm the destination before creating the Trigger.
-  </Step>
-  <Step title="Activate the Trigger">
-    Save the Trigger — it starts immediately. The first run will happen at the next scheduled time.
-  </Step>
-</Steps>
+Destinations are server-bound from workspace defaults or deployment overrides. Generated text cannot redirect a report to an arbitrary channel.
 
-## Writing Self-Contained Trigger Prompts
+A deployment should make the intended channel, workspace, and output format obvious before activation.
 
-Because Triggers run unattended, your prompt must include all the context Piggy needs to complete the task. It has no memory of previous conversations and no way to ask you a clarifying question mid-run.
+## Manual test first
 
-A strong Trigger prompt always includes:
+A manual test is a dry run:
 
-- **The specific page or metrics to read** — name them exactly as they appear in the portal
-- **The time range** — use explicit language like _"last 7 days"_, _"prior closed month"_, or _"current quarter to date"_
-- **The output format** — bullet list, table, narrative summary, or a combination
-- **The delivery destination** — name the Slack channel or confirm email delivery in the prompt itself
+- it reads current permitted evidence,
+- produces an in-app artifact,
+- creates no tasks,
+- creates no external delivery,
+- creates no approval request, and
+- lets an operator inspect output and provenance.
 
-Here is an example of a complete, self-contained Trigger prompt:
+Use the queued live path only after the dry-run artifact is acceptable.
+
+## External action lifecycle
 
 ```text
-Every Monday at 8am ET:
-Read the 'Weekly Dashboard' page.
-Report: Net Revenue (last 7 days vs. prior 7 days), Gross Margin %, Cash on Hand.
-Flag any metric that changed by more than 10%.
-Send the summary to Slack #finance-team.
+proposal → human decision → queued dispatch → provider result
 ```
 
-Compare that to a weak prompt — _"Send the usual Monday update"_ — which gives Piggy no specific metrics, time range, or destination to work with.
+- The proposal contains the exact normalized payload and destination.
+- A different eligible person reviews it; the proposer cannot approve their own external action.
+- Approval queues dispatch. It does not mean delivery already happened.
+- The worker sends the approved payload through the configured provider connection.
+- Delivery identifiers, failures, and retry history remain visible.
 
-## Managing Triggers
+If the payload changes or expires, Piggy Banker requires a new approval. Retrying a failed delivery does not silently mutate what was approved.
 
-View all your active Triggers at **Agents → Triggers**. From there you can:
+## Current Slack posture
 
-- **Pause** a Trigger without deleting it — useful during holidays or when a client is temporarily inactive
-- **Resume** a paused Trigger when you're ready to restart the schedule
-- **Edit** a Trigger's name, prompt, schedule, or delivery destination
-- **Delete** a Trigger you no longer need
-
-You can only see and manage Triggers you created — not Triggers created by other members of your workspace.
+Scheduled report generation with human-approved Slack delivery is supported by the current control model. Fully unattended production Slack posting is not currently enabled as a public workflow.
 
 <Warning>
-  Triggers cannot complete tasks that require your approval — such as merging data sources, modifying scenarios, or making billing changes. Design Trigger prompts exclusively around read and report actions: reading metrics, summarizing variances, and delivering results. If a Trigger prompt requires an approval step, the run will stall and nothing will be delivered.
+  Do not treat an enabled schedule as permission to send. Schedule eligibility, action approval, and dispatch state remain independent.
 </Warning>
-
-<Tip>
-  Pause Triggers during holiday periods or when a client portal is temporarily inactive. A Trigger that fires against a portal with stale or missing data will deliver a misleading report. Resuming a paused Trigger is instant — you won't lose any historical delivery records.
-</Tip>

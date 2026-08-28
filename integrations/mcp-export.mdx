@@ -1,110 +1,51 @@
 ---
-title: 'Use Piggy Banker Data with External AI Agents (MCP)'
-sidebarTitle: 'MCP Export'
-description: 'Connect external AI agents like Claude or GPT to your live Piggy Banker financial models using MCP (Model Context Protocol) and WebMCP.'
+title: "External agent access with MCP and WebMCP"
+sidebarTitle: "External agent access"
+description: "Understand the permissioned read-only external-agent direction and its current non-public availability."
+icon:
+  name: "waypoints"
+  library: "lucide"
 ---
 
-Piggy Banker can export your financial data in MCP (Model Context Protocol) and WebMCP formats, letting external AI agents like Claude or GPT read and interact with your live financial models. Instead of copying numbers into another tool, you point your AI agent at Piggy Banker and it queries your data directly — always getting the latest figures from the source.
+# External agent access with MCP and WebMCP
 
-## What Is MCP?
-
-MCP (Model Context Protocol) is an open standard that lets AI tools connect to external data sources in a structured, authorized way. Think of it as a secure API that AI agents know how to speak natively.
-
-When you enable MCP export, Piggy Banker acts as an MCP server. Any MCP-compatible AI client — Claude Code, a custom agent, or an AI-powered tool your team uses — can connect to your Piggy Banker workspace and query your financial data directly.
-
-You stay in control: access requires authentication, and connections are read-only by default.
-
-<Note>
-  Each MCP session is scoped to a single client portal. External agents must specify which client they want to query. If your account has access to multiple workspaces, the agent must pass the correct workspace ID on each call.
-</Note>
-
-## Who This Is For
-
-MCP export is built for developers and power users who want to bring Piggy Banker data into an external AI environment — without manual exports or copy-pasting.
-
-Use MCP export if you want to:
-
-- Query your financial metrics inside **Claude Code** from your terminal
-- Build a **custom AI agent** that reads live burn rate, runway, or revenue figures from Piggy Banker
-- Connect Piggy Banker data to an **AI-powered internal tool** your team already uses
-- Automate financial analysis workflows that combine Piggy Banker data with other sources
-
-If you just want to ask questions about your financials inside Piggy Banker, use Piggy's built-in chat — you don't need MCP for that.
-
-## Connecting with Claude Code
-
-<Steps>
-  <Step title="Find your MCP endpoint URL">
-    Open your Piggy Banker settings and navigate to **Integrations → MCP**. Copy your MCP endpoint URL — it's unique to your workspace.
-  </Step>
-  <Step title="Add the MCP server in your terminal">
-    Run the following command, replacing `<YOUR_MCP_URL>` with the endpoint URL you copied:
-
-    ```bash
-    claude mcp add --transport http piggybanker <YOUR_MCP_URL>
-    ```
-  </Step>
-  <Step title="Start Claude">
-    Launch Claude Code from your terminal:
-
-    ```bash
-    claude
-    ```
-  </Step>
-  <Step title="Open the MCP menu">
-    Type `/mcp` inside Claude and look for `piggybanker` in the list of connected servers.
-  </Step>
-  <Step title="Authenticate">
-    Select `piggybanker` and choose **Authenticate**. A browser window opens — make sure you're logged into your Piggy Banker account before approving the connection.
-  </Step>
-  <Step title="Verify the connection">
-    Once authenticated, type a test query such as *"What is the current cash runway for Acme Corp?"* to confirm the connection is working and returning live data.
-  </Step>
-</Steps>
+Piggy Banker's long-term direction includes permissioned ways for external agents to read the same governed client data used inside the product.
 
 <Warning>
-  MCP access is read-only by default. Granting write access allows external agents to update metrics and pages directly inside your Piggy Banker workspace. Only enable write access for agents and workflows you fully trust, and review any changes in your workspace after an external agent session.
+  **Internal proof only:** There is no public, self-service, or named private-preview MCP/WebMCP product today. Do not paste an endpoint into Claude, ChatGPT, or another client based on an old or generated guide.
 </Warning>
 
-## Connecting with Other MCP Clients
+## Intended access model
 
-Any MCP-compatible client can connect to Piggy Banker — you're not limited to Claude Code. The setup process is the same in principle:
+External access must preserve the same rules as the product:
 
-1. Retrieve your MCP endpoint URL from **Integrations → MCP** in your Piggy Banker settings.
-2. Add the endpoint as a remote MCP server in your client's configuration.
-3. Authenticate using your Piggy Banker account when prompted.
+- explicit company grants,
+- client-scoped roles and scopes,
+- opaque external references,
+- deny-by-default authorization,
+- audit history, and
+- bounded data returned through approved tools.
 
-If your client supports custom server names, name it `piggybanker` to keep things consistent. If you run into issues, ask Piggy to walk you through the connection setup for your specific client.
+## Current internal seam
 
-## What External Agents Can Access
+The implemented-dark external seam is read-only. It is designed around company discovery, finance reads, Context-package reads, artifact listing, and workflow status.
 
-Once connected, an external agent can query the following from your Piggy Banker workspace:
+It does **not** expose:
 
-- **Live metrics** — current values for any metric in your financial model (revenue, burn rate, cash runway, headcount, and more)
-- **Context facts** — key facts and assumptions your model is built on
-- **Page data** — the content of individual pages in your client portal
-- **Metric history** — historical values across accounting periods
+- write tools,
+- journal-entry or ledger mutation,
+- agent execution,
+- approval decisions,
+- external dispatch,
+- webhooks, or
+- subscriptions.
 
-All access is **read-only by default**. An external agent cannot modify your model, update a metric, or change a page unless you explicitly grant write access in your Piggy Banker settings.
+WebMCP export remains a product direction rather than a shipped public interface.
 
-### Example: Querying metrics via MCP
+## Why the boundary matters
 
-```json
-{
-  "tool": "get_metrics",
-  "params": {
-    "client_id": "acme-corp",
-    "metric_names": ["Monthly Revenue", "Burn Rate", "Cash Runway"]
-  }
-}
-```
+A convenient agent connection cannot be allowed to bypass client isolation, source lineage, approvals, or destination policy. Public access will require productized authentication, grant management, audit, support, and revocation—not just an endpoint.
 
-The agent returns current values for each metric directly from your live Piggy Banker model — no export step required.
+## What to use now
 
-## WebMCP for Web-Based Agents
-
-**WebMCP** is a browser-based variant of MCP that exposes the same Piggy Banker data to web-hosted AI tools — no terminal setup required.
-
-Use WebMCP when you want to connect Piggy Banker to a web AI tool that doesn't support CLI-based MCP configuration. The data available is identical to the standard MCP endpoint: live metrics, context, page data, and metric history.
-
-To enable WebMCP, go to **Integrations → MCP** in your Piggy Banker settings and follow the WebMCP setup instructions for your specific web-based client.
+Use Lil Piggy and Agents inside Piggy Banker for grounded client work. There is no supported external-agent setup to follow today.
