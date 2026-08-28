@@ -23,18 +23,20 @@ Depending on the connected ledger, dimensions can include:
 - vendor,
 - employee,
 - item or product, and
-- entity.
+- tracking category.
 
 Examples:
 
 - Revenue **by customer**
 - Operating expense **by department**
 - Gross profit **by product**
-- Cash collections **by entity**
+- Cash collections **by customer**
 
 ## Dimensions come from source data
 
-Current dimension discovery reads the selected ready ledger source over a bounded period. The labels retain client and source scope. A second connection does not silently extend or combine the selected source's dimension set.
+Current dimension discovery reads the selected ready ledger source over a bounded period. The default and maximum time window is 366 days, and discovery examines at most 10,000 ledger lines. Partial or truncated status means the discovered values and occurrence counts are not exhaustive history.
+
+The labels retain client and source scope. A second connection does not silently extend or combine the selected source's dimension set. Entity is linked-account or model scope today, not a discovered canonical dimension.
 
 <Note>
   **Current boundary:** Dimensions are discovered source attributes, not first-class custom records. A final Pages experience can use them for grouping and filtering, but current metric-management UI may not expose every dimension operation described by the target model.

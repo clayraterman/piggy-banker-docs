@@ -26,7 +26,7 @@ This is Piggy Banker's flagship end-to-end workflow: generate a repeatable CFO r
     Authorize the client's Slack connection and choose a client default channel or an agent-specific destination override.
   </Step>
   <Step title="Validate the destination">
-    Send a real validation message. A mock delivery is not proof that production Slack credentials and channel access work.
+    Send a real validation message. When Slack posting is approval-gated, validation first creates a proposal that an eligible reviewer must approve before dispatch. A mock delivery is not proof that production credentials and channel access work.
   </Step>
   <Step title="Deploy the reporting workflow">
     Start with the Weekly CFO Brief template or another approved cadence template. Select the immutable revision for this client.

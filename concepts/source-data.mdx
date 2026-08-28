@@ -39,9 +39,13 @@ A provider does not automatically support every domain. A bank feed, for example
 
 ## Domain ownership
 
-Piggy Banker chooses exactly one **ready** source to answer each finance domain. Alternate sources remain independent for reconciliation and fallback. They are not summed into the selected source.
+The source catalog designates exactly one **ready** owner for each finance domain. That is the ownership policy for the final downstream pipeline: alternate sources remain independent for reconciliation and fallback rather than being summed into the selected source.
 
-This matters for multi-entity and multi-connection clients: authorization alone must never cause duplicate revenue, cash, or transaction totals.
+<Warning>
+  **Rollout boundary:** Some compatibility metric readers still consume client-level statement or AR/AP records without filtering to the catalog's selected owner. Reconcile clients with overlapping sources before relying on those downstream totals.
+</Warning>
+
+This matters for multi-entity and multi-connection clients: authorization alone must not be treated as permission to combine revenue, cash, or transaction totals.
 
 ## Readiness states
 

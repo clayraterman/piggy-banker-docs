@@ -13,7 +13,7 @@ Piggy Banker has two operating levels: a **firm workspace** for managing a portf
 
 ## Firm workspace
 
-After login, a CFO team lands in its multi-tenant workspace. This level is designed to contain:
+After login, a CFO team lands in its multi-tenant workspace. The target firm workspace is designed to contain:
 
 - a portfolio overview,
 - firm-wide agent activity,
@@ -21,7 +21,7 @@ After login, a CFO team lands in its multi-tenant workspace. This level is desig
 - billing and team administration, and
 - the list of client workspaces.
 
-Templates and Playbooks live here because they are reusable firm knowledge. They are not a sixth client destination.
+The unified firm-owned Templates / Playbooks library will live here because it is reusable firm knowledge. Versioned agent templates exist today; the combined Page-template and operating-Playbook experience is coming soon. It is not a sixth client destination.
 
 ## Client workspace
 
@@ -46,6 +46,8 @@ Lil Piggy is a client-scoped side companion, not a destination. Its notepad, cha
 ## Client portal
 
 The authenticated client portal is a separate, limited shell for client collaborators. It is not the internal workspace with navigation hidden by CSS. Access must remain scoped to the client and capabilities granted to that person.
+
+An agent's in-app report artifact remains operator-side. Making a report visible in the portal creates a separate published report. Approving or delivering a Slack message does not publish the artifact to the portal.
 
 ## A simple mental model
 

@@ -35,7 +35,7 @@ Piggy Banker is designed to work with QuickBooks Online, Puzzle, and Xero accoun
     Wait for normalization to complete. “Connected” without usable ledger records is not ready.
   </Step>
   <Step title="Verify the source">
-    Review domain status, freshness, record counts, reporting periods, currency, and discovered dimensions.
+    Review the available domain and dataset status, freshness dates, record counts, and discovered dimensions. These diagnostics are API-backed during rollout and are not yet exposed as one complete source-data UI.
   </Step>
 </Steps>
 
@@ -49,6 +49,10 @@ Piggy Banker is designed to work with QuickBooks Online, Puzzle, and Xero accoun
 - unavailable provider data is shown as unavailable, not zero.
 
 Some providers restrict specific datasets. For example, access to detailed journal data can depend on provider entitlements. Build only on domains that report ready.
+
+<Note>
+  The canonical source-data catalog can report readiness, counts, bounded date coverage, and discovered dimensions. A complete operator-facing diagnostics experience is coming with the Source data workflow.
+</Note>
 
 ## Multiple ledgers
 

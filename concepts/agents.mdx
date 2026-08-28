@@ -43,11 +43,13 @@ A run records the exact revision and resolved configuration used for that execut
 
 This makes the answer to “why did the agent do that?” inspectable.
 
+An in-app report artifact remains operator-side. Publishing a report to the client portal is a separate action that creates a published report; Slack approval or delivery does not publish it.
+
 ## Run modes
 
 | Mode | Behavior |
 | --- | --- |
-| **Manual test** | Produces an in-app, reviewable artifact; does not create external delivery or approval work |
+| **Manual test** | Produces an in-app, reviewable artifact; creates no tasks, approvals, or external deliveries |
 | **Manual live run** | Uses the queued production path and configured action controls |
 | **Scheduled run** | Enters the queue at an eligible schedule slot after readiness checks |
 

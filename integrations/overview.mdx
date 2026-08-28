@@ -13,7 +13,7 @@ Connections authorize providers. Source-data readiness determines whether their 
 
 ## Provider roles
 
-| Provider type | Intended role | Does it replace the ledger? |
+| Provider type | Intended role | Can serve as the required ledger source? |
 | --- | --- | --- |
 | QuickBooks Online | Accounting and general-ledger source | Yes, when its required ledger domain is ready |
 | Puzzle | Accounting and general-ledger source | Yes, when its required ledger domain is ready |
@@ -28,7 +28,7 @@ A provider may be authorized while one of its datasets is partial, stale, failed
 
 ## Source selection
 
-Piggy Banker selects exactly one ready owner per finance domain. This prevents two connected ledgers or a ledger plus fallback bridge from doubling the same financial activity.
+The source catalog selects exactly one ready owner per finance domain. This is the ownership policy that prevents two connected ledgers or a ledger plus fallback bridge from doubling the same financial activity.
 
 Alternates remain useful for:
 
@@ -39,6 +39,10 @@ Alternates remain useful for:
 - entity-specific models.
 
 They are not silently aggregated.
+
+<Warning>
+  Some compatibility metric readers do not yet enforce selected-owner filtering end to end. Reconcile overlapping sources before relying on their downstream totals.
+</Warning>
 
 ## Typical accounting domains
 

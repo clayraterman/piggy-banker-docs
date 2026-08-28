@@ -12,18 +12,18 @@ icon:
 Create a metric when a financial measure should have one durable definition and be reused across models, Pages, agents, or Lil Piggy.
 
 <Note>
-  **UI transition:** Metric storage and evaluation exist today. The final management experience belongs inside Pages; current workspaces may expose the same primitives through compatibility reporting surfaces while Pages rolls out.
+  **UI transition:** Metric storage and evaluation exist today. Current Metric Studio supports saved metrics, reusable inputs, and a bounded system-reference set. It does not yet resolve arbitrary canonical accounts, ledger lines, live bank balances, or a dimension picker. The broader source and dimension workflow below is the target Pages model.
 </Note>
 
 <Steps>
   <Step title="Start with the decision">
     Write the question the metric should answer and who will use it. “Can we hire?” is more useful framing than “make a payroll chart.”
   </Step>
-  <Step title="Choose the source and grain">
-    Select a ready system reference, saved metric, reusable input, forecast assumption, or recorded value. Confirm the source period and whether the value is a flow, point-in-time balance, or scenario value.
+  <Step title="Choose a supported reference">
+    In the current product, select a supported system reference, saved metric, reusable input, forecast assumption, forecast-plan line, or recorded value. Confirm the source period and whether the value is a flow, point-in-time balance, or scenario value.
   </Step>
-  <Step title="Define dimensions and filters">
-    Use only dimensions present at the source grain. State entity, department, class, customer, or other filters explicitly when the metric is not company-wide.
+  <Step title="Document the intended scope">
+    Record the linked-account or entity scope and any department, class, customer, or other intended filters. Use only dimensions present at the source grain. Attaching discovered dimensions through Metric Studio is not available yet.
   </Step>
   <Step title="Name and describe the measure">
     Use a stable name, key, unit, and plain-language definition. Include exclusions or special accounting treatment in the description.
