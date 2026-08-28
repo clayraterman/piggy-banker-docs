@@ -99,9 +99,7 @@
             "pages": [
               "guides/cashflow-model",
               "guides/budget-vs-actuals",
-              "guides/headcount-planning",
-              "integrations/overview",
-              "integrations/mcp-export"
+              "guides/headcount-planning"
             ]
           }
         ]
@@ -116,13 +114,15 @@
               "library": "lucide"
             },
             "pages": [
-              "reference/workspace-settings"
+              "reference/workspace-settings",
+              "reference/billing"
             ]
           },
           {
             "group": "Connections & reference",
             "pages": [
-              "reference/billing",
+              "integrations/overview",
+              "integrations/mcp-export",
               "reference/glossary"
             ],
             "icon": {
