@@ -3,10 +3,10 @@
   "name": "Piggy Banker",
   "theme": "almond",
   "logo": {
-    "light": "https://media.brand.dev/4a303fc0-19a1-4358-b1b3-aa68cac74466.svg",
-    "dark": "https://media.brand.dev/6e60fb45-47d5-4b1d-9b38-f03a566c743e.svg"
+    "light": "/logo/piggy-banker.png",
+    "dark": "/logo/piggy-banker.png"
   },
-  "favicon": "https://media.brand.dev/75115206-2e51-4492-9f10-6378d3af202c.png",
+  "favicon": "/favicon.png",
   "colors": {
     "primary": "#717171",
     "light": "#040404",
@@ -24,7 +24,7 @@
     "primary": {
       "type": "button",
       "label": "Sign In",
-      "href": "https://app.piggybanker.ai"
+      "href": "https://app.piggybanker.io"
     }
   },
   "navigation": {
