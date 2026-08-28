@@ -3,11 +3,10 @@
   "name": "Piggy Banker",
   "theme": "almond",
   "logo": {
-    "light": "/logo/piggy-banker.webp",
-    "dark": "/logo/piggy-banker.webp",
-    "href": "https://finance.piggybanker.io"
+    "light": "/logo/piggy-banker.png",
+    "dark": "/logo/piggy-banker.png"
   },
-  "favicon": "/favicon.ico",
+  "favicon": "/favicon.png",
   "colors": {
     "primary": "#0A5C40",
     "light": "#0E8A5F",
@@ -24,8 +23,8 @@
   "navbar": {
     "primary": {
       "type": "button",
-      "label": "Open Piggy Banker",
-      "href": "https://finance.piggybanker.io"
+      "label": "Sign In",
+      "href": "https://app.piggybanker.io"
     }
   },
   "navigation": {
