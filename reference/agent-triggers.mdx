@@ -1,7 +1,7 @@
 ---
-title: 'Agent Triggers: Schedule Recurring Workflows'
+title: 'Agent Triggers: Schedule Recurring Workflows in Piggy'
 sidebarTitle: 'Agent Triggers'
-description: 'Triggers run Piggy workflows on a set schedule — daily, weekly, or monthly — and deliver results to Slack or email automatically, no manual input needed.'
+description: 'Triggers run Piggy on a set schedule — daily, weekly, or monthly — and deliver results to Slack or email automatically, with no manual input needed.'
 ---
 
 Triggers let you schedule any agent workflow to run automatically — daily check-ins, weekly reports, monthly summaries — without manual intervention. Once a Trigger is active, Piggy runs the prompt on its own schedule and delivers the result to Slack or email, whether or not you're logged in.
@@ -30,7 +30,7 @@ As soon as you create a Trigger, it starts running. The first delivery happens a
     Write the prompt as if you were asking Piggy from scratch, with no prior conversation. Name the specific page or metrics to read, state the time range explicitly, describe the format you want, and specify where the result should go. A prompt that depends on context from a previous conversation will not work as a Trigger.
   </Step>
   <Step title="Set the schedule">
-    Choose a cadence: daily, weekly, monthly, or a custom schedule using specific days and times. Always specify your timezone so Piggy fires the Trigger at the right local time. Note that Triggers use fixed UTC times internally — if your region observes daylight saving time, a Trigger set for a specific local time may shift by one hour when clocks change.
+    Choose a cadence: daily, weekly, monthly, or a custom schedule using specific days and times. Always specify your timezone so Piggy fires the Trigger at the right local time. Note that Triggers use fixed UTC times — if your region observes daylight saving time, a Trigger set for a specific local time may shift by one hour when clocks change.
   </Step>
   <Step title="Choose the delivery destination">
     Select where Piggy should send the result: a Slack DM, a specific Slack channel, or your verified email address. Piggy will confirm the destination before creating the Trigger.
