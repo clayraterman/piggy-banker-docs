@@ -31,49 +31,75 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Documentation",
+        "tab": "Guides",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Start here",
             "pages": [
               "introduction",
               "quickstart",
               "portal-overview"
-            ]
+            ],
+            "icon": {
+              "name": "rocket",
+              "library": "lucide"
+            }
           },
           {
-            "group": "Core Concepts",
+            "group": "Set up a client",
             "pages": [
               "concepts/client-portal",
-              "concepts/metrics",
-              "concepts/pages-and-dashboards",
-              "concepts/agents",
               "concepts/context",
+              "concepts/source-data",
+              "setup/connect-general-ledger",
+              "setup/connect-bank-accounts",
+              "setup/invite-team"
+            ],
+            "icon": {
+              "name": "building-2",
+              "library": "lucide"
+            }
+          },
+          {
+            "group": "Metrics & Pages",
+            "icon": {
+              "name": "chart-no-axes-combined",
+              "library": "lucide"
+            },
+            "pages": [
+              "concepts/metrics",
+              "concepts/dimensions",
+              "concepts/formulas-inputs-assumptions",
+              "setup/create-metrics",
+              "concepts/pages-and-dashboards",
+              "guides/build-a-financial-dashboard",
               "concepts/playbooks"
             ]
           },
           {
-            "group": "Setup & Connections",
+            "group": "Piggy & automation",
+            "icon": {
+              "name": "sparkles",
+              "library": "lucide"
+            },
             "pages": [
-              "setup/connect-general-ledger",
-              "setup/connect-bank-accounts",
-              "setup/create-metrics",
-              "setup/invite-team"
+              "reference/piggy-ai",
+              "concepts/agents",
+              "reference/agent-skills",
+              "reference/agent-triggers",
+              "guides/automated-slack-reports"
             ]
           },
           {
-            "group": "Guides",
+            "group": "Finance workflows",
+            "icon": {
+              "name": "workflow",
+              "library": "lucide"
+            },
             "pages": [
-              "guides/build-a-financial-dashboard",
-              "guides/automated-slack-reports",
               "guides/cashflow-model",
               "guides/budget-vs-actuals",
-              "guides/headcount-planning"
-            ]
-          },
-          {
-            "group": "Integrations & MCP",
-            "pages": [
+              "guides/headcount-planning",
               "integrations/overview",
               "integrations/mcp-export"
             ]
@@ -84,20 +110,25 @@
         "tab": "Reference",
         "groups": [
           {
-            "group": "Piggy AI",
+            "group": "Workspace administration",
+            "icon": {
+              "name": "users",
+              "library": "lucide"
+            },
             "pages": [
-              "reference/piggy-ai",
-              "reference/agent-skills",
-              "reference/agent-triggers"
+              "reference/workspace-settings"
             ]
           },
           {
-            "group": "Settings & Billing",
+            "group": "Connections & reference",
             "pages": [
               "reference/billing",
-              "reference/workspace-settings",
               "reference/glossary"
-            ]
+            ],
+            "icon": {
+              "name": "book-open",
+              "library": "lucide"
+            }
           }
         ]
       }
