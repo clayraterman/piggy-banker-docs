@@ -1,7 +1,7 @@
 ---
 title: "Connect the client's general ledger"
 sidebarTitle: "General ledger"
-description: "Authorize and sync the accounting source required to build financial models, then verify ledger readiness."
+description: "Authorize the intended accounting company, inspect the synced source data, and verify accounting actuals."
 icon:
   name: "landmark"
   library: "lucide"
@@ -9,11 +9,11 @@ icon:
 
 # Connect the client's general ledger
 
-A usable general ledger is required for Piggy Banker's core finance workflow. It supplies the accounting structure and historical activity needed for statements, metrics, models, and grounded analysis.
+A usable general ledger supplies the actuals for accounting-based workflows. You can explore Pages with labeled manual inputs before connecting books. It supplies the accounting structure and historical activity needed for statements, metrics, models, and grounded analysis.
 
-## Supported provider direction
+## Choose an accounting provider
 
-Piggy Banker is designed to work with QuickBooks Online, Puzzle, and Xero accounting tenants. Provider availability can vary during rollout; the **Connections** page in your workspace is the authority for what can be connected now.
+QuickBooks Online, Puzzle, and Xero are accounting-provider options. Use the **Connections** catalog in your workspace to confirm the providers and authorization flows available to your account.
 
 <Note>
   A successful authorization is only the first checkpoint. The ledger domain must finish syncing and report **ready** before downstream models should rely on it.
@@ -35,7 +35,7 @@ Piggy Banker is designed to work with QuickBooks Online, Puzzle, and Xero accoun
     Wait for normalization to complete. “Connected” without usable ledger records is not ready.
   </Step>
   <Step title="Verify the source">
-    Review the available domain and dataset status, freshness dates, record counts, and discovered dimensions. These diagnostics are API-backed during rollout and are not yet exposed as one complete source-data UI.
+    Open **Source data** from Connections, or **Pages** → **Metrics** → **Source data**. Inspect the expected dataset, dates, and sample values. Return to the connection details for sync status and errors.
   </Step>
 </Steps>
 
@@ -51,7 +51,7 @@ Piggy Banker is designed to work with QuickBooks Online, Puzzle, and Xero accoun
 Some providers restrict specific datasets. For example, access to detailed journal data can depend on provider entitlements. Build only on domains that report ready.
 
 <Note>
-  The canonical source-data catalog can report readiness, counts, bounded date coverage, and discovered dimensions. A complete operator-facing diagnostics experience is coming with the Source data workflow.
+  Use [Verify your first workflow](/guides/verify-your-first-workflow) to compare five values, repeat sync, and confirm the same results in Metrics and a Page.
 </Note>
 
 ## Multiple ledgers

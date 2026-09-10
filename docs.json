@@ -23,8 +23,8 @@
   "navbar": {
     "primary": {
       "type": "button",
-      "label": "Sign In",
-      "href": "https://app.piggybanker.io"
+      "label": "Sign in",
+      "href": "https://finance.piggybanker.io"
     }
   },
   "navigation": {
@@ -37,7 +37,8 @@
             "pages": [
               "introduction",
               "quickstart",
-              "portal-overview"
+              "portal-overview",
+              "guides/verify-your-first-workflow"
             ],
             "icon": {
               "name": "rocket",
@@ -114,7 +115,9 @@
             },
             "pages": [
               "reference/workspace-settings",
-              "reference/billing"
+              "reference/billing",
+              "reference/sharing-and-access",
+              "reference/troubleshooting"
             ]
           },
           {
@@ -133,5 +136,17 @@
       }
     ]
   },
-  "description": "Living, auto-updating financial models and workflows for CFO teams and the clients they serve."
+  "description": "Connect your books, verify saved Metrics, build Pages, and run reviewed finance workflows for your company or CFO firm.",
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude"
+    ],
+    "display": "header"
+  },
+  "icons": {
+    "library": "lucide"
+  }
 }

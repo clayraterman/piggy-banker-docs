@@ -7,51 +7,38 @@ icon:
   library: "lucide"
 ---
 
-# How Piggy Banker is organized
+Piggy Banker separates account administration from the finance work for one business.
 
-Piggy Banker has two operating levels: a **firm workspace** for managing a portfolio and an isolated **client workspace** for doing finance work for one business.
+## Company and CFO Firm accounts
 
-## Firm workspace
+A **Company** account opens its own company workspace directly. A **CFO Firm** starts in Mission Control and manages multiple client workspaces. Account type is chosen at signup; it is not inferred from the number of clients.
 
-After login, a CFO team lands in its multi-tenant workspace. The target firm workspace is designed to contain:
+For a CFO Firm, Mission Control brings together client work and activity. Enter a client for its finance data, and use the return-to-Mission-Control navigation to return to the portfolio. Account settings contain the administration available to your role, including team, client, and billing controls.
 
-- a portfolio overview,
-- firm-wide agent activity,
-- the Templates / Playbooks library,
-- billing and team administration, and
-- the list of client workspaces.
+## The five workspace destinations
 
-The unified firm-owned Templates / Playbooks library will live here because it is reusable firm knowledge. Versioned agent templates exist today; the combined Page-template and operating-Playbook experience is coming soon. It is not a sixth client destination.
-
-## Client workspace
-
-When you enter a client, the target navigation is exactly:
-
-| Destination | Purpose |
+| Destination | What you do there |
 | --- | --- |
-| **Overview** | Tasks, alerts, and recent agent activity |
-| **Context** | Durable Company, Money, and Strategy facts |
-| **Pages** | Free-form finance models, dashboards, and metric management |
-| **Agents** | Client deployments, schedules, skills, runs, and activity |
-| **Connections** | Live provider connections and read-only source-data status |
+| **Overview** | Review tasks, alerts, recent activity, and first-use setup guidance |
+| **Context** | Maintain Company, Money, and Strategy facts |
+| **Pages** | Compose finance views and open Metrics management |
+| **Agents** | Configure agents and Skills, review runs, and manage schedules |
+| **Connections** | Authorize providers, inspect sync status, and open Source data |
 
-<Note>
-  **Pages rollout:** Pages is the decided home for composed finance views and metric management. During rollout, some workspaces may still expose older reporting, forecasting, planning, or dashboard surfaces. Those are compatibility internals, not additional destinations in the final app.
-</Note>
+Metrics is a window inside Pages. It includes **Metrics**, **Source data**, and **Dimensions**. Older reporting, forecasting, and planning URLs redirect into Pages rather than adding more destinations.
 
-## Lil Piggy is always nearby
+## Reusable account resources
 
-Lil Piggy is a client-scoped side companion, not a destination. Its notepad, chat, calculations, and artifacts follow the current client and signed-in member. It can help investigate or prepare work without becoming a second source of truth.
+**Templates & playbooks** opens the account's reusable Page library. A CFO Firm can browse it before creating its first client; applying content happens inside a client workspace. Agent templates are a separate workflow blueprint with published revisions and client deployments.
 
-## Client portal
+See [Templates and Playbooks](/concepts/playbooks) for the boundaries between reusable structure and private client data.
 
-The authenticated client portal is a separate, limited shell for client collaborators. It is not the internal workspace with navigation hidden by CSS. Access must remain scoped to the client and capabilities granted to that person.
+## Lil Piggy
 
-An agent's in-app report artifact remains operator-side. Making a report visible in the portal creates a separate published report. Approving or delivering a Slack message does not publish the artifact to the portal.
+Lil Piggy is a side companion within the current client workspace. Its notepad, chat, and artifacts follow that scope. It can help prepare work, but an instruction in chat does not grant access to another client or approve external delivery.
 
-## A simple mental model
+## The client portal is separate
 
-- The **firm** owns the customer relationship, shared operating knowledge, and billing.
-- The **client workspace** owns that business's Context, source data, metrics, Pages, and agent runs.
-- The **portal** exposes approved client experiences through a separate shell.
-- **Lil Piggy** helps inside the current scope but does not broaden it.
+The authenticated client portal gives permitted collaborators a separate, limited experience. It is distinct from both the internal workspace and a secret Page publication.
+
+An operator's agent artifact does not automatically become a portal report. Approving a Slack message, publishing a Page link, and making a report available in the portal are separate actions. See [Sharing and access](/reference/sharing-and-access).

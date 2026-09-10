@@ -23,6 +23,10 @@ Provider connection
 
 Piggy Banker normalizes provider records into shared finance domains while retaining bounded lineage: provider, linked account, source object, sync, and relevant dates.
 
+## Open Source data
+
+From **Connections**, open **Source data**. You can also reach it through **Pages** → **Metrics** → **Source data**, even before creating a Page. Provider datasets remain read-only. Saved imports and owned inputs are separate from provider records; editing an import does not edit the connected books.
+
 ## Finance domains
 
 Depending on the provider, source data can include:
@@ -42,7 +46,7 @@ A provider does not automatically support every domain. A bank feed, for example
 The source catalog designates exactly one **ready** owner for each finance domain. That is the ownership policy for the final downstream pipeline: alternate sources remain independent for reconciliation and fallback rather than being summed into the selected source.
 
 <Warning>
-  **Rollout boundary:** Some compatibility metric readers still consume client-level statement or AR/AP records without filtering to the catalog's selected owner. Reconcile clients with overlapping sources before relying on those downstream totals.
+  When accounting connections cover overlapping activity, verify the selected source and reconcile a sample period before relying on a combined view. Do not assume that connecting another entity creates a consolidated model.
 </Warning>
 
 This matters for multi-entity and multi-connection clients: authorization alone must not be treated as permission to combine revenue, cash, or transaction totals.

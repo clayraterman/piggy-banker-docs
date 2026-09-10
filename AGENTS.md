@@ -19,7 +19,8 @@ Use current product direction first, then the canonical application repository a
 ## Accuracy boundaries
 
 - Label material availability as available now, coming soon, implemented-dark, or planned.
-- Do not present Pages, unified Page Templates / Playbooks, solo billing, or public MCP/WebMCP as shipped until verified.
+- Pages, account-owned Templates / Playbooks, and explicit Company/CFO Firm signup are implemented in the application. Verify material UI changes against current app code before documenting them.
+- Do not invent pricing or self-service external financial MCP. Remote financial access stays implemented-dark; experimental WebMCP browser navigation is a separate, limited capability.
 - Do not describe accounting data as real-time without a provider timestamp.
 - Do not turn unavailable data into zero.
 - Do not imply agents can mutate connected ledgers or bypass approvals.

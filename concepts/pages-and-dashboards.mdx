@@ -7,52 +7,44 @@ icon:
   library: "lucide"
 ---
 
-# Pages: compose living finance views
+A Page combines saved Metrics and written context into a finance view you can revisit, share, and use with agents. Pages is available in each company or managed-client workspace.
 
-Pages are the free-form, Notion-style home for financial models, dashboards, and metric management. A Page composes shared finance primitives into a view for a specific decision or audience.
+## Create and edit
 
-<Note>
-  **Coming soon:** The final Pages route and free-form editor are a decided product contract, not a fully shipped destination in the current app. Existing reporting, forecasting, planning, and dashboard routes are compatibility internals during the transition.
-</Note>
+Use **New page** in the sidebar. Give the Page a useful title, then add text or choose a block with the add control. The block picker includes finance tables, charts, statements, KPI views, planning views, and custom tools.
 
-## What a Page contains
+Choose only the blocks needed for one decision. Each block still needs valid inputs; selecting a statement block does not create missing accounting data.
 
-A Page can compose metric-backed blocks such as:
+Changes autosave. Check **Saved** before closing the browser. If a save fails, keep the Page open and use **Retry** after the cause is resolved. See [Troubleshooting](/reference/troubleshooting#page-changes-are-not-saved).
 
-- key-number summaries,
-- financial statements,
-- tables,
-- charts,
-- variance views,
-- narrative and operating notes, and
-- model-specific inputs or assumptions where appropriate.
+## Bind a metric instead of pasting a number
 
-The exact block catalog will be documented as each block ships.
+A metric-backed block reads a saved definition and series. Pasted narrative is text and does not update when the source changes.
 
-## Bind, do not copy
-
-A Page block should reference a metric definition or series. It should not copy the metric's current value into page content.
-
-That separation creates two useful layers:
-
-| Shared finance meaning | Page-local presentation |
+| Shared metric | Page block |
 | --- | --- |
-| Name and definition | Date window |
-| Formula and dependencies | Comparison period |
-| Unit and value type | Chart or table style |
-| Source and lineage | Sort, order, and visible dimensions |
-| Recorded series | Narrative framing |
+| Definition, formula, and source | Selected metric |
+| Format and rollup | Date window and comparison |
+| Period values and scenario assumptions | Chart, table, and layout choices |
 
-When a metric definition is corrected, every Page that binds it can use the corrected meaning without duplicating logic.
+Open **Metrics** from the Page to manage shared measures, source data, and dimensions. A correction to a shared metric can affect every Page or agent that uses it. Review dependent views after changing its definition.
 
-## Pages and metrics
+## Keep the period visible
 
-Metrics management belongs inside Pages because models and dashboards are where operators discover what they need. The metric remains a reusable client-level object even when it is first created while editing a Page.
+Confirm the Page's date window and scenario. A monthly flow, ending balance, and forecast assumption are different measures even when they share a label. Missing sources remain missing; a blank value should not be explained as zero.
+
+After a source refresh, follow any reload prompt and recheck the value. A written explanation of last month's results does not become current simply because a chart refreshes.
 
 ## Pages and agents
 
-The target flow lets an agent use the same metrics and Context that support a Page. Today, agent tools read canonical finance data and reporting primitives; they do not yet consume a rendered Page object or send a Page snapshot.
+Authorized agents can read saved Metrics and Pages alongside Context. A Page marked as a playbook provides written guidance for agents. Available tools and data depend on the agent configuration and workspace permissions.
 
-## Page templates
+A successful read or generated report does not itself publish the Page or send it anywhere. Review the output and destination separately.
 
-A Page template should preserve structure, block configuration, and semantic metric bindings without copying one client's finance data into another. See [Templates and Playbooks](/concepts/playbooks).
+## Reuse and share
+
+- Save reusable structure with **Share** → **Export** → **Save…**, or **Save as template…**.
+- Open **Templates & playbooks** to apply reusable content inside another authorized client.
+- Use **Share** for workspace viewing, **Publish** for a secret link, and **Export PDF** for a snapshot.
+
+Before sharing, read [Sharing and access](/reference/sharing-and-access). Before relying on the numbers, follow [Verify your first workflow](/guides/verify-your-first-workflow).

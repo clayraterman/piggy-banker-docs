@@ -1,62 +1,61 @@
 ---
-title: "Quickstart: from client setup to your first workflow"
+title: "Your first finance workflow"
 sidebarTitle: "Quickstart"
-description: "Follow the core Piggy Banker flow from a new client workspace through connected data, metrics, Pages, and agents."
+description: "Connect a source, verify saved Metrics, build a Page, and review an agent result."
 icon:
   name: "rocket"
   library: "lucide"
 ---
 
-# Quickstart
+Build one useful workflow from connected books to a reviewed result. Use a clearly labeled test client or non-sensitive example when exploring sharing and automation for the first time.
 
-Use this sequence for every client. The order matters: an agent is only as useful as the source data, definitions, and Context underneath it.
+## Before you begin
 
-<Note>
-  **Availability:** Client setup, connected finance data, metrics primitives, and controlled agent runs exist today. The final free-form Pages experience is coming soon; current workspaces may expose compatibility reporting surfaces during the transition.
-</Note>
+- You can authorize the intended accounting company and read its reports.
+- You know the entity, currency, accounting basis, and completed month you will compare.
+- You have permission to edit the workspace. An account owner may need to complete billing before adding a managed client or enabling paid work.
+
+You can explore Pages with manual inputs before connecting a ledger. Label those inputs as assumptions; they are not accounting actuals.
 
 <Steps>
-  <Step title="Create the client workspace">
-    Add the business under your firm and confirm who should have access. A client workspace is an isolated finance context, not a folder inside another client's data.
+  <Step title="Enter the right workspace">
+    Sign in at [finance.piggybanker.io](https://finance.piggybanker.io). Company accounts enter their own workspace. CFO Firms start in Mission Control and open a managed client; use the account's Settings flow to add the first client.
+
+    Confirm the business name before authorizing a source or entering data. See [billing and usage](/reference/billing) if client creation requires billing setup.
   </Step>
-  <Step title="Add business Context">
-    Complete **Company**, **Money**, and **Strategy**. Record durable facts such as the operating model, entities, fiscal conventions, cash policy, goals, and constraints.
+  <Step title="Connect and inspect one accounting source">
+    Open **Connections**, choose the provider shown for your workspace, and authorize the correct company. Complete any data-selection step and wait for the initial sync.
+
+    Open **Source data** from Connections, or open **Pages** → **Metrics** → **Source data**. Inspect the dataset and date coverage. Authorization alone does not prove that the values you need have arrived.
+
+    **Checkpoint:** Find one known amount for the same entity, period, basis, and currency as its provider report.
   </Step>
-  <Step title="Connect the general ledger">
-    A general ledger is required for the core workflow. Choose the supported accounting provider shown in **Connections**, authorize the correct company or tenant, sync it, and verify that the ledger domain is ready.
+  <Step title="Add the business explanation">
+    In **Context**, review **Company**, **Money**, and **Strategy**. Record the operating model, fiscal conventions, key exclusions, and the decision this workflow should support. Keep source amounts in Metrics or source data.
   </Step>
-  <Step title="Add optional bank and card feeds">
-    Connect bank and card accounts when current balance observations are useful. These feeds complement the accounting source; they do not replace the books.
+  <Step title="Save your first metrics">
+    In **Pages**, open **Metrics** and choose **New metric**, or add a metric from the relevant source data. Give it a clear name, source, number format, and rollup. Use a formula or manual input only when that is the intended definition.
+
+    Start with a small set you can reconcile. An ending balance generally needs a different rollup from monthly revenue.
+
+    **Checkpoint:** Close and reopen Metrics, then confirm that the definition and sample value remain correct. See [Create a metric](/setup/create-metrics).
   </Step>
-  <Step title="Create reusable metrics">
-    Start with the measures needed for one decision. Use connected system references, saved metrics, reusable inputs, forecast assumptions, and formulas. Validate each metric before using it downstream.
+  <Step title="Create a Page and reload it">
+    Use **New page** in the sidebar, name the Page, and add a metric-backed block. Choose the saved metric, period, and scenario. Add a short note explaining the source and the question the Page answers.
+
+    Wait for **Saved**, leave the Page, and return. Confirm that the title, notes, metric selection, and value persist. A missing value needs investigation; it is not a zero.
   </Step>
-  <Step title="Compose a Page">
-    Bind the metrics to a focused P&L, forecast, cash flow model, KPI view, or management dashboard. Keep the metric definition shared and presentation choices local to each Page block.
-  </Step>
-  <Step title="Add an agent workflow">
-    Configure a reusable workflow, run it manually, review its evidence and output, then enable a schedule and destination. External delivery follows the approval and dispatch policy.
+  <Step title="Test an agent with the same inputs">
+    Open **Agents**, choose or create an agent, and review its instructions, Skills, sources, and model. Allow only the inputs needed for this workflow. Keep scheduling and external delivery off during the first test.
+
+    A test can consume model usage. Check your account's usage settings before running it. Review the completed result against the same saved metrics and Page; do not accept a plausible explanation with the wrong period or source.
+
+    **Checkpoint:** The run completes, its output remains available after reload, and you can trace its important claims to the selected evidence.
   </Step>
 </Steps>
 
-## Your first useful milestone
+## Make it repeatable
 
-Do not try to model the entire company at once. A strong first milestone is:
+Follow [Verify your first workflow](/guides/verify-your-first-workflow) to check five values, repeat sync, and agent grounding. Only then choose a schedule or destination. Review the exact recipient and content before approving external delivery.
 
-1. one ready ledger source,
-2. complete high-level Context,
-3. five to ten clearly defined metrics,
-4. one decision-focused Page, and
-5. one manually tested reporting agent.
-
-Then build the flagship recurring workflow: a scheduled CFO brief that reads the client's current finance evidence, drafts the agreed format, and proposes the exact Slack message for human approval.
-
-## Readiness checklist
-
-- The correct client and entity are selected.
-- The ledger domain is **ready**, not merely connected.
-- Every displayed number has a source period and understandable lineage.
-- Missing data is not silently converted to zero.
-- Inputs and assumptions have owners and review dates.
-- The agent's destination and approval policy are explicit.
-- A manual test has been reviewed before scheduling.
+[Sharing and access](/reference/sharing-and-access) explains how a workspace link, secret Page link, PDF, and agent delivery differ.
