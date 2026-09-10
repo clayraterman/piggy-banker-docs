@@ -1,0 +1,62 @@
+---
+title: "Sharing and access"
+description: "Choose the right boundary for workspace members, secret Page links, downloaded snapshots, templates, and agent delivery."
+icon:
+  name: "lock-keyhole"
+  library: "lucide"
+---
+
+Choose the audience and access method before sharing financial work. These actions have different effects.
+
+| Method | What the recipient gets | How access changes |
+| --- | --- | --- |
+| Workspace membership | The workspace capabilities granted to that person | Account/client membership and role controls |
+| Page sharing with workspace users | A permitted read-only Page view | The Page's sharing settings and the person's workspace access |
+| Secret Page publication | A read-only live view through a secret URL, optionally with a code | Unpublish, rotate the link, or change the code |
+| PDF download | A snapshot that can be copied or forwarded | Existing copies cannot be recalled by revoking a link |
+| Account template or playbook | Reusable Page structure or written guidance | Account library permissions; review content before reuse |
+| Agent delivery | The approved content sent to the chosen destination | Review/approval and dispatch policy; already delivered content may remain outside Piggy Banker |
+
+## Workspace access
+
+Use the account's team and client access controls to give people the role they need. An invited email appearing in a Page's sharing list does not, by itself, prove that the person has accepted an account invitation or can enter the workspace.
+
+Test access with the intended recipient's account. Your owner session may have broader access than theirs.
+
+## Publish a secret Page link
+
+Open the Page's **Share** panel and choose **Publish**. **Publish to a secret link** creates an external viewing URL. Keep **Require an access code** enabled when the audience should need both the URL and a code.
+
+Copy the current link and retain the code when it is shown. A code is shown when created; it is not a password you can assume will remain visible after reload. Use **New code** if you need to replace it.
+
+A secret URL is a credential, even though it opens in a browser. Anyone who receives the required URL and code can potentially use that access. Do not paste either into public tickets, analytics, or screenshots.
+
+## Revoke or replace access
+
+- **Unpublish** stops access through that publication.
+- **Rotate link** replaces a leaked secret URL; distribute the replacement only to the intended audience.
+- **New code** changes the code requirement for the publication.
+
+After changing access, verify the old link in a separate browser session. Existing downloaded files, screenshots, or content copied by a recipient are not recalled.
+
+## Export a snapshot
+
+Use **Share** → **Export** → **Export PDF** to produce a snapshot. Check its period, scenario, values, and included notes before sending it. The Page may change later; the downloaded file does not.
+
+## Reuse a template safely
+
+Account-owned templates can be reused across the account's authorized clients. Metric bindings are resolved for the target client or left for review. Written notes, examples, and manually entered values still need a human check before account-wide reuse.
+
+See [Templates and Playbooks](/concepts/playbooks). Saving to the library is not a way to publish a Page to an outside person.
+
+## Keep agent output and delivery separate
+
+A completed agent run can produce an in-app artifact. That is different from a Page publication, a client-portal report, or a delivered message. Review the exact destination and content before approving delivery, and check delivery status afterward.
+
+The client portal is a separate authenticated experience. A Page secret link does not create portal membership, and a portal invitation does not grant access to every internal workspace Page.
+
+## Using documentation with external AI tools
+
+The documentation's **Copy page**, Markdown view, ChatGPT, and Claude actions share public documentation content. They do not authorize financial-data access or connect the assistant to your client workspace.
+
+For financial MCP and experimental browser navigation, see [External agent access](/integrations/mcp-export).

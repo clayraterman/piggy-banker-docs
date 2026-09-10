@@ -7,54 +7,39 @@ icon:
   library: "lucide"
 ---
 
-# Create a metric from connected data
+Create a saved metric when a measure should have one definition that Pages and agents can reuse.
 
-Create a metric when a financial measure should have one durable definition and be reused across models, Pages, agents, or Lil Piggy.
+## Open Metrics
 
-<Note>
-  **UI transition:** Metric storage and evaluation exist today. Current Metric Studio supports saved metrics, reusable inputs, and a bounded system-reference set. It does not yet resolve arbitrary canonical accounts, ledger lines, live bank balances, or a dimension picker. The broader source and dimension workflow below is the target Pages model.
-</Note>
+Inside the client workspace, open **Pages** and select **Metrics**. The management window includes **Metrics**, **Source data**, and **Dimensions**. You can open it before creating your first Page.
 
 <Steps>
-  <Step title="Start with the decision">
-    Write the question the metric should answer and who will use it. “Can we hire?” is more useful framing than “make a payroll chart.”
+  <Step title="Choose the source of the value">
+    Use **New metric** or an add-row control. Create from available source data, enter a manual input, or build a formula from saved metrics. Connected accounting lines stay tied to their source; a manually entered assumption is not a ledger actual.
   </Step>
-  <Step title="Choose a supported reference">
-    In the current product, select a supported system reference, saved metric, reusable input, forecast assumption, forecast-plan line, or recorded value. Confirm the source period and whether the value is a flow, point-in-time balance, or scenario value.
+  <Step title="Name and describe it">
+    Use a name that identifies the measure and a description explaining exclusions or special treatment. Confirm its client and entity scope.
   </Step>
-  <Step title="Document the intended scope">
-    Record the linked-account or entity scope and any department, class, customer, or other intended filters. Use only dimensions present at the source grain. Attaching discovered dimensions through Metric Studio is not available yet.
+  <Step title="Set time and presentation behavior">
+    Choose the number format and rollup. Revenue is a period flow; cash is an ending balance. Confirm actual and forecast periods, the selected scenario, and the visible month window.
   </Step>
-  <Step title="Name and describe the measure">
-    Use a stable name, key, unit, and plain-language definition. Include exclusions or special accounting treatment in the description.
+  <Step title="Review dependencies and dimensions">
+    Check the linked source or formula references. Use dimensions only where the underlying rows carry the relevant attributes. An aggregate statement cannot provide a department breakdown it never contained.
   </Step>
-  <Step title="Build or record the value">
-    Add a bounded formula, reference another metric, or save a reusable input. Keep forecast assumptions tied to their model or scenario.
+  <Step title="Reconcile and reload">
+    Compare a known month with the source. Check missing values and, for ratios, a zero denominator. Wait for the save, reopen Metrics, and confirm the definition and value remain correct.
   </Step>
-  <Step title="Evaluate before saving">
-    Review the resolved dependencies, sample period, null behavior, units, and source lineage. Correct unavailable or ambiguous references instead of substituting zero.
-  </Step>
-  <Step title="Choose presentation defaults">
-    Set useful number or percentage formatting. Leave Page-specific choices—date range, comparison, chart type, order—to the Page block.
+  <Step title="Use it on a Page">
+    Add a metric-backed block to the Page and choose the saved metric. Keep the same period and scenario for your first comparison. Later, each block can present the shared metric in its own appropriate view.
   </Step>
 </Steps>
 
 ## Example: operating expense ratio
 
-A sound definition identifies:
+Define operating expense divided by revenue for the same entity, month, basis, and currency. Set percentage formatting. Decide how unavailable revenue and a zero denominator should be presented; neither justifies inventing a result.
 
-- numerator: Operating expense for the selected period,
-- denominator: Revenue for the same period,
-- entity and currency scope,
-- behavior when Revenue is zero or unavailable,
-- percentage formatting, and
-- the connected statement periods used by each reference.
+## Before you rely on it
 
-## Review checklist
+Confirm the name matches the calculation, every dependency is understandable, and manual inputs remain distinguishable from actuals. Changing a shared definition can affect other Pages and agents.
 
-- Does the name match the calculation?
-- Are numerator and denominator on compatible periods and grains?
-- Can an operator trace every dependency?
-- Are inputs and assumptions visibly different from actuals?
-- Does the definition remain useful outside one Page?
-- Has a sample period been reconciled to the books?
+Use [Verify your first workflow](/guides/verify-your-first-workflow) for a repeatable five-value comparison.

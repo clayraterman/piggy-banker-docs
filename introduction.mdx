@@ -7,60 +7,42 @@ icon:
   library: "lucide"
 ---
 
-# Piggy Banker documentation
+Piggy Banker connects your financial data, turns it into reusable Metrics, and brings it together in Pages and agent workflows.
 
-Piggy Banker is a finance operating system for CFO teams and the businesses they support. It turns connected financial systems into **durable, auto-updating models** that people and agents can understand, reuse, and act on.
+Start with one question and one trusted source. Prove the numbers before you automate the narrative.
 
-The product is designed to replace a familiar failure mode: a static spreadsheet with stale numbers, undocumented logic, and business context that lives only in one person's head.
+## Choose how you work
 
-## The core model
+| Account | Where you start | What it manages |
+| --- | --- | --- |
+| **Company** | Your company workspace | Your business's sources, Context, Metrics, Pages, and agents |
+| **CFO Firm** | Mission Control | A portfolio of separately scoped client workspaces and shared account resources |
+
+Choose the account type at signup. A Company account does not need a managed-client portfolio. A CFO Firm enters each managed client's workspace to do that client's finance work.
+
+## Your first complete workflow
 
 ```text
-Connection → source data with lineage → metric → Page block → agent workflow
-                         ↑                 ↑
-                     Context       inputs and assumptions
+Connections → Source data → Metrics → Page → reviewed agent output
+                              ↑
+                    Context and assumptions
 ```
 
-- **Connections** bring in accounting and balance data.
-- **Source data** preserves what arrived, where it came from, and how fresh it is.
-- **Context** records durable facts about how the business works.
-- **Metrics** give financial measures stable names, definitions, formulas, and histories.
-- **Pages** compose those metrics into decision-ready models and dashboards.
-- **Agents** use the same grounded data to run repeatable workflows.
-- **Lil Piggy** stays beside you as a private notepad and finance companion.
+1. Authorize the right accounting company in **Connections** and check the sync.
+2. Inspect **Source data** and reconcile a period with the provider.
+3. Open **Metrics** inside **Pages** and save the measures you need.
+4. Create a Page with those metrics and explanatory notes.
+5. Test an agent with the same inputs and review its output before scheduling or delivery.
+
+**Context** explains the business through Company, Money, and Strategy. It does not replace accounting records. **Lil Piggy** helps alongside the current workspace as a notepad and finance companion.
 
 <Note>
-  **Product availability:** These docs describe the intended product model and label material rollout boundaries. Pages and unified Page Templates/Playbooks are coming soon. External MCP/WebMCP access is not currently self-service.
+Pages, the Metrics management window, account-owned Templates / Playbooks, and Company and CFO Firm signup are available. External financial MCP remains disabled by default and is not self-service. See [external agent access](/integrations/mcp-export) for the separate experimental browser-navigation boundary.
 </Note>
 
-## Who Piggy Banker is for
-
-### CFO firms
-
-A firm workspace lets a CFO team manage multiple clients without mixing their data, access, Context, metrics, or agent activity. Shared templates and operating playbooks are designed to make the firm's best work reusable.
-
-### Individual businesses (planned)
-
-The planned solo experience uses the same client-level finance model without the multi-client operating layer. Its pricing direction is a flat subscription plus optional additional usage. A separate solo account and billing model is not available today.
-
 <CardGroup cols={2}>
-  <Card title="Follow the core setup" icon="rocket" href="/quickstart">
-    Go from a new client to connected books, reusable metrics, a Page, and an agent workflow.
-  </Card>
-
-  <Card title="Understand the app" icon="panels-top-left" href="/portal-overview">
-    Learn the difference between the firm workspace, a client workspace, and the client portal.
-  </Card>
-
-  <Card title="Learn the data model" icon="database" href="/concepts/source-data">
-    See how source ownership, readiness, freshness, and lineage keep finance data trustworthy.
-  </Card>
-
-  <Card title="Build a Slack reporting workflow" icon="send" href="/guides/automated-slack-reports">
-    Create a grounded report, review the proposed message, approve it, and track delivery.
-  </Card>
+  <Card title="Build your first workflow" icon="rocket" href="/quickstart">Connect a source, save a metric, create a Page, and review an agent run.</Card>
+  <Card title="Verify the numbers" icon="check-check" href="/guides/verify-your-first-workflow">A repeatable acceptance check before you depend on a model.</Card>
+  <Card title="Share with the right audience" icon="lock-keyhole" href="/reference/sharing-and-access">Choose workspace access, a secret link, a download, or approved delivery.</Card>
+  <Card title="Resolve a problem" icon="life-buoy" href="/reference/troubleshooting">Find the next step for sync, missing values, saves, runs, and exports.</Card>
 </CardGroup>
-
-## The outcome
-
-A well-configured client has a living finance system: source data stays traceable, models update from governed inputs, Pages explain what matters, and agent runs carry evidence and controlled actions—not just prose.

@@ -1,0 +1,82 @@
+---
+title: "Verify your first workflow"
+description: "Reconcile source data, saved Metrics, Pages, and one reviewed agent run before depending on a workflow."
+icon:
+  name: "check-check"
+  library: "lucide"
+---
+
+A workflow is ready to use when its numbers agree with the intended source, edits survive reload, and an agent can explain the result without inventing missing evidence.
+
+Use this checklist after [Quickstart](/quickstart), after changing providers, and after a material metric or template change. Prefer a QA client while testing.
+
+## 1. Write down the comparison
+
+Record the client, provider company, currency, accounting basis, and one completed month. Use the same settings in the provider report, Metrics, and Page.
+
+Choose five representative measures that your provider actually supplies. For example: revenue, cost of sales, operating expense, net income, and ending cash. Substitute an available measure rather than inventing one. A zero is a valid value only when the source establishes it.
+
+| Measure | Provider value | Saved Metric | Page value | Period / basis | Result or explanation |
+| --- | --- | --- | --- | --- | --- |
+| Measure 1 | | | | | |
+| Measure 2 | | | | | |
+| Measure 3 | | | | | |
+| Measure 4 | | | | | |
+| Measure 5 | | | | | |
+
+Do not put sensitive client amounts in a public issue or shared test report.
+
+## 2. Prove the source
+
+Open **Connections** and inspect the intended connection's sync status. Then open **Source data** and find the records or statement rows behind the comparison.
+
+- Confirm the provider company and entity.
+- Check date coverage and the most recent successful sync.
+- Inspect a representative row or drilldown where the dataset supports it.
+- Identify missing or unsupported data before using it in a formula.
+
+If a value differs, first compare basis, currency, period boundaries, source selection, sign convention, and aggregation. Do not adjust a formula merely to force a match.
+
+## 3. Prove repeat sync
+
+Once the first sync has finished, use the connection's sync action again. Wait for completion and repeat the same comparison.
+
+With unchanged provider data, the result should remain stable. A second sync should not duplicate the same financial activity. If the provider changed, reconcile the changed records rather than expecting an unchanged total.
+
+Stop this check if one company unexpectedly shows another company's data, or if repeated sync inflates unchanged amounts. Record the affected connection, period, and sync time and report the discrepancy.
+
+## 4. Prove Metrics and Page persistence
+
+In **Pages** → **Metrics**, inspect each definition, source, format, and rollup. Confirm that the chosen scenario and month match your comparison.
+
+Create a small Page using those metrics. Add a note identifying the comparison period, then wait for **Saved**. Leave the Page, return, and reload the browser. Verify the title, notes, block configuration, and all five values.
+
+For manual-input testing, use a clearly labeled synthetic value. Change it, wait for the save, reload, and confirm the Page follows the change. Do not modify connected provider records to test an editable input.
+
+## 5. Prove one agent result
+
+Review the agent's instructions, enabled sources, Skills and revisions, model, and usage settings. Keep its schedule and external delivery disabled for this check. A manual test can consume model usage.
+
+Ask for a small result, such as:
+
+> Explain the five saved metrics on this Page for the selected completed month. State the period and sources, distinguish manual inputs from booked actuals, and identify missing evidence. Do not send or publish the result.
+
+Track the run from queued to completion. Review the output against your table:
+
+- Are all reported values and periods correct?
+- Does it cite or identify the evidence it used?
+- Does it distinguish actuals, assumptions, and forecasts?
+- Does it leave unavailable cash, runway, or other measures unavailable?
+- Does the saved result remain visible after reload?
+
+A fluent answer is not a passed test when its values or source meaning are wrong. Review [agent troubleshooting](/reference/troubleshooting#an-agent-stays-queued-or-fails) before retrying an incomplete run.
+
+## 6. Check access before sharing
+
+If the workflow will be shared, use synthetic content to test the chosen access path. Open a secret publication in a separate signed-out browser, verify its access-code behavior, then unpublish and confirm the old link no longer opens.
+
+For a CFO Firm, switch to a second QA client and confirm it shows its own sources and metrics. Applying a template must resolve to that client's data or clearly identify missing bindings.
+
+## Record the result
+
+Keep a short private record: client, connection, period/basis/currency, sync time, five-value comparison, Page, agent run ID, discrepancies, and who reviewed it. Mark any untested step as untested. Scheduling and external delivery are separate checks after this workflow passes.

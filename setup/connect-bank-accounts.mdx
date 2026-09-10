@@ -14,7 +14,7 @@ Bank and card feeds are optional. Use them when current balance observations or 
 They complement the general ledger; they do not replace it.
 
 <Note>
-  **Current boundary:** Bank observations are not yet selectable in the live metric evaluator or final Pages experience. The current `cash_on_hand` metric resolves from the latest accounting cash-flow ending-cash series, not a bank-balance observation.
+  Check the specific source available to a metric before calling it current cash. An accounting ending-cash value and a bank-balance observation have different periods and meanings; a familiar metric name alone does not establish the source.
 </Note>
 
 ## What these feeds are for
@@ -41,7 +41,7 @@ It does not provide the full accounting model needed for a P&L, balance sheet, c
 3. Authorize only the accounts needed for the finance model.
 4. Confirm account type, currency, and ownership.
 5. Review the observed as-of time and freshness.
-6. Record which balances should feed a future metric or Page after live-balance binding is available.
+6. Confirm whether the intended observed balance is available as a source for the metric you want. If it is not, keep it as a separately labeled comparison rather than substituting it for a booked value.
 
 <Warning>
   Do not describe a bank observation as “real-time” unless its provider timestamp supports that claim. Accounting statement values and bank balance observations often update on different cadences.

@@ -7,51 +7,39 @@ icon:
   library: "lucide"
 ---
 
-# Templates and Playbooks
+Reuse a useful Page layout, operating procedure, or agent workflow without treating another client's numbers as your own.
 
-Templates and Playbooks are the firm-level library for reusing good finance work across clients. They sit outside the five-destination client navigation.
+## Three different resources
 
-<Note>
-  **Availability:** Versioned agent templates exist today. The unified firm-owned library for Page templates and operating Playbooks is coming soon.
-</Note>
+| Resource | What it preserves | Where it is used |
+| --- | --- | --- |
+| Page template | Page structure and reusable metric bindings | Apply inside a company or managed-client workspace |
+| Playbook | Written procedures, policies, and guidance for interpreting the numbers | Pages and authorized agent context |
+| Agent template | Workflow instructions, configuration, and published revisions | Client agent deployments |
 
-## Keep three concepts distinct
+Page templates and playbooks live on the customer account's **Templates & playbooks** shelf. Company accounts own their resources; CFO Firms can reuse theirs across managed clients. The shelf is available from the sidebar, including a read-only browse experience for a firm with no clients yet.
 
-### Agent template
+## Save a Page to the library
 
-A reusable workflow blueprint. Publishing creates an immutable revision; a client deployment chooses a revision, schedule, destinations, Context, approval policy, and overrides.
+1. Open a Page with the content you want to reuse.
+2. Open **Share**, then **Save as template…**, or choose **Export** → **Save…**.
+3. Choose **Template** or **Playbook** and give it a clear name.
+4. Review the reusable content before saving. An empty Page cannot be saved as a useful template.
 
-### Page template
+Metric references are rebound to the target client where they can be resolved. Unresolved or ambiguous bindings require review; they must not silently point back to another client's metric.
 
-A reusable layout for a model or dashboard. It should contain structure, block settings, and semantic metric bindings—not copied client values.
+<Warning>
+Reusable prose and manually entered examples can still contain sensitive information. Remove client names, private notes, pasted values, and confidential assumptions before saving content for account-wide reuse. Safe metric rebinding does not sanitize your writing.
+</Warning>
 
-### Operating Playbook
+## Apply and verify
 
-A repeatable finance process: purpose, cadence, inputs, procedures, review steps, output format, owners, and control points. A Playbook may refer to Page templates and agent templates without collapsing them into one object.
+Open the shelf in the target client, choose the entry, and inspect the resulting Page. Confirm each metric, source, period, and scenario. Replace unresolved bindings with the correct target-client metrics before sharing or using the Page in an agent run.
 
-## What reuse should preserve
+Use a deliberately different test value in a second QA client when checking a reusable template. Both clients should display their own values.
 
-- the business question,
-- layout and reporting grammar,
-- metric intent,
-- required source categories,
-- review and approval steps,
-- expected output format, and
-- version history.
+## Version agent workflows deliberately
 
-## What reuse must not copy
+Agent templates use published revisions and client deployments. Editing a draft is different from publishing a revision or choosing that revision for a client. Review the deployment's Skill revisions, schedule, sources, and destinations before activation.
 
-- another client's values,
-- connected-account identifiers,
-- private Context,
-- destination credentials or channels,
-- client-specific assumptions, or
-- permissions.
-
-## Resolve per client
-
-When applying a template, Piggy Banker should resolve its required metrics and sources inside the target client. Missing dependencies become setup work; they must not fall back to another client's objects.
-
-## Version deliberately
-
-Treat published operating knowledge as immutable. Create a new revision for material changes, test it with a client deployment, and keep run history tied to the exact version that produced the output.
+Saving a Page template does not schedule an agent or authorize delivery. See [Agents](/concepts/agents) and [Sharing and access](/reference/sharing-and-access).

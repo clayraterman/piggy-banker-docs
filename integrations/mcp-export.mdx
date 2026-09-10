@@ -7,45 +7,42 @@ icon:
   library: "lucide"
 ---
 
-# External agent access with MCP and WebMCP
+There are three different ways AI tooling can interact with Piggy Banker material. Their permissions are separate.
 
-Piggy Banker's long-term direction includes permissioned ways for external agents to read the same governed client data used inside the product.
+| Surface | Current boundary |
+| --- | --- |
+| Public documentation tools | Copy or open documentation content in an AI assistant; no client financial access |
+| Experimental WebMCP browser navigation | Current-workspace identity and allowed navigation in a compatible authenticated browser |
+| Remote financial MCP and API | Implemented-dark: code exists, but exposure stays off by default and there is no self-service setup |
 
-<Warning>
-  **Internal proof only:** There is no public, self-service, or named private-preview MCP/WebMCP product today. Do not paste an endpoint into Claude, ChatGPT, or another client based on an old or generated guide.
-</Warning>
+## Remote financial MCP is not public access
 
-## Intended access model
+The implemented-dark service contains 22 read-only HTTP routes and seven MCP tools. Those tools cover granted-company discovery, bounded finance reads, Context packages, artifact listing, Page listing/reading, and workflow status.
 
-External access must preserve the same rules as the product:
+Access requires a server-provisioned identity and explicit company grants. It is not a self-service OAuth connection that you can enable by pasting an endpoint into Claude, ChatGPT, or another agent. Named external-client interoperability is not yet verified.
 
-- explicit company grants,
-- client-scoped roles and scopes,
-- opaque external references,
-- deny-by-default authorization,
-- audit history, and
-- bounded data returned through approved tools.
+The service does not expose ledger writes, agent execution, approval decisions, dispatch, webhooks, or subscriptions. A private pilot would require an explicit authorization and supported setup from the Piggy Banker team.
 
-## Current internal seam
+## Current Metrics boundary
 
-The implemented-dark external seam is read-only. It is designed around company discovery, finance reads, Context-package reads, artifact listing, and workflow status.
+The external service's existing metric reads use an older reporting metric store. They do not yet return the current saved Metrics series managed inside Pages. Its Page reader returns bounded prose and block names, not evaluated financial values from every block.
 
-It does **not** expose:
+Do not use a successful Page read as proof that an external agent received the same numbers shown in the app. Current Pages-to-external-MCP metric parity remains a separate follow-up.
 
-- write tools,
-- journal-entry or ledger mutation,
-- agent execution,
-- approval decisions,
-- external dispatch,
-- webhooks, or
-- subscriptions.
+## Experimental WebMCP browser navigation
 
-WebMCP export remains a product direction rather than a shipped public interface.
+In a compatible browser that provides WebMCP, the authenticated workspace can expose its name, access mode, and allowed navigation. An assistant can navigate the current workspace to Overview, Context, Pages, Agents, Connections, or the Metrics and Source data views inside Pages.
 
-## Why the boundary matters
+This experiment is feature-detected. Browsers without that capability continue to use the ordinary interface. Native browser/assistant interoperability remains unverified; no universal support is promised.
 
-A convenient agent connection cannot be allowed to bypass client isolation, source lineage, approvals, or destination policy. Public access will require productized authentication, grant management, audit, support, and revocation—not just an endpoint.
+The browser tools do not read financial values, switch to an arbitrary client, create grants, edit records, run agents, publish Pages, or send messages. They do not enable the remote financial MCP service.
 
-## What to use now
+## Documentation MCP is different
 
-Use Lil Piggy and Agents inside Piggy Banker for grounded client work. There is no supported external-agent setup to follow today.
+A documentation search MCP server, when provided by the documentation platform, searches public product documentation. It does not grant access to connected books, client Context, Metrics, Pages, or runs.
+
+The documentation's copy/Markdown/ChatGPT/Claude controls also provide public documentation context only. Never paste provider credentials, workspace session files, secret Page URLs, or access codes into an external agent to work around an unavailable integration.
+
+## Use the current in-app workflow
+
+Use authorized **Agents** and Lil Piggy for current saved Metrics and Page-based work inside the application. Verify the sources, period, and output as described in [Verify your first workflow](/guides/verify-your-first-workflow).

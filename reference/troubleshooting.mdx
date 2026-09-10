@@ -1,0 +1,84 @@
+---
+title: "Troubleshooting"
+description: "Find the next step for connection syncs, missing values, Page saves, agent runs, exports, and access."
+icon:
+  name: "life-buoy"
+  library: "lucide"
+---
+
+Start with the workspace name, the action you took, and the visible error or status. Preserve unsaved work while investigating.
+
+## A provider is connected but data is missing
+
+Authorization and completed sync are different checkpoints. Open **Connections**, inspect the intended provider, and check its latest sync and data coverage. Complete any pending data-selection step.
+
+Then open **Source data** and look for the expected dataset and period. A provider may supply statements while a more detailed dataset is unavailable because of its permissions or coverage.
+
+If authorization expired, use the connection's reconnect flow for the same company. Do not add a second connection just to clear an error. After reconnecting, wait for sync and compare a known value again.
+
+## A metric is blank or disagrees with the books
+
+Open **Pages** → **Metrics** and inspect the metric's source and formula. Check these in order:
+
+1. Correct client, entity, and provider company.
+2. Matching accounting basis, currency, and date window.
+3. Correct scenario and actual-versus-forecast period.
+4. Appropriate rollup: monthly activity and an ending balance behave differently.
+5. Available dependencies and source rows for that period.
+6. No duplicated source coverage or unintended manual override.
+
+Missing data is not zero. A real zero should survive the calculation; a missing dependency needs to be resolved or described as unavailable. See [Verify your first workflow](/guides/verify-your-first-workflow).
+
+## Source data is empty
+
+Check whether the client has a completed provider sync or a saved import. Open **Source data** from **Connections**, or from **Pages** → **Metrics**. Clear a search or filter that could hide the dataset.
+
+Provider data is read-only in this view. Editable imported data is different: save the import, reload, and confirm it remains before building dependent metrics. A manual import does not become a connected ledger.
+
+## Page changes are not saved
+
+If the Page says **Not saved**, keep it open. Resolve the visible error or restore the connection, then choose **Retry**. Confirm **Saved** before reloading or closing the browser.
+
+If another editor changed the Page, Piggy Banker attempts to merge changes. Independent additions can be retained, but competing edits to the same block may keep the other saved version. Read the merge notice and inspect affected blocks; do not assume every conflicting edit was preserved.
+
+If retry continues to fail, preserve your text in an approved private location and report the problem. Do not paste financial content into a public issue.
+
+## An agent stays queued or fails
+
+Open the run and inspect its current state and error before starting another run. Queued work has not yet completed; a lost browser connection does not prove that execution stopped.
+
+Check the agent's readiness messages, required sources, model configuration, account usage/billing state, and Skills. A data-dependent run can fail even when the provider is connected if the required records have not arrived.
+
+For persistent failures, record the run ID and time. Avoid repeatedly starting the same run: it can duplicate work and consume additional usage. Review the exact output before enabling a schedule or approving delivery.
+
+## A PDF export is delayed or fails
+
+Keep the Page open while export is processing. First confirm that the Page is saved and its blocks render normally. Then use **Share** → **Export** → **Export PDF**.
+
+An export is background work. If it reports an error, record the message and time, then retry once after resolving the cause. If it remains queued or repeatedly fails, report the Page and job ID if one is shown. Do not create a stream of replacement exports.
+
+A downloaded PDF is a snapshot. Refreshing the Page or revoking its publication does not update or recall that file.
+
+## A shared link does not open
+
+Check which link you copied:
+
+- A workspace link requires the recipient's permitted signed-in access.
+- A secret Page publication requires the current secret URL and, when enabled, its access code.
+- An unpublished or rotated link may no longer be valid.
+
+Ask the Page owner to check **Share** → **Publish**. Test with the intended recipient's access, not only an owner's existing browser session. Do not remove access-code protection merely to make a test pass.
+
+See [Sharing and access](/reference/sharing-and-access) before sending a replacement link.
+
+## Report a reproducible problem
+
+Send the Piggy Banker team the following through your approved private support channel:
+
+- Page URL or affected surface, workspace, and approximate time with time zone.
+- Steps taken, expected result, and actual result.
+- Relevant connection, sync, run, or export identifier if visible.
+- A screenshot with sensitive amounts and personal details removed where possible.
+- Browser/device and whether the problem also happens after a successful save and reload.
+
+Never include passwords, provider tokens, secret Page URLs, access codes, or an unredacted browser session file. If you see another client's information, stop interacting with it and report only the minimum evidence needed to identify the problem.

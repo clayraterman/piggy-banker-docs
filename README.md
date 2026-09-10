@@ -1,37 +1,41 @@
 # Piggy Banker documentation
 
-The Mintlify source for Piggy Banker's public product documentation.
+Public product documentation for the Company and CFO Firm workflows:
 
-The documentation explains the complete finance workflow:
+`Connections → Source data → Metrics → Pages → reviewed agent output`
 
-`Connection → source data → metric → Page → agent workflow`
+Published site: [piggy-banker.mintlify.app](https://piggy-banker.mintlify.app). Application: [finance.piggybanker.io](https://finance.piggybanker.io).
 
-It also documents the firm/client workspace model, durable business Context, Dimensions, formulas and inputs, Lil Piggy, controlled agent delivery, billing direction, and external-access status.
+## Validate and preview
 
-## Development
+Use Node.js 22 and the pinned CLI, matching CI:
 
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
-
-```
-npm i -g mint
-```
-
-Run the following command at the root of your documentation, where your `docs.json` is located:
-
-```
-mint dev
+```sh
+npm exec --yes --package=mint@4.2.883 -- mint validate
+npm exec --yes --package=mint@4.2.883 -- mint broken-links --check-anchors --check-redirects
+npm exec --yes --package=mint@4.2.883 -- mint dev --port 3339 --no-open --telemetry=false
 ```
 
-View the local preview at `http://localhost:3000`.
+The local preview runs at `http://localhost:3339` unless that port is occupied. Check the URL printed by the CLI. Search/assistant behavior can require Mintlify authentication and is not established by a successful local render.
 
-## Publishing changes
+For material navigation or workflow changes, check the rendered page at desktop and 390px widths. Follow the critical links, verify headings/anchors, and inspect browser errors. Configuration validation does not prove the product instructions are accurate.
 
-Changes merged to the configured deployment branch are published by Mintlify.
+## Keep the docs current
 
-## Troubleshooting
+Use the application repository and current product direction to verify behavior. Keep UI labels accurate and distinguish shipped functionality, experimental browser support, and disabled external financial access. Do not infer a pricing plan or supported OAuth client from an implementation detail.
 
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
+Current navigation is Overview, Context, Pages, Agents, Connections. Metrics management lives inside Pages. Reusable Page templates belong to the customer account; client documents and financial data stay client-scoped.
 
-## Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+The Copy/Markdown/ChatGPT/Claude context menu shares public documentation only. A documentation MCP server is not the financial-data MCP service.
+
+## Publishing
+
+The configured Mintlify deployment publishes changes merged to its deployment branch. CI validates MDX/configuration and internal links before release. A successful local preview or merge is not proof of a completed hosted deployment; verify the hosted pages afterward.
+
+Do not change custom-domain DNS as part of a content update. The current verified hosted address is listed above.
+
+## Maintainer references
+
+- [Mintlify local preview](https://www.mintlify.com/docs/cli/preview)
+- [Mintlify configuration and contextual menu](https://www.mintlify.com/docs/organize/settings-structure)
+- [Mintlify documentation MCP](https://www.mintlify.com/docs/ai/model-context-protocol)
